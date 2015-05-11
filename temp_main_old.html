@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Language" content="ja"/>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"/>
+<meta http-equiv="Content-Style-type" content="text/css"/>
+<meta http-equiv="Content-Script-Type" content="text/javascript"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Cache-Control" content="no-cache"/>
+<script type="text/javascript">
+<!--
+var RGTSkinDir = "!skindir!";
+var NowPegeID  = "main_old";
+var file_version = 20150210.000;
+// -->
+</script>
+<script type="text/javascript" charset="shift_jis" src="!skindir!/js_common.js"></script>
+<title>!cgititle! !subtitle!</title>
+<style type="text/css" media="all">
+	body{
+		margin:0px;
+		color:#808080;
+		font-size:12px;
+		font-family:"MS Gothic","ＭＳ ゴシック",arial,sans-serif;
+	}
+
+	form{
+		margin:0px;
+		display:inline;
+	}
+</style>
+</head>
+<body background="!skindir!/imgs/background.gif">
+<br/>
+<div id="SkillList" class="Sprite_UIInput opacity font1" style="z-index:10;display:none;position:absolute;width:365px;height:217px;top:100px;left:100px;background-position:-540px -310px;color:#ffffff;">
+	<div id="mabiskill_view_windowicon" class="Sprite_UIInput" style="display:none;position:absolute;top:5px;left:7px;width:20px;height:24px;background-position:-540px -531px;"></div>
+	<div id="mabiskill_view_skilluser" style="position:absolute;top:12px;left:35px;font-weight:bold;"></div>
+	<div id="mabiskill_view_skilllist00" class="MabiSkill_AllSkillList" style="display:none;"></div>
+	<div id="mabiskill_view_skilllist01" class="MabiSkill_AllSkillList" style="display:block;"></div>
+	<div id="mabiskill_view_skilllist02" class="MabiSkill_AllSkillList" style="display:none;"></div>
+	<div id="mabiskill_view_skilllist03" class="MabiSkill_AllSkillList" style="display:none;"></div>
+	<div id="mabiskill_view_skilllist04" class="MabiSkill_AllSkillList" style="display:none;"></div>
+	<div id="mabiskill_view_skilllist05" class="MabiSkill_AllSkillList" style="display:none;"></div>
+	<div id="mabiskill_view_skilllist06" class="MabiSkill_AllSkillList" style="display:none;"></div>
+	<div id="mabiskill_view_skilllist07" class="MabiSkill_AllSkillList" style="display:none;"></div>
+	<div id="mabiskill_view_skilllist08" class="MabiSkill_AllSkillList" style="display:none;"></div>
+	<div id="mabiskill_view_skilllist09" class="MabiSkill_AllSkillList" style="display:none;"></div>
+	<div id="mabiskill_view_skilllist10" class="MabiSkill_AllSkillList" style="display:none;"></div>
+	<div id="mabiskill_view_skilllist11" class="MabiSkill_AllSkillList" style="display:none;"></div>
+	<div id="mabiskill_view_tab" style="position:absolute;top:33px;left:11px;width:311px;height:16px;"></div>
+	<div style="position:absolute;width:365px;height:28px;top:4px;left:4px;cursor:move;">
+		<img src="!skindir!/imgs/blank.gif" width="365" height="28" border="0" onmousedown="UserListMove(0,0);return false" style="cursor:move;" alt="" />
+	</div>
+	<div id="mabiskill_view_skillclose" class="Sprite_UIInput" style="position:absolute;width:8px;height:8px;top:7px;left:348px;background-position:-227px -717px;cursor:pointer;" onmouseover="UserListCloseButton(0,1)" onmouseout="UserListCloseButton(0,0)" onclick="UserListClose(0)"></div>
+	<div id="mabiskill_view_skillpet" class="Sprite_UIInput" onmouseover="SkillListChangeButton(1,2)" onmouseout="SkillListChangeButton(1,1)" onmousedown="SkillListChangeButton(1,3)" onmouseup="SkillListChangeButton(1,1)" onclick="GenerateUserPetList()" style="cursor:pointer;display:block;position:absolute;top:17px;left:251px;width:50px;height:14px;background-position:-10px -829px;"></div>
+	<div id="mabiskill_view_skillmain" class="Sprite_UIInput" onmouseover="SkillListChangeButton(2,2)" onmouseout="SkillListChangeButton(2,1)" onmousedown="SkillListChangeButton(2,3)" onmouseup="SkillListChangeButton(2,1)" onclick="SkillListModeChange(0)" style="display:none;cursor:pointer;display:block;position:absolute;top:17px;left:306px;width:50px;height:14px;background-position:-317px -829px;"></div>
+	<div id="mabiskill_view_skillachievement" class="Sprite_UIInput" onmouseover="SkillListChangeButton(3,2)" onmouseout="SkillListChangeButton(3,1)" onmousedown="SkillListChangeButton(3,3)" onmouseup="SkillListChangeButton(3,1)" onclick="SkillListModeChange(1)" style="display:block;cursor:pointer;display:block;position:absolute;top:17px;left:306px;width:50px;height:14px;background-position:-163px -829px;"></div>
+</div>
+<div id="mabiskill_skillinfo" class="Sprite_UIInput opacity font1" style="z-index:10;display:none;position:absolute;top:0px;left:0px;width:360px;height:300px;background-position:-540px -5px;color:#ffffff;">
+	<div id="mabiskill_skillinfo_close" class="Sprite_UIInput" onmouseover="SkillInfoCloseButton(2);SkillPopUp(3,'Skills Info Close');" onmouseout="SkillInfoCloseButton(1);SkillPopUp(0);" onmousedown="SkillInfoCloseButton(3)" onmouseup="SkillInfoCloseButton(2)" onclick="Objects(1,'mabiskill_skillinfo','style.display','none');SkillPopUp(0);" style="cursor:pointer;position:absolute;top:268px;left:145px;width:70px;height:19px;background-position:-10px -710px;"></div>
+	<div id="mabiskill_skillinfo_icon" class="Sprite_SkillIcon" style="position:absolute;top:67px;left:167px;width:30px;height:30px;background-position:-2px -2px;"></div>
+	<div id="mabiskill_skillinfo_text1" style="cursor:default;position:absolute;top:32px;left:0px;width:360px;font-size:11px;font-weight:bold;text-align:center;"></div>
+	<div id="mabiskill_skillinfo_text2" style="cursor:default;position:absolute;top:45px;left:0px;width:360px;font-size:15px;font-weight:bold;text-align:center;"></div>
+	<div id="mabiskill_skillinfo_text3" style="cursor:default;position:absolute;top:108px;left:12px;width:339px;height:150px;overflow-x:hidden;overflow-y:scroll;line-height:15px;"></div>
+</div>
+<div id="mabipetlist_base" class="Sprite_UIInput opacity" style="z-index:11;display:none;color:#ffffff;position:absolute;top:0px;left:0px;width:429px;height:208px;background-position:-10px -1299px;">
+	<div id="petlist_user" style="position:absolute;top:12px;left:35px;font-weight:bold;"></div>
+	<div style="position:absolute;width:418px;height:28px;top:4px;left:4px;cursor:move;">
+		<img src="!skindir!/imgs/blank.gif" width="418" height="28" border="0" onmousedown="UserListMove(1,0);return false" style="cursor:move;" alt="" />
+	</div>
+	<div id="mabipetlist_close" class="Sprite_UIInput" onmouseover="UserListCloseButton(1,1)" onmouseout="UserListCloseButton(1,0)" onclick="UserListClose(1)" style="cursor:pointer;position:absolute;top:7px;left:410px;width:8px;height:8px;background-position:-227px -717px;"></div>
+	<div id="mabipetlist_list" style="cursor:default;position:absolute;top:34px;left:10px;width:406px;height:162px;overflow-x:hidden;overflow-y:scroll;"></div>
+</div>
+
+<div class="MabiSkill_Header">
+	<div class="MabiSkill_Bar" style="margin-top:10px;">
+		<span class="MabiSkill_BarTextArea1">
+			<span class="MabiSkill_BarText1">!cgititle!</span>
+			<span class="MabiSkill_BarText2">!subtitle!</span>
+		</span>
+		<span class="MabiSkill_Sort">
+			<form method="GET" action="!script!">
+				<select name="sort">
+					<option value="date_fig_z">Sort by Newest</option>
+					<option value="date_fig_a">Sort by Oldest</option>
+					<option value="no_fig_a">Sort by Order</option>
+					<option value="no_fig_z">Sort by Reverse Order</option>
+				</select>
+				<input type="submit" value="SORT" />
+			</form>
+		</span>
+	</div>
+	<div class="MabiSkill_Emblem"></div>
+</div>
+
+<center>
+<div class="MabiSkill_RegMessage">!reg! characters have been registered.</div>
+<!-- Header END -->
+<div id="mabiskill_view_base_uid!id!" class="Sprite_UIInput MabiSkill_TO101_CharaBase">
+	<div id="mabiskill_view_usrimg_uid!id!" class="MabiSkill_TO101_CharaImg">!img!</div>
+	<div class="MabiSkill_TO101_CharaUpdate"><a href="!edit!" onmouseover="SkillPopUp(3,'更新日：!yr!/!mo!/!da!*クリックすると編集ページへ移動')" onmouseout="SkillPopUp(0)">Last !yr!/!mo!/!da!</a></div>
+	<div id="mabiskill_view_rank_uid!id!" class="Sprite_UIInput MabiSkill_TO101_CharaRank" title=""></div>
+	<div id="mabiskill_view_position_uid!id!" class="MabiSkill_TO101_CharaPosition">
+		<div class="TO101_PositionSet">
+			<span class="TO101_Position">!position!</span><span class="TO101_Name">!name!</span>
+		</div>
+		<div class="Sprite_UIInput TO101_Right" id="mabiskill_view_frametop_img_uid!id!"></div>
+	</div>
+	<div id="mabiskill_view_read_uid!id!" class="MabiSkill_TO101_CharaRead">
+		<div class="Sprite_UIInput TO101_Left" id="mabiskill_view_framebottom_img_uid!id!"></div>
+		<div class="TO101_Read">!read!</div>
+	</div>
+	<div class="MabiSkill_TO101_CharaTextArea1">
+		<div style="margin-bottom:3px;">種族／性別:</div>
+		<div style="margin-bottom:7px;">累積Lv／探検Lv:</div>
+		<div style="margin-bottom:3px;">愛称・通称:</div>
+		<div style="margin-bottom:3px;">好きなタイトル:</div>
+		<div style="margin-bottom:3px;">活動時間帯:</div>
+		<div style="margin-bottom:3px;">出没場所:</div>
+		<div style="margin-bottom:7px;">特　技:</div>
+		<div style="margin-bottom:7px;">主なスキル:</div>
+		<div style="margin-bottom:7px;" class="MabiSkill_TO101_AllSkillView">
+			<a href="#" onclick="GenerateSkillList('!id!',0);return false;" onmouseover="SkillPopUp(3,'!name!の全登録データを表示','')" onmouseout="SkillPopUp(0)">【全データ表示】</a>
+		</div>
+		<div style="margin-right:45px;">コメント</div>
+	</div>
+	<div class="MabiSkill_TO101_CharaTextArea2">
+		<div style="margin-bottom:3px;">!race! / !sex!</div>
+		<div style="margin-bottom:7px;">!lv! / !exp_lv!</div>
+		<div style="margin-bottom:3px;">!nickname!</div>
+		<div style="margin-bottom:3px;">!lovetitle!</div>
+		<div style="margin-bottom:3px;">!logintime!</div>
+		<div style="margin-bottom:3px;">!appear!</div>
+		<div style="margin-bottom:7px;">!appeal!</div>
+		<div style="margin-bottom:3px;">
+			<div id="member!id!_skill" style="position:relative;width:247px;height:30px;"></div>
+		</div>
+	</div>
+	<div class="MabiSkill_TO101_CharaTextArea3">!cmt!</div>
+	<div id="mabiskill_loading_uid!id!" class="MabiSkill_TO101_CharaLoading opacity95"><div>Now Loading...</div></div>
+</div>
+<script type="text/javascript">
+<!--
+	AddCharacter(new Array("!id!","!allskill!","!skill!","!achievement!","!pet!","!name!","!sex!","!race!","!rank!","!name_view!"));
+// -->
+</script>
+<br/>
+<!-- GuildMaster END -->
+<div id="mabiskill_view_base_uid!id!" class="Sprite_UIInput MabiSkill_TO101_CharaBase">
+	<div id="mabiskill_view_usrimg_uid!id!" class="MabiSkill_TO101_CharaImg">!img!</div>
+	<div class="MabiSkill_TO101_CharaUpdate"><a href="!edit!" onmouseover="SkillPopUp(3,'更新日：!yr!/!mo!/!da!*クリックすると編集ページへ移動')" onmouseout="SkillPopUp(0)">Last !yr!/!mo!/!da!</a></div>
+	<div id="mabiskill_view_rank_uid!id!" class="Sprite_UIInput MabiSkill_TO101_CharaRank" title=""></div>
+	<div id="mabiskill_view_position_uid!id!" class="MabiSkill_TO101_CharaPosition">
+		<div class="TO101_PositionSet">
+			<span class="TO101_Position">!position!</span><span class="TO101_Name">!name!</span>
+		</div>
+		<div class="Sprite_UIInput TO101_Right" id="mabiskill_view_frametop_img_uid!id!"></div>
+	</div>
+	<div id="mabiskill_view_read_uid!id!" class="MabiSkill_TO101_CharaRead">
+		<div class="Sprite_UIInput TO101_Left" id="mabiskill_view_framebottom_img_uid!id!"></div>
+		<div class="TO101_Read">!read!</div>
+	</div>
+	<div class="MabiSkill_TO101_CharaTextArea1">
+		<div style="margin-bottom:3px;">種族／性別:</div>
+		<div style="margin-bottom:7px;">累積Lv／探検Lv:</div>
+		<div style="margin-bottom:3px;">愛称・通称:</div>
+		<div style="margin-bottom:3px;">好きなタイトル:</div>
+		<div style="margin-bottom:3px;">活動時間帯:</div>
+		<div style="margin-bottom:3px;">出没場所:</div>
+		<div style="margin-bottom:7px;">特　技:</div>
+		<div style="margin-bottom:7px;">主なスキル:</div>
+		<div style="margin-bottom:7px;" class="MabiSkill_TO101_AllSkillView">
+			<a href="#" onclick="GenerateSkillList('!id!',0);return false;" onmouseover="SkillPopUp(3,'!name!の全登録データを表示','')" onmouseout="SkillPopUp(0)">【全データ表示】</a>
+		</div>
+		<div style="margin-right:45px;">コメント</div>
+	</div>
+	<div class="MabiSkill_TO101_CharaTextArea2">
+		<div style="margin-bottom:3px;">!race! / !sex!</div>
+		<div style="margin-bottom:7px;">!lv! / !exp_lv!</div>
+		<div style="margin-bottom:3px;">!nickname!</div>
+		<div style="margin-bottom:3px;">!lovetitle!</div>
+		<div style="margin-bottom:3px;">!logintime!</div>
+		<div style="margin-bottom:3px;">!appear!</div>
+		<div style="margin-bottom:7px;">!appeal!</div>
+		<div style="margin-bottom:3px;">
+			<div id="member!id!_skill" style="position:relative;width:247px;height:30px;"></div>
+		</div>
+	</div>
+	<div class="MabiSkill_TO101_CharaTextArea3">!cmt!</div>
+	<div id="mabiskill_loading_uid!id!" class="MabiSkill_TO101_CharaLoading opacity95"><div>Now Loading...</div></div>
+</div>
+<script type="text/javascript">
+<!--
+	AddCharacter(new Array("!id!","!allskill!","!skill!","","!pet!","!name!","!sex!","!race!","!rank!","!name_view!"));
+// -->
+</script>
+<br/>
+<!-- SubMaster END -->
+<div id="mabiskill_view_base_uid!id!" class="Sprite_UIInput MabiSkill_TO101_CharaBase">
+	<div id="mabiskill_view_usrimg_uid!id!" class="MabiSkill_TO101_CharaImg">!img!</div>
+	<div class="MabiSkill_TO101_CharaUpdate"><a href="!edit!" onmouseover="SkillPopUp(3,'更新日：!yr!/!mo!/!da!*クリックすると編集ページへ移動')" onmouseout="SkillPopUp(0)">Last !yr!/!mo!/!da!</a></div>
+	<div id="mabiskill_view_rank_uid!id!" class="Sprite_UIInput MabiSkill_TO101_CharaRank" title=""></div>
+	<div id="mabiskill_view_position_uid!id!" class="MabiSkill_TO101_CharaPosition">
+		<div class="TO101_PositionSet">
+			<span class="TO101_Position">!position!</span><span class="TO101_Name">!name!</span>
+		</div>
+		<div class="Sprite_UIInput TO101_Right" id="mabiskill_view_frametop_img_uid!id!"></div>
+	</div>
+	<div id="mabiskill_view_read_uid!id!" class="MabiSkill_TO101_CharaRead">
+		<div class="Sprite_UIInput TO101_Left" id="mabiskill_view_framebottom_img_uid!id!"></div>
+		<div class="TO101_Read">!read!</div>
+	</div>
+	<div class="MabiSkill_TO101_CharaTextArea1">
+		<div style="margin-bottom:3px;">種族／性別:</div>
+		<div style="margin-bottom:7px;">累積Lv／探検Lv:</div>
+		<div style="margin-bottom:3px;">愛称・通称:</div>
+		<div style="margin-bottom:3px;">好きなタイトル:</div>
+		<div style="margin-bottom:3px;">活動時間帯:</div>
+		<div style="margin-bottom:3px;">出没場所:</div>
+		<div style="margin-bottom:7px;">特　技:</div>
+		<div style="margin-bottom:7px;">主なスキル:</div>
+		<div style="margin-bottom:7px;" class="MabiSkill_TO101_AllSkillView">
+			<a href="#" onclick="GenerateSkillList('!id!',0);return false;" onmouseover="SkillPopUp(3,'!name!の全登録データを表示','')" onmouseout="SkillPopUp(0)">【全データ表示】</a>
+		</div>
+		<div style="margin-right:45px;">コメント</div>
+	</div>
+	<div class="MabiSkill_TO101_CharaTextArea2">
+		<div style="margin-bottom:3px;">!race! / !sex!</div>
+		<div style="margin-bottom:7px;">!lv! / !exp_lv!</div>
+		<div style="margin-bottom:3px;">!nickname!</div>
+		<div style="margin-bottom:3px;">!lovetitle!</div>
+		<div style="margin-bottom:3px;">!logintime!</div>
+		<div style="margin-bottom:3px;">!appear!</div>
+		<div style="margin-bottom:7px;">!appeal!</div>
+		<div style="margin-bottom:3px;">
+			<div id="member!id!_skill" style="position:relative;width:247px;height:30px;"></div>
+		</div>
+	</div>
+	<div class="MabiSkill_TO101_CharaTextArea3">!cmt!</div>
+	<div id="mabiskill_loading_uid!id!" class="MabiSkill_TO101_CharaLoading opacity95"><div>Now Loading...</div></div>
+</div>
+<script type="text/javascript">
+<!--
+	AddCharacter(new Array("!id!","!allskill!","!skill!","!achievement!","!pet!","!name!","!sex!","!race!","!rank!","!name_view!"));
+// -->
+</script>
+<br/>
+<!-- Member END -->
+</center>
+
+<div class="MabiSkill_Navi">!log!</div>
+<div class="MabiSkill_Footer">
+	<div class="MabiSkill_Bar">
+		<div class="MabiSkill_BarTextArea2">
+			|&nbsp;<a href="!home!" onMouseOver="SkillPopUp(3,'Homepage')" onMouseOut="SkillPopUp(0)">HOME</a>&nbsp;|
+			<a href="!add_f!" onMouseOver="SkillPopUp(3,'Register Character')" onMouseOut="SkillPopUp(0)">Register</a>&nbsp;|
+			<a href="!edit_f!" onMouseOver="SkillPopUp(3,'Edit Character')" onMouseOut="SkillPopUp(0)">Edit</a>&nbsp;|
+			<a href="!del_f!" onMouseOver="SkillPopUp(3,'Delete Character')" onMouseOut="SkillPopUp(0)">Delete</a>&nbsp;|
+		</div>
+	</div>
+</div>
+
+<!-- 削除禁止 Don't delete/edit/move to copyright. -->
+<div id="MabiSkill_Copyright" class="MabiSkill_Copyright">
+!copyright!<br/>
+OriginalSkin By <a href="http://mabicook.hp.infoseek.co.jp/" target="blank">Tetujin Original Ver 1.01a</a><br/>
+Customize By <a href="http://blog.wolfs.jp/" target="blank" id="MabiSkill_CopyrightLink">MabiSkillSkin</a>
+</div>
+<!-- 削除禁止 Don't delete/edit/move to copyright. -->
+</body>
+</html>

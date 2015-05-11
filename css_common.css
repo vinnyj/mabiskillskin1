@@ -1,0 +1,828 @@
+@charset "shift_jis";
+/**************************************************/
+/* MabiSkillSkin Common StyleSheet                */
+/*  Update: 2015/02/20 21:21                      */
+/**************************************************/
+
+/****************************************************************************************************/
+/* Common */
+
+	form{
+		margin:0px;
+		padding:0px;
+	}
+
+	.opacity{
+		filter:alpha(opacity=90);
+		-moz-opacity:0.90;
+		opacity:0.90;
+	}
+	.opacity40{
+		filter:alpha(opacity=40);
+		-moz-opacity:0.40;
+		opacity:0.40;
+	}
+	.opacity60{
+		filter:alpha(opacity=60);
+		-moz-opacity:0.60;
+		opacity:0.60;
+	}
+	.opacity85{
+		filter:alpha(opacity=85);
+		-moz-opacity:0.85;
+		opacity:0.85;
+	}
+	.opacity95{
+		filter:alpha(opacity=95);
+		-moz-opacity:0.95;
+		opacity:0.95;
+	}
+
+	.font1{
+		font-family:arial,sans-serif;
+	}
+	.font2{
+		font-family:"MS Gothic","‚l‚r ƒSƒVƒbƒN",arial,sans-serif;
+	}
+	.font3{
+		font-family:"MS PGothic","‚l‚r‚o ƒSƒVƒbƒN",arial,sans-serif;
+	}
+
+/****************************************************************************************************/
+/* Main Page */
+
+	/*#MabiSkill_Body{
+		overflow:hidden;
+	}*/
+
+	.MabiSkill_PopMessage{
+		color:#FFFFFF;
+		background:#333333;
+		border:1px solid #888888;
+	}
+
+	.MabiSkill_CharaBase{
+		cursor:default;
+		position:relative;
+		width:540px;
+		height:330px;
+		z-index:0;
+		margin-bottom:25px;
+	}
+	.MabiSkill_CharaBackground{
+		position:absolute;
+		width:520px;
+		height:271px;
+		top:49px;
+		left:10px;
+		background:#ffffff;
+		display:none;
+	}
+	.MabiSkill_CharaImg{
+		position:absolute;
+		width:128px;
+		height:256px;
+		top:56px;
+		left:15px;
+	}
+	.MabiSkill_CharaFrame{
+		position:absolute;
+		width:540px;
+		height:330px;
+		top:0px;
+		left:0px;
+		background-position:-910px -5px;
+	}
+	.MabiSkill_CharaUpdate{
+		position:absolute;
+		top:61px;
+		left:430px;
+		font-size:11px;
+	}
+		.MabiSkill_CharaUpdate a{
+			color:#808080;
+			text-decoration:none;
+		}
+		.MabiSkill_CharaUpdate a:link{
+			color:#808080;
+			text-decoration:none;
+		}
+		.MabiSkill_CharaUpdate a:visited{
+			color:#808080;
+			text-decoration:none;
+		}
+		.MabiSkill_CharaUpdate a:hover{
+			color:#0000ff;
+			text-decoration:none;
+		}
+	.MabiSkill_CharaRank{
+		cursor:help;
+		position:absolute;
+		width:7px;
+		height:9px;
+		top:60px;
+		left:421px;
+		background-position:-54px -926px;
+	}
+	.MabiSkill_CharaPosition{
+		position:absolute;
+		width:121px;
+		top:28px;
+		left:16px;
+		text-align:center;
+	}
+	.MabiSkill_CharaName{
+		position:absolute;
+		width:122px;
+		height:15px;
+		top:72px;
+		left:17px;
+		color:#ffffff;
+		text-align:center;
+		font-weight:bold;
+	}
+	.MabiSkill_CharaLoading{
+		position:absolute;
+		width:100%;
+		height:100%;
+		top:0px;
+		left:0px;
+		background:#ffffff;
+		border: 1px solid #cccccc;
+		text-align:center;
+		display:block;
+	}
+		.MabiSkill_CharaLoading div{
+			position:relative;
+			top:155px;
+			font-weight:bold;
+		}
+	.MabiSkill_CharaTextArea1{
+		position:absolute;
+		width:100px;
+		top:80px;
+		left:150px;
+		color:#333333;
+		text-align:right;
+		line-height:13px;
+	}
+	.MabiSkill_CharaTextArea2{
+		position:absolute;
+		top:80px;
+		left:253px;
+		color:#999999;
+		text-align:left;
+		line-height:13px;
+	}
+	.MabiSkill_CharaTextArea3{
+		position:absolute;
+		top:255px;
+		left:170px;
+		width:350px;
+		height:60px;
+		color:#999999;
+		text-align:left;
+		line-height:14px;
+	}
+
+	.MabiSkill_AllSkillList{
+		position:absolute;
+		width:345px;
+		height:151px;
+		/*top:72px;*/
+		top:55px;
+		left:9px;
+		overflow-x:hidden;
+		overflow-y:scroll;
+		color:#ffffff;
+	}
+	.MabiSkill_AllSkillView{
+		color:#6666FF;
+	}
+		.MabiSkill_AllSkillView a{
+			color:#6666FF;
+			text-decoration:none;
+		}
+		.MabiSkill_AllSkillView a:hover{
+			color:#ff0000;
+			text-decoration:none;
+		}
+
+
+
+	.MabiSkill_TO101_CharaBase{
+		z-index:1;
+		cursor:default;
+		position:relative;
+		width:500px;
+		height:290px;
+		background-position:-910px -5px;
+	}
+	.MabiSkill_TO101_CharaImg{
+		position:absolute;
+		width:128px;
+		height:256px;
+		top:25px;
+		left:3px;
+	}
+	.MabiSkill_TO101_CharaUpdate{
+		position:absolute;
+		top:5px;
+		left:415px;
+		font-size:10px;
+	}
+		.MabiSkill_TO101_CharaUpdate a{
+			color:#808080;
+			text-decoration:none;
+		}
+		.MabiSkill_TO101_CharaUpdate a:link{
+			color:#808080;
+			text-decoration:none;
+		}
+		.MabiSkill_TO101_CharaUpdate a:visited{
+			color:#808080;
+			text-decoration:none;
+		}
+		.MabiSkill_TO101_CharaUpdate a:hover{
+			color:#0000ff;
+			text-decoration:none;
+		}
+	.MabiSkill_TO101_CharaRank{
+		cursor:help;
+		position:absolute;
+		width:7px;
+		height:9px;
+		top:5px;
+		left:405px;
+		background-position:-54px -926px;
+	}
+	.MabiSkill_TO101_CharaPosition{
+		position:absolute;
+		height:22px;
+		top:2px;
+		left:10px;
+		color:#ffffff;
+		background-color:#ffa7c2;
+	}
+		.TO101_PositionSet{
+			margin-top:2px;
+		}
+		.TO101_Position{
+			font-size:14px;
+		}
+		.TO101_Name{
+			padding-left:8px;
+			font-size:16px;
+			font-weight:bold;
+		}
+		.TO101_Right{
+			position:absolute;
+			top:0px;
+			right:-10px;
+			width:10px;
+			height:22px;
+			background-position:-1427px -685px
+		}
+	.MabiSkill_TO101_CharaRead{
+		position:absolute;
+		height:20px;
+		top:270px;
+		right:10px;
+		color:#ffffff;
+		background-color:#ffa7c2;
+	}
+		.TO101_Read{
+			margin-top:3px;
+			font-size:14px;
+		}
+		.TO101_Left{
+			position:absolute;
+			top:0px;
+			left:-10px;
+			width:10px;
+			height:20px;
+			background-position:-1427px -714px;
+		}
+	.MabiSkill_TO101_CharaLoading{
+		position:absolute;
+		width:100%;
+		height:100%;
+		top:0px;
+		left:0px;
+		background:#ffffff;
+		border: 1px solid #cccccc;
+		text-align:center;
+		display:block;
+	}
+		.MabiSkill_TO101_CharaLoading div{
+			position:relative;
+			top:135px;
+			font-weight:bold;
+		}
+	.MabiSkill_TO101_CharaTextArea1{
+		position:absolute;
+		width:100px;
+		top:35px;
+		left:130px;
+		color:#333333;
+		text-align:right;
+		line-height:13px;
+	}
+	.MabiSkill_TO101_CharaTextArea2{
+		position:absolute;
+		top:35px;
+		left:233px;
+		color:#999999;
+		text-align:left;
+		line-height:13px;
+	}
+	.MabiSkill_TO101_CharaTextArea3{
+		position:absolute;
+		top:210px;
+		left:155px;
+		width:350px;
+		height:60px;
+		color:#999999;
+		text-align:left;
+		line-height:14px;
+	}
+
+	.MabiSkill_TO101_AllSkillList{
+		position:absolute;
+		width:345px;
+		height:151px;
+		top:72px;
+		left:9px;
+		overflow-x:hidden;
+		overflow-y:scroll;
+		color:#ffffff;
+	}
+	.MabiSkill_TO101_AllSkillView{
+		color:#6666FF;
+	}
+		.MabiSkill_TO101_AllSkillView a{
+			color:#6666FF;
+			text-decoration:none;
+		}
+		.MabiSkill_TO101_AllSkillView a:hover{
+			color:#ff0000;
+			text-decoration:none;
+		}
+
+
+
+	.MabiSkill_Header{
+		position:relative;
+	}
+	.MabiSkill_Footer{
+		position:relative;
+		margin-top:10px;
+	}
+
+	.MabiSkill_Bar{
+		width:100%;color:#ffffff;
+		height:40px;
+		background:url("./imgs/bar.gif") repeat-x;
+	}
+	.MabiSkill_BarTextArea1{
+		position:absolute;
+		top:8px;
+		left:130px;
+		vertical-align:middle;
+	}
+		.MabiSkill_BarText1{
+			font-size:22px;
+			font-weight:bold;
+		}
+		.MabiSkill_BarText2{
+			font-size:16px;
+			font-weight:bold;
+		}
+
+	.MabiSkill_BarTextArea2{
+		position:absolute;
+		top:13px;
+		width:100%;
+		height:40px;
+		font-size:14px;
+		font-weight:bold;
+		text-align:center;
+		vertical-align:middle;
+	}
+		.MabiSkill_BarTextArea2 a{
+			color:#ffffff;
+			text-decoration:none;
+		}
+		.MabiSkill_BarTextArea2 a:hover{
+			color:#ffff00;
+			text-decoration:none;
+		}
+
+
+	.MabiSkill_Sort{
+		position:absolute;
+		top:65px;
+		right:20px;
+		vertical-align:middle;
+	}
+	.MabiSkill_Emblem{
+		position:absolute;
+		top:-10px;
+		left:50px;
+		width:60px;
+		height:60px;
+		background:url("./imgs/emblem.gif");
+	}
+
+	.MabiSkill_RegMessage{
+		margin:10px 0px 15px 0px;
+		width:100%;
+		font-size:14px;
+		font-weight:bold;
+		text-align:center;
+	}
+
+	.MabiSkill_Navi{
+		margin-top:15px;
+		font-size:12px;
+		font-weight:bold;
+		text-decoration:none;
+		text-align:center;
+	}
+		.MabiSkill_Navi a{
+			color:#0000ff;
+			text-decoration:none;
+		}
+		.MabiSkill_Navi a:link{
+			color:#0000ff;
+			text-decoration:none;
+		}
+		.MabiSkill_Navi a:visited{
+			color:#0000ff;
+			text-decoration:none;
+		}
+		.MabiSkill_Navi a:hover{
+			color:#ff0000;
+			text-decoration:none;
+		}
+
+	.MabiSkill_MainLoading{
+		display:block;
+		position:absolute;
+		top:0px;
+		left:0px;
+		background:#000000;
+		width:100%;
+		height:110%;
+		color:#ffffff;
+		text-align:center;
+		vertical-align:middle;
+	}
+
+	.MabiSkill_Copyright{
+		width:100%;
+		line-height:16px;
+		text-align:center;
+	}
+		.MabiSkill_Copyright a{
+			color:#0000ff;
+			text-decoration:none;
+		}
+		.MabiSkill_Copyright a:link{
+			color:#0000ff;
+			text-decoration:none;
+		}
+		.MabiSkill_Copyright a:visited{
+			color:#0000ff;
+			text-decoration:none;
+		}
+		.MabiSkill_Copyright a:hover{
+			color:#ff0000;
+			text-decoration:none;
+		}
+
+/****************************************************************************************************/
+/* Resist and Edit Page */
+
+	.MabiSkill_form_base{
+		position:relative;
+		width:399px;
+		height:512px;
+		background-position:-490px -743px;
+		margin-bottom:25px;
+	}
+
+	.MabiSkill_form_area{
+		position:absolute;
+		top:5px;
+		left:15px;
+		width:392px;
+		height:490px;
+		padding-top:10px;
+		padding-left:10px;
+		overflow-x:hidden;
+		overflow-y:scroll;
+	}
+
+	.MabiSkill_form_text_size{
+		position:absolute;
+		top:1px;
+		right:10px;
+	}
+	.MabiSkill_form_text0{
+		font-weight:bold;
+		font-size:13px;
+		text-align:center;
+		margin-left:-10px;
+		margin-bottom:25px;
+	}
+	.MabiSkill_form_text1{
+		position:relative;
+		width:345px;
+		padding-left:5px;
+		margin-bottom:3px;
+		border-left:3px solid #666666;
+		border-bottom:1px solid #666666;
+	}
+	.MabiSkill_form_text2{
+		line-height:15px;
+		margin-left:10px;
+		margin-bottom:15px;
+	}
+	.MabiSkill_form_text3{
+		width:345px;
+		text-align:center;
+		margin-top:5px;
+		margin-bottom:15px;
+	}
+	.MabiSkill_form_img{
+		width:128px;
+		height:256px;
+		margin-left:100px;
+		margin-bottom:5px;
+		border: 1px solid #000000;
+		background-color: #ffffff;
+	}
+
+	.MabiSkill_form_A{
+		font-size:12px;
+		line-height:11px;
+		text-align:left;
+	}
+	.MabiSkill_form_B{
+		font-size:12px;
+		line-height:11px;
+		text-align:left;
+		width:130px;
+	}
+	.MabiSkill_form_C{
+		font-size:12px;
+		line-height:11px;
+		text-align:left;
+		width:300px;
+	}
+	.MabiSkill_form_D{
+		font-size:12px;
+		line-height:11px;
+		text-align:left;
+		width:48px;
+	}
+	.MabiSkill_form_E{
+		font-size:13px;
+		line-height:11px;
+		text-align:right;
+		width:320px;
+	}
+		.MabiSkill_form_E_up{
+			font-size:13px;
+			line-height:11px;
+			text-align:center;
+			margin-bottom:5px;
+			width:330px;
+		}
+	.MabiSkill_form_F{
+		font-size:12px;
+		line-height:13px;
+		text-align:left;
+		overflow:hidden;
+	}
+	.MabiSkill_form_G{
+		font-size:12px;
+		line-height:11px;
+		text-align:left;
+		width:68px;
+	}
+
+/****************************************************************************************************/
+/* SkillInput Page */
+
+/****************************************************************************************************/
+/* CSS Sprite */
+
+.Sprite_SkillIcon{
+	background-color: transparent;
+	background-image: url("./imgs/icon_skill.png");
+	background-repeat: repeat;
+	background-attachment: scroll;
+	background-position: 0 0;
+	border: 0px;
+	padding: 0px;
+	margin:	0px;
+}
+.Sprite_PetIcon{
+	background-color: transparent;
+	background-image: url("./imgs/icon_pet.png");
+	background-repeat: repeat;
+	background-attachment: scroll;
+	background-position: 0 0;
+	border: 0px;
+	padding: 0px;
+	margin:	0px;
+}
+.Sprite_AchievementIcon{
+	background-color: transparent;
+	background-image: url("./imgs/icon_achievement.png");
+	background-repeat: repeat;
+	background-attachment: scroll;
+	background-position: 0 0;
+	border: 0px;
+	padding: 0px;
+	margin:	0px;
+}
+.Sprite_UIInput {
+	background-color: transparent;
+	background-image: url("./imgs/ui_input.png");
+	background-repeat: repeat;
+	background-attachment: scroll;
+	background-position: 0 0;
+	border: 0px;
+	padding: 0px;
+	margin:	0px;
+}
+
+/****************************************************************************************************/
+/* ThickBox */
+
+/* ----------------------------------------------------------------------------------------------------------------*/
+/* ---------->>> global settings needed for thickbox <<<-----------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------------*/
+*{padding: 0; margin: 0;}
+
+/* ----------------------------------------------------------------------------------------------------------------*/
+/* ---------->>> thickbox specific link and font settings <<<------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------------*/
+#TB_window {
+	font: 12px Arial, Helvetica, sans-serif;
+	color: #333333;
+}
+
+#TB_secondLine {
+	font: 10px Arial, Helvetica, sans-serif;
+	color:#666666;
+}
+
+#TB_window a:link {color: #666666;}
+#TB_window a:visited {color: #666666;}
+#TB_window a:hover {color: #000;}
+#TB_window a:active {color: #666666;}
+#TB_window a:focus{color: #666666;}
+
+/* ----------------------------------------------------------------------------------------------------------------*/
+/* ---------->>> thickbox settings <<<-----------------------------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------------*/
+#TB_overlay {
+	position: fixed;
+	z-index:100;
+	top: 0px;
+	left: 0px;
+	height:100%;
+	width:100%;
+}
+
+.TB_overlayMacFFBGHack {background: url(macFFBgHack.png) repeat;}
+.TB_overlayBG {
+	background-color:#000;
+	filter:alpha(opacity=75);
+	-moz-opacity: 0.75;
+	opacity: 0.75;
+}
+
+* html #TB_overlay { /* ie6 hack */
+     position: absolute;
+     height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
+}
+
+#TB_window {
+	position: fixed;
+	background: #ffffff;
+	z-index: 102;
+	color:#000000;
+	display:none;
+	border: 4px solid #525252;
+	text-align:left;
+	top:50%;
+	left:50%;
+}
+
+* html #TB_window { /* ie6 hack */
+position: absolute;
+margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin = document.documentElement && document.documentElement.scrollTop || document.body.scrollTop) + 'px');
+}
+
+#TB_window img#TB_Image {
+	display:block;
+	margin: 15px 0 0 15px;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #666;
+	border-left: 1px solid #666;
+}
+
+#TB_caption{
+	height:25px;
+	padding:7px 30px 10px 25px;
+	float:left;
+}
+
+#TB_closeWindow{
+	height:25px;
+	padding:11px 25px 10px 0;
+	float:right;
+}
+
+#TB_closeAjaxWindow{
+	padding:7px 10px 5px 0;
+	margin-bottom:1px;
+	text-align:right;
+	float:right;
+}
+
+#TB_ajaxWindowTitle{
+	float:left;
+	padding:7px 0 5px 10px;
+	margin-bottom:1px;
+}
+
+#TB_title{
+	background-color:#e8e8e8;
+	height:27px;
+}
+
+#TB_ajaxContent{
+	clear:both;
+	padding:2px 15px 15px 15px;
+	overflow:auto;
+	text-align:left;
+	line-height:1.4em;
+}
+
+#TB_ajaxContent.TB_modal{
+	padding:15px;
+}
+
+#TB_ajaxContent p{
+	padding:5px 0px 5px 0px;
+}
+
+#TB_load{
+	position: fixed;
+	display:none;
+	height:13px;
+	width:208px;
+	z-index:103;
+	top: 50%;
+	left: 50%;
+	margin: -6px 0 0 -104px; /* -height/2 0 0 -width/2 */
+}
+
+* html #TB_load { /* ie6 hack */
+position: absolute;
+margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin = document.documentElement && document.documentElement.scrollTop || document.body.scrollTop) + 'px');
+}
+
+#TB_HideSelect{
+	z-index:99;
+	position:fixed;
+	top: 0;
+	left: 0;
+	background-color:#fff;
+	border:none;
+	filter:alpha(opacity=0);
+	-moz-opacity: 0;
+	opacity: 0;
+	height:100%;
+	width:100%;
+}
+
+* html #TB_HideSelect { /* ie6 hack */
+     position: absolute;
+     height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
+}
+
+#TB_iframeContent{
+	clear:both;
+	border:none;
+	margin-bottom:-1px;
+	margin-top:1px;
+	_margin-bottom:1px;
+}

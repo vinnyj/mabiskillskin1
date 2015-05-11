@@ -1,0 +1,1597 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Language" content="ja"/>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"/>
+<meta http-equiv="Content-Style-type" content="text/css"/>
+<meta name="robots" content="noindex,nofollow,noarchive" />
+<title>MabiSkillSkin -ユーザーマニュアル-</title>
+<style type="text/css" media="all">
+	body{
+		margin:15px;
+		color:#333333;
+		background-color:#f2f2f2;
+		line-height:18px;
+		font-size:12px;
+		font-family:"ＭＳ ゴシック",arial,sans-serif;
+	}
+	ul{
+		line-height:18px;
+		margin-top:0px;
+		margin-left:-10px;
+		margin-bottom:0px;
+		list-style:none;
+		list-style-position:outside;
+	}
+	div{
+		line-height:18px;
+	}
+	pre{
+		margin-top:0px;
+		margin-bottom:15px;
+		text-align:left;
+		text-indent:14px;
+	}
+	small{
+		color:#6699cc;
+		font-size:10px;
+		line-height:12px;
+	}
+
+	a{
+		color:#0000ff;
+		text-decoration:none;
+	}
+	a:link{
+		color:#0000ff;
+		text-decoration:none;
+	}
+	a:visited{
+		color:#0000ff;
+		text-decoration:none;
+	}
+	a:hover{
+		color:#ff0000;
+		text-decoration:none;
+	}
+
+	.MabiSkillManual_Base{
+		width:760px;
+		background-color:#ffffff;
+		border:1px solid #d6d6d6;
+	}
+	.MabiSkillManual_textH{
+		position:relative;
+		width:100%;
+		font-size:16px;
+		font-weight:bold;
+		text-align:center;
+		margin-bottom:10px;
+		padding-top:10px;
+		padding-bottom:10px;
+		border-bottom:1px solid #d6d6d6;
+	}
+	.MabiSkillManual_textF{
+		position:relative;
+		width:100%;
+		color:#999999;
+		font-size:12px;
+		font-weight:bold;
+		text-align:center;
+		margin-top:10px;
+		padding-top:10px;
+		padding-bottom:10px;
+		border-top:1px solid #d6d6d6;
+	}
+	.MabiSkillManual_textT{
+		position:absolute;
+		font-size:12px;
+		font-weight:normal;
+		top:0px;
+		right:10px;
+	}
+		.MabiSkillManual_textT a{
+			color:#ce1831;
+			text-decoration:none;
+		}
+		.MabiSkillManual_textT a:link{
+			color:#ce1831;
+			text-decoration:none;
+		}
+		.MabiSkillManual_textT a:visited{
+			color:#ce1831;
+			text-decoration:none;
+		}
+		.MabiSkillManual_textT a:hover{
+			color:#0000ff;
+			text-decoration:none;
+		}
+
+	.MabiSkillManual_code{
+		padding:5px;
+		margin-top:0px;
+		margin-right:10px;
+		margin-bottom:15px;
+		text-align:left;
+		text-indent:0px;
+		border:1px solid #218cbe;
+		background-color:#f7f7f7;
+	}
+
+	.MabiSkillManual_text1{
+		position:relative;
+		width:730px;
+		font-size:15px;
+		font-weight:bold;
+		padding-left:5px;
+		margin-left:10px;
+		margin-bottom:5px;
+		border-left:8px solid #218cbe;
+		border-bottom:2px solid #218cbe;
+	}
+	.MabiSkillManual_text2{
+		position:relative;
+		line-height:15px;
+		margin-left:25px;
+		margin-bottom:40px;
+	}
+	.MabiSkillManual_text3{
+		position:relative;
+		width:715px;
+		font-size:13px;
+		font-weight:bold;
+		padding-left:5px;
+		margin-bottom:5px;
+		border-left:5px solid #e6b7b7;
+		border-bottom:1px solid #e6b7b7;
+	}
+	.MabiSkillManual_text4{
+		position:relative;
+		line-height:15px;
+		margin-left:15px;
+		margin-bottom:15px;
+	}
+
+	.MabiSkillManual_History1{
+		position:relative;
+		width:715px;
+		font-size:13px;
+		padding-left:5px;
+		margin-bottom:5px;
+		border-left:5px solid #efb518;
+		border-bottom:1px solid #efb518;
+	}
+	.MabiSkillManual_History2{
+		position:relative;
+		line-height:15px;
+		margin-left:15px;
+		margin-bottom:15px;
+	}
+	.MabiSkillManual_History3{
+		line-height:16px;
+		margin-top:0px;
+		margin-left:-30px;
+		margin-bottom:0px;
+		list-style:none;
+		list-style-position:outside;
+	}
+
+	.MabiSkillManual_Systemtable{
+		background-color:#cccccc;
+		border:1px solid #999999;
+		margin-bottom:5px;
+	}
+	.MabiSkillManual_Systemtable td{
+		text-align:center;
+	}
+	.MabiSkillManual_Systemtable tr{
+		background-color:#ffffff;
+	}
+	.MabiSkillManual_Systemtable th{
+		text-align:left;
+		font-weight:bold;
+		color:#666666;
+	}
+</style>
+</head>
+<body>
+<a name="top"></a>
+<div class="MabiSkillManual_Base">
+	<div class="MabiSkillManual_textH">MabiSkillSkin -ユーザーマニュアル-</div>
+
+	<div class="MabiSkillManual_text1"><a name="index"></a>INDEX</div>
+	<div class="MabiSkillManual_text2">
+		<ul style="list-style:decimal;">
+			<li><a href="#what">MabiSkillSkinについて</a></li>
+			<li><a href="#info">MabiSkillSkinの特徴</a></li>
+			<li><a href="#pc">動作環境</a></li>
+			<li><a href="#agreement">利用規約</a></li>
+			<li><a href="#introduce_attention">導入時の注意など</a></li>
+			<li><a href="#introduce">導入方法</a></li>
+			<li><a href="#option">スキンのオプション項目</a></li>
+			<li><a href="#edit_rgt">RGT本体の変更</a></li>
+			<li><a href="#error">エラーについて</a></li>
+			<li><a href="#contact">サポートや連絡方法</a></li>
+			<li><a href="#history">更新履歴</a></li>
+			<li><a href="#thanks">MabiSkillSkin開発チーム、開発協力者一覧</a></li>
+		</ul>
+	</div>
+
+	<div class="MabiSkillManual_text1">
+		<a name="what"></a>MabiSkillSkinについて
+		<div class="MabiSkillManual_textT"><a href="#top">▲TOP</a></div>
+	</div>
+	<div class="MabiSkillManual_text2">
+		<a href="http://www.mabinogi.jp" target="_blank">MMORPGマビノギ</a>のキャラクターを登録する事ができるRGT用スキンです。<br/>
+		このスキンは番頭さんの所で公開されている「<a href="http://mabicook.hp.infoseek.co.jp/" target="_blank">Tetujin Original ver1.01a</a>」を元にしております。<br/>
+		<br/>
+		動作サンプルはこちら<br/>
+		　新デザイン：<a href="http://wolfs.jp/temp/rgt_test/rgt.cgi?skin=new" target="_blank">http://wolfs.jp/temp/rgt_test/rgt.cgi?skin=new</a><br/>
+		　旧デザイン：<a href="http://wolfs.jp/temp/rgt_test/rgt.cgi?skin=old" target="_blank">http://wolfs.jp/temp/rgt_test/rgt.cgi?skin=old</a>
+	</div>
+
+	<div class="MabiSkillManual_text1">
+		<a name="info"></a>MabiSkillSkinの特徴
+		<div class="MabiSkillManual_textT"><a href="#top">▲TOP</a></div>
+	</div>
+	<div class="MabiSkillManual_text2">
+		<ul style="list-style:disc;">
+			<li>Tetujin Original ver1.01aでは対応していないスキルに対応</li>
+			<li>スキルランク 練習、習得、F～A、9～1、マスター、1～3段に対応</li>
+			<li>スキル毎のスキルランク上限に対応<br/>
+			<small>⇒スキルランクが5までしか開放されていないスキルは、スキル入力ページでランク5までしか選択できないようになります</small></li>
+			<li>アクション/ペルソナスキルに対応</li>
+			<li>ペットの登録が可能</li>
+			<li>ジャーナルの登録が可能</li>
+			<li>UIをグラフィカルなものへ変更</li>
+			<li>マルチブラウザに対応</li>
+			<li>殆どの画像をCSS Sprite方式で表示<br/>
+			<small>⇒現在マビノギには100を超えるスキルがあります、それを１つ１つ画像にして読み込んでいるとサーバーへの負荷ははかりしれません。<br/>
+			　そこで、必要な画像を１つにまとめCSS Sprite方式で表示すれば画像ファイルは少数で済み、サーバーへのリクエストは大幅に削減される訳です。</small></li>
+			<li>等々...</li>
+		</ul>
+	</div>
+
+	<div class="MabiSkillManual_text1">
+		<a name="pc"></a>動作環境
+		<div class="MabiSkillManual_textT"><a href="#top">▲TOP</a></div>
+	</div>
+	<div class="MabiSkillManual_text2">
+		サーバー
+		<ul style="list-style:none;">
+			<li>Perl 5.6 以降 (RGTの動作環境)</li>
+			<li>RGT v0.81h</li>
+		</ul>
+		<br/>
+		OS(Operating System)
+		<ul style="list-style:none;">
+			<li>Microsoft Windows 2000 以降</li>
+		</ul>
+		<br/>
+		ブラウザー
+		<ul style="list-style:none;">
+			<li>Microsoft Internet Explorer 6.0 以降</li>
+			<li>Mozilla Firefox 3.0.1 以降</li>
+			<li>Google Chrome 2.0 以降</li>
+			<li>Apple Safari 4.0 以降</li>
+			<li>Opera 9.0 以降</li>
+		</ul>
+		<br/>
+		各OS/ブラウザー 動作確認表<br/>
+		<table cellpadding="3" cellspacing="1" border="0" class="MabiSkillManual_Systemtable">
+			<tr align="center">
+				<th></th>
+				<th>Internet Explorer</th>
+				<th>Mozilla Firefox</th>
+				<th>Google Chrome</th>
+				<th>Apple Safari</th>
+				<th>Opera</th>
+			</tr>
+			<tr>
+				<th>Windows 2000</th>
+				<td>6</td>
+				<td>3.6.15</td>
+				<td>×</td>
+				<td>×</td>
+				<td>10.62</td>
+			</tr>
+			<tr>
+				<th>Windows XP</th>
+				<td>6、7、8</td>
+				<td>3.6.15</td>
+				<td>10.0.648.127</td>
+				<td>5.0.3</td>
+				<td>11.01</td>
+			</tr>
+			<tr>
+				<th>Windows Vista</th>
+				<td>7、8、9</td>
+				<td>3.6.15</td>
+				<td>10.0.648.127</td>
+				<td>5.0.3</td>
+				<td>11.01</td>
+			</tr>
+			<tr>
+				<th>Windows 7</th>
+				<td>8、9</td>
+				<td>3.6.15</td>
+				<td>10.0.648.127</td>
+				<td>5.0.3</td>
+				<td>11.01</td>
+			</tr>
+		</table>
+		動作確認表の記号<br/>
+		数字：動作したブラウザのバージョン<br/>
+		　－：未検証<br/>
+		　×：動作しない（OSに対応するブラウザが無い場合も含む）<br/>
+		　△：一部の機能に不具合が発生する可能性あり<br/>
+		<small>(いずれも標準設定の状態です。)<br/><br/>
+		上記動作環境に関わらずJavaScriptが使用可能なブラウザであれば動作すると思いますが、OSやブラウザ等にインストールされているプラグイン等によっては正常に動作しない場合がございます。<br/>
+		また、マビノギがWindows用ソフトウェアなのでWindws以外のOSは対象外としています。</small>
+	</div>
+
+	<div class="MabiSkillManual_text1">
+		<a name="agreement"></a>利用規約
+		<div class="MabiSkillManual_textT"><a href="#top">▲TOP</a></div>
+	</div>
+	<div class="MabiSkillManual_text2">
+		この利用規約はMabiSkillSkin(以下本スキン)のみ適応します。<br/>
+		RGT本体の利用規約は<a href="http://rgt.jpn.org/" target="_blank">RGT</a>の規約をご覧下さい。<br/>
+		<br/>
+		<ul style="list-style:decimal;">
+			<li>「本スキン」について
+				<ul style="list-style:lower-alpha;">
+					<li>本スキンとは「MabiSkillSkin」を意味します。</li>
+					<li>本スキンにはスパイウェア等の有害なコードは一切含まれていません。</li>
+				</ul>
+			</li>
+			<li>「著作者」について
+				<ul style="list-style:lower-alpha;">
+					<li>著作者とは「MabiSkillSkin開発チーム」を意味します。</li>
+				</ul>
+			</li>
+			<li>再配布について
+				<ul style="list-style:lower-alpha;">
+					<li>本スキンをメディア又はサイト上で再配布する場合、<br/>
+						１次配布サイト(http://blog.wolfs.jp/)からダウンロードされたアーカイブを改変せずにそのまま配布してください。</li>
+					<li>配布の際には必ず１次配布サイトを明記してください。</li>
+					<li>改造された本スキンを配布される場合は、下記「改造やカスタマイズについて」を参照</li>
+				</ul>
+			</li>
+			<li>改造やカスタマイズについて
+				<ul style="list-style:lower-alpha;">
+					<li>項目の変更、色合いの変更、js_database.jsへのデータの追加・変更はカスタマイズとし、それ以外の変更は改造とします。<br/>
+						設定によりjs_config.js、skin.cgiの変更が必要になる場合がありますが、それはこの限りではありません。</li>
+					<li>改造されたスキンを配布される場合は、本スキンと改造されたスキンの区別のつくようにスキン名を変更する事。</li>
+					<li>著作者は改造されたスキンのサポートは一切行いません。</li>
+				</ul>
+			</li>
+			<li>禁止事項
+				<ul style="list-style:lower-alpha;">
+					<li>本スキンの中に含まれている、著作権の表示を変更、削除又は見えない位置に表示してはいけません。<br/>
+						Don't delete/edit/move to copyright.</li>
+					<li>本スキンの一部のみを配布してはいけません。</li>
+				</ul>
+			</li>
+			<li>著作者の免責
+				<ul style="list-style:lower-alpha;">
+					<li>本スキンの使用は全て自己責任でお願いします。<br/>
+						本スキンが直接又は間接的に損害を生じさせても著作者は一切の責任を負いません。<br/>
+						また、著作者は本スキンに関するいかなる保証も行いません。<br/>
+						よって、本スキンを使用した結果の影響に関しましても一切責任を負わないものとします。</li>
+				</ul>
+			</li>
+			<li>その他
+				<ul style="list-style:lower-alpha;">
+					<li>本スキンの仕様やマニュアル等の内容は将来予告無く変更されることがあります。</li>
+					<li>本スキンが使用者の許可を得ず無断でデータを送信する事はありません。</li>
+					<li>本スキンをアップロードしアクセスした時点で、この規約に同意したものとします。</li>
+				</ul>
+			</li>
+		</ul>
+		
+	</div>
+
+	<div class="MabiSkillManual_text1">
+		<a name="introduce_attention"></a>導入時の注意など
+		<div class="MabiSkillManual_textT"><a href="#top">▲TOP</a></div>
+	</div>
+	<div class="MabiSkillManual_text2">
+		番頭さんの所で配布されているオリジナルのskilldata.jsや、その延長線上にあるサードパーティ製のskilldata.jsとは<br/>
+		スキルの番号等が違いますので、既にこのスキン以外のバージョンでメンバーが登録されている場合はdat.cgiのデータ変換が必要となります。<br/>
+		<br/>
+		付属のコンバーターは番頭さんの所で配布されているオリジナルのskilldata.js（ver1.01a）からのスキルデータの変換ができます。<br/>
+		サードパーティ製のskilldata.jsを使われている場合、コンバーターの正常動作の保証は致しません。<br/>
+		コンバーターの使い方の詳細は「<a href="#introduce">導入方法</a>」をご参照ください。
+	</div>
+
+	<div class="MabiSkillManual_text1">
+		<a name="introduce"></a>導入方法
+		<div class="MabiSkillManual_textT"><a href="#top">▲TOP</a></div>
+	</div>
+	<div class="MabiSkillManual_text2">
+		このディレクトリ・ファイル構造は、RGT導入時の<u>標準的</u>なディレクトリ・ファイル構造を基準としています。<br/>
+		<br/>
+		ファイル先頭の[]内の値はパーミッション値です。<br/>
+		[644]の値については、アップロードすればその値になっていると思うので変更する必要はないと思いますが、<br/>
+		参考のため記載してあります。<br/>
+		<br/>
+		RGTのパーミッション値はRGT配布サイトの方に記載されている情報を参考にしました。<br/>
+		参考URL：<a href="http://rgt.jpn.org/startup/" target="_blank">http://rgt.jpn.org/startup/</a>
+<pre>
+
+member / [644] cgi-lib.pl
+ |       [755] config.cgi
+ |       [755] dat.cgi
+ |       [644] jcodeg.pl
+ |       [755] rgt.cgi
+ |
+ +-- img /
+ |
+ +-- skin /
+      |
+      +-- mabiskillskin / [644] css_common.css
+           |              [644] css_system.css
+           |              [644] js_common.js
+           |              [644] js_config.js
+           |              [644] js_database.js
+           |              [644] js_jquery.js
+           |              [644] js_scroll.js
+           |              [644] pet_input.html
+           |              ReadMe.html (アップロード不要)
+           |              [644] skill_input.html
+           |              [755] skin.cgi
+           |              [644] temp_edit.html
+           |              [644] temp_main.html
+           |              [644] temp_main_old.html
+           |              [644] temp_reg.html
+           |              Upgrade.html (アップロード不要)
+           | 
+           +-- imgs / [644] background.gif
+           |          [644] bar.gif
+           |          [644] blank.gif
+           |          [644] emblem.gif
+           |          [644] icon_achievement.png
+           |          [644] icon_pet.png
+           |          [644] icon_skill.png
+           |          [644] loading.gif
+           |          [644] ss_noimage.jpg
+           |          [644] ui_input.png
+           | 
+           +-- tool / [755] converter.cgi  (常時アップロード不要)
+
+</pre>
+
+		<div class="MabiSkillManual_text3">新規導入する方</div>
+		<div class="MabiSkillManual_text4">
+			<ul style="list-style:decimal;">
+				<li>RGTをダウンロードし基本設定を行います。<br/>
+				基本設定はRGTのマニュアル又はサイトをご覧下さい。</li>
+				<li>RGTのconfig.cgi内にある$skindirの値をこのスキンのデータが入ってるパスに変更します。<br/>
+				（上記ディレクトリ構造でいくなら、「./skin/mabiskillskin」と記入）</li>
+				<li>上記ディレクトリ構造を参考に、スキンデータをアップロードします。</li>
+				<li>ブラウザーでRGTにアクセスしキャラの登録を行い動作確認。</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_text3">MabiSkillSkinをバージョンアップする方</div>
+		<div class="MabiSkillManual_text4">
+			<ul style="list-style:decimal;">
+				<li>現在使用しているMabiSkillSkinのバージョンを確認。</li>
+				<li>現在使用しているバージョンと、導入しようとしているバージョン間のファイルを<br/>
+				<a href="#history">更新履歴</a>又は<a href="./Upgrade.html">差分チェッカー</a>を参考にして順番に必要なファイルを選別。<br/>
+				<small>（あまりにバージョンが離れているようであれば「新規導入」を参考に必要ファイルを全上書きする事をオススメします。）</small></li>
+				<li>スキンデータをアップロードします。</li>
+				<li>ブラウザーでRGTにアクセスし動作確認。</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_text3">Tetujin Original ver1.01a（無改造）から乗り換える方</div>
+		<div class="MabiSkillManual_text4">
+			<ul style="list-style:decimal;">
+				<li>RGTのログデータファイル(dat.cgi)をdat_old.cgiに改名します。</li>
+				<li>dat_old.cgiと同じディレクトリに付属のconverter.cgiとdat_new.cgi(新規作成)をアップロードします。</li>
+				<li>converter.cgiとdat_new.cgiのパーミッションを755に設定します。</li>
+				<li>ブラウザーを起動しconverter.cgiにアクセスし、convertedと表示されたらスキルデータのコンバートが完了</li>
+				<li>サーバー上からconverter.cgiを削除し、dat_new.cgiをdat.cgiに改名</li>
+				<li>RGTのconfig.cgi内にある$skindirの値をこのスキンのデータが入ってるパスに変更します。<br/>
+				（上記ディレクトリ構造でいくなら、「./skin/mabiskillskin」と記入）</li>
+				<li>上記ディレクトリ構造を参考に、スキンデータをアップロードします。</li>
+				<li>ブラウザーでRGTにアクセスしキャラの登録を行い動作確認。</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_text3">他の作者の差分データから乗り換える方</div>
+		<div class="MabiSkillManual_text4">
+			「Tetujin Original ver1.01a（無改造）から乗り換える方」と同じ手順で行います。<br/>
+			<br/>
+			※ 差分を公開している方によってスクリプトやスキルの番号の付けが違うので、それらを全てを把握する事が困難な状況です。<br/>
+			　 そのため、この方法でのスキルデータの変換は１００％成功する物ではありません。ご了承下さい。
+		</div>
+		<div class="MabiSkillManual_text3">他の作者（Tetujin Original ver1.01a以外）のスキンから乗り換える方</div>
+		<div class="MabiSkillManual_text4">
+			申し訳ございませんが、他の方が作ったスキンの構成からの乗り換えはサポートしていません。<br/>
+			<br/>
+			他の方が作ったスキンもこのMabiSkillSkin同様、skin.cgiに新たな項目を作っていたりカスタマイズされている物が殆どです。<br/>
+			そのためdat.cgi内のキャラデータ等の変換が難しく対応しきれません。<br/>
+			<br/>
+			お手数ですが、「新規導入する方」を参考に新規導入して下さいますよう宜しくお願いします。
+		</div>
+	</div>
+
+	<div class="MabiSkillManual_text1">
+		<a name="option"></a>スキンのオプション項目
+		<div class="MabiSkillManual_textT"><a href="#top">▲TOP</a></div>
+	</div>
+	<div class="MabiSkillManual_text2">
+		MabiSkillスキン独自に追加した機能や、設定などを説明します。<br/><br/>
+		<div class="MabiSkillManual_text3">キャラ表示画面（メインページ）を旧デザインにする</div>
+		<div class="MabiSkillManual_text4">
+			キャラ表示画面を旧デザイン（Tetujin Original ver1.01a）に変更したり、新デザインに戻したりする事ができます。<br/>
+			<br/>
+			旧デザインにする場合は<br/>
+			　js_config.jsの中にあるCharaViewModeの値を 1 に変更し、<br/>
+			　skin.cgiの中にある$mainhtmlの値を "$skindir/temp_main_old.html" に変更します。<br/>
+			（どちらも値は半角で記入）<br/>
+			<br/>
+			js_config.js デフォルト設定値：0<br/>
+			skin.cgi デフォルト設定値：$skindir/temp_main.html
+		</div>
+		<div class="MabiSkillManual_text3">キャラ表示画面の背景透過設定</div>
+		<div class="MabiSkillManual_text4">
+			キャラ表示画面のデザインが新デザインの場合のみ、キャラ表示部分の背景色の透過設定を行えます。<br/><br/>
+			透過設定を「しない」にすると旧デザインの様にキャラ表示部分が白い背景色になり、<br/>
+			「する」に設定するとページの背景色/画像がそのまま適応されます。<br/>
+			<br/>
+			背景透過設定を変更する場合はjs_config.jsの中にあるCharaViewTransparentの値を変更します。<br/>
+			値を 1 にすると「透過しない」、値を 0 にすると「透過する」になります。<br/>
+			（値は半角で記入）<br/>
+			<br/>
+			デフォルト設定値：0（透過する）
+		</div>
+		<div class="MabiSkillManual_text3">スキル/ジャーナル入力ウィンドウの初期表示モード</div>
+		<div class="MabiSkillManual_text4">
+			スキル/ジャーナル入力ウィンドウの初期表示モードを変更する事ができます。<br/>
+			<br/>
+			初期表示モードを変更する場合はjs_config.jsの中にあるDefaultWindowModeの値を変更します。<br/>
+			値を 1 にすると「ウィンドウモード」、値を 0 にすると「標準モード」になります。<br/>
+			(値は半角で記入)<br/>
+			<br/>
+			デフォルト設定値：0（標準モード）
+		</div>
+		<div class="MabiSkillManual_text3">スキル/ペット入力ウィンドウの読み込み画面変更</div>
+		<div class="MabiSkillManual_text4">
+			スキル/ペット入力ウィンドウの表示モードが「標準モード」の場合、ページを読み込んでいるときに表示する画像を変更できます。<br/>
+			<br/>
+			変更する場合はjs_config.jsの中にあるtb_pathToImageの値を変更します。<br/>
+			変更するときは、必ず「RGTSkinDir+"/（画像ファイルパス）"」のように設定して下さい。<br/>
+			<br/>
+			デフォルト設定値：RGTSkinDir+"/imgs/loading.gif"
+		</div>
+		<div class="MabiSkillManual_text3">スキル情報ウィンドウの表示設定</div>
+		<div class="MabiSkillManual_text4">
+			スキルアイコンをクリックした時に表示されるスキルの説明ウィンドウの表示設定です。<br/>
+			（スキル入力ページでは、スキルのアイコンで右クリックするとでます。）<br/>
+			<br/>
+			設定を変更する場合はjs_config.jsの中にあるSkillInfoWindowFlgの値を変更します。<br/>
+			値を 1 にすると「表示」、値を 0 にすると「非表示」になります。<br/>
+			(値は半角で記入)<br/>
+			<br/>
+			デフォルト設定値：1（表示）
+		</div>
+		<div class="MabiSkillManual_text3">スキル無効設定</div>
+		<div class="MabiSkillManual_text4">
+			スキル入力ページに表示したくないスキルを設定する事ができます。<br/>
+			<br/>
+			スキル無効設定を変更する場合はjs_config.jsの中にあるSkillBlackListの値を変更します。<br/>
+			半角スペースで区切ることによって複数指定することができます。<br/>
+			<br/>
+			例１）特定のスキルを表示しない場合<br/>
+			　　　・裁縫スキル(ID：sk10001)を表示しない場合は<br/>
+			　　　　　SkillBlackList = "sk10001";<br/>
+			　　　　と記入<br/>
+			　　　・裁縫スキル(ID：sk10001)と休憩スキル(ID：sk10004)を表示しない場合は<br/>
+			　　　　　SkillBlackList = "sk10001 sk10004";<br/>
+			　　　　と記入<br/>
+			<br/>
+			例２）特定の種類のスキルを表示しない場合<br/>
+			　　　・生活スキル(スキル種類No：1)の全スキルを表示しない場合は<br/>
+			　　　　　SkillBlackList = "[1]";<br/>
+			　　　　と記入<br/>
+			　　　・生活スキル(スキル種類No：1)と魔法スキル(スキル種類No：3)の全スキルを表示しない場合は<br/>
+			　　　　　SkillBlackList = "[1] [3]";<br/>
+			　　　　と記入<br/>
+			<br/>
+			例３）上の２種類を混ぜて使うこともできます<br/>
+			　　　・魔法スキル(スキル種類No：3)の全スキルと裁縫スキル(ID：sk10001)を表示しない場合は<br/>
+			　　　　　SkillBlackList = "[3] sk10001";<br/>
+			　　　　と記入<br/>
+			<br/>
+			スキル種類№一覧<br/>
+			　1　= 生活スキル<br/>
+			　2　= 戦闘スキル<br/>
+			　3　= 魔法スキル<br/>
+			　4　= 錬金術スキル<br/>
+			　5　= パラディンスキル<br/>
+			　6　= ダークナイトスキル<br/>
+			　7　= ファルコンスキル<br/>
+			　8　= ビーストスキル<br/>
+			　9　= 半神化スキル<br/>
+			　10 = ペルソナスキル<br/>
+			　11 = アクションスキル<br/>
+			<br/>
+			スキルIDはjs_database.jsの中を見てください。
+		</div>
+		<div class="MabiSkillManual_text3">広告を無効にする(拡張子変更)</div>
+		<div class="MabiSkillManual_text4">
+			スキル/ペット登録ページのhtmlファイルの拡張子を変更することによって、広告が挿入されるのを防ぐことができます。<br/>
+			報告によると、殆どのレンタルサーバーで有効な設定のようです。<br/>
+			<small>レンタルサーバー規約に触れる恐れがあるので自己責任で使用してください。</small><br/>
+			<br/>
+			変更する場合はskill_input.html、pet_input.htmlの拡張子を.shtmlに変更します。<br/>
+			例：skill_input.shtml<br/>
+			<br/>
+			拡張子を変更後temp_edit.html、temp_reg.htmlも変更します。<br/>
+			両ファイルの内部を「skill_input.html」、「pet_input.html」で検索しヒットした部分の拡張子を上記同様.shtmlに変更します。
+		</div>
+		<div class="MabiSkillManual_text3">ジャーナルを登録・表示可能にする</div>
+		<div class="MabiSkillManual_text4">
+			ジャーナルを表示したり登録したりする事ができるようになります。<br/>
+			<br/>
+			変更する場合はjs_config.jsの中にあるAchievementModeの値を変更します。<br/>
+			値を 1 にすると「登録可能になりジャーナルが表示」、値を 0 にすると「登録不能になりジャーナルが非表示」になります。<br/>
+			(値は半角で記入)<br/>
+			<br/>
+			デフォルト設定値：1（登録可能、ジャーナル表示）
+		</div>
+		<div class="MabiSkillManual_text3">ペットを登録・表示可能にする</div>
+		<div class="MabiSkillManual_text4">
+			ペットを表示したり登録したりする事ができるようになります。<br/>
+			<br/>
+			変更する場合はjs_config.jsの中にあるPetModeの値を変更します。<br/>
+			値を 1 にすると「登録可能になりペットが表示」、値を 0 にすると「登録不能になりペットが非表示」になります。<br/>
+			(値は半角で記入)<br/>
+			<br/>
+			デフォルト設定値：1（登録可能、ペット表示）
+		</div>
+		<div class="MabiSkillManual_text3">ペット入力ウィンドウの初期表示モード</div>
+		<div class="MabiSkillManual_text4">
+			ペット入力ウィンドウの初期表示モードを変更する事ができます。<br/>
+			<br/>
+			初期表示モードを変更する場合はjs_config.jsの中にあるPetDefaultWindowModeの値を変更します。<br/>
+			値を 1 にすると「ウィンドウモード」、値を 0 にすると「標準モード」になります。<br/>
+			(値は半角で記入)<br/>
+			<br/>
+			デフォルト設定値：0（標準モード）
+		</div>
+		<div class="MabiSkillManual_text3">登録／変更ページのスクロールをJavaScriptで制御する</div>
+		<div class="MabiSkillManual_text4">
+			登録／変更ページのスクロール操作をJavaScriptで制御することができます。<br/>
+			このモードを有効にすると、入力フォーム外でホイールスクロールをしても画面がスクロールされるようになります。<br/>
+			<br/>
+			モードを変更する場合はjs_config.jsの中にあるjsPageScrollの値を変更します。<br/>
+			値を 1 にすると「制御する」、値を 0 にすると「制御しない」になります。<br/>
+			(値は半角で記入)<br/>
+			<br/>
+			デフォルト設定値：0（制御しない）<br/>
+			<br/>
+			また下記設定を変更することにより、各種ブラウザ毎にスクロール速度を増減させることもできます。<br/>
+			GoogleChrome　　　：chrome_wheel_speed<br/>
+			InternetExplorer　：ie_wheel_speed<br/>
+			Firefox　　　　　 ：ff_wheel_speed<br/>
+			<br/>
+			値は半角数字(小数点有)で、0より上の値にするとスクロール速度が増加します。<br/>
+			0より低くするとスクロール方向が逆転するのでご注意ください。<br/>
+			<br/>
+			デフォルト設定値<br/>
+			GoogleChrome　　　：0.834<br/>
+			InternetExplorer　：0.625<br/>
+			Firefox　　　　　 ：13<br/>
+		</div>
+		<div class="MabiSkillManual_text3">JavaScriptのエラー表示</div>
+		<div class="MabiSkillManual_text4">
+			JavaScriptのエラーが発生した場合、エラー内容を含んだメッセージを表示します。<br/>
+			デバッグ用のオプションで普段は「無効」に設定しておくことを推奨します。<br/>
+			<br/>
+			有効にするとMabiSkillSkin以外のエラーも表示されますのでご注意下さい。<br/>
+			<br/>
+			この機能を有効にする場合はjs_config.jsの中にあるScriptErrorReportの値を変更します。<br/>
+			値を 1 にすると「有効」、値を 0 にすると「無効」になります<br/>
+			(値は半角で記入)<br/>
+			<br/>
+			デフォルト設定値：0（無効）
+		</div>
+		<div class="MabiSkillManual_text3">各ファイルのバージョンチェックを行う</div>
+		<div class="MabiSkillManual_text4">
+			今導入されている各ファイルのバージョンをチェックし、バージョンが違った場合メッセージを表示することが出来ます。<br/>
+			これによりアップデートでのファイル更新忘れを知ることができます。<br/>
+			<br/>
+			この機能を有効にする場合はjs_config.jsの中にあるVersionCheckFlgの値を変更します。<br/>
+			値を 1 にすると「する」、値を 0 にすると「しない」になります<br/>
+			(値は半角で記入)<br/>
+			<br/>
+			デフォルト設定値：1（する）
+		</div>
+		<div class="MabiSkillManual_text3">各入力ウィンドウのキーショートカット</div>
+		<div class="MabiSkillManual_text4">
+			各設定ページで下記キーを押すと操作をショートカットできます。<br/>
+			<br/>
+			全ページ<br/>
+			　Ctrl+F1 = MabiSkillSkinのバージョンを表示<br/>
+			　　　（ファンクションキーが使えないブラウザは、Num.キーで表示できます。）<br/>
+			<br/>
+			スキル/ジャーナル設定ページ<br/>
+			　H = ヘルプ（スキル設定ページのキーショートカットの説明を表示）<br/>
+			　E = スキル設定ウィンドウを閉じる<br/>
+			　S = スキルの設定を反映<br/>
+			　R = スキルの設定を反映前に戻す<br/>
+			　C = スキルの設定をリセット<br/>
+			　M = スキル/ジャーナル入力切り替え<br/>
+			　1 = タブ１番を表示<br/>
+			　2 = タブ２番を表示<br/>
+			　3 = タブ３番を表示<br/>
+			　4 = タブ４番を表示<br/>
+			　5 = タブ５番を表示<br/>
+			　6 = タブ６番を表示<br/>
+			　7 = タブ７番を表示<br/>
+			　8 = タブ８番を表示<br/>
+			　9 = タブ９番を表示<br/>
+			　0 = タブ１０番を表示<br/>
+			　- = タブ１１番を表示<br/>
+			<br/>
+			ペット設定ページ<br/>
+			　H = ヘルプ（ペット設定ページのキーショートカットの説明を表示）<br/>
+			　C = ペット設定ウィンドウを閉じる<br/>
+			　R = ペットを登録<br/>
+			　E = ペットを編集<br/>
+			　D = ペットを削除<br/>
+			　1 = タブ１番「登録」タブを表示<br/>
+			　2 = タブ２番「変更」タブを表示<br/>
+			　3 = タブ３番「削除」タブを表示
+		</div>
+	</div>
+
+	<div class="MabiSkillManual_text1">
+		<a name="edit_rgt"></a>RGT本体の変更
+		<div class="MabiSkillManual_textT"><a href="#top">▲TOP</a></div>
+	</div>
+	<div class="MabiSkillManual_text2">
+		RGTの本体を修正/変更し機能を増やしたりする事ができます。<br/>
+		<u>改造を行うとRGTを配布されている所からのサポートは受けられなくなります。</u><br/>
+		自己責任で行ってください。<br/><br/>
+		こちらが実際にテストを行ったRGTのバージョンは <b>v0.81h Preview</b> です。<br/>
+		バージョンが違うと行数が違ったりする可能性がありますので同じバージョンを使ってください。<br/><br/>
+		<div class="MabiSkillManual_text3">登録パスワードを必要にする。</div>
+		<div class="MabiSkillManual_text4">
+			RGTにも同じような機能がありますが、管理者パスワードをメンバーに公開する必要があります。<br/>
+			ここでは登録専用のパスワードを作り登録フォーム内に登録パスワードを入力できるようにします。<br/>
+			<br/>
+			config.cgiの6行目付近に以下のコードを追記します。
+<pre class="MabiSkillManual_code">
+#登録パスワードを必要にするか
+# 0 = しない
+# 1 = する
+$reg_pass = 1;
+
+#登録パスワード
+# 英数字8文字内
+$reg_pwd = '43210';
+</pre>
+			rgt.cgiの912行目と913行目の間に以下のコードを追記します。
+<pre class="MabiSkillManual_code">
+	if ($reg_pass) {
+		&error('登録パスワードが違います') if ($in{'regpwd'} ne $reg_pwd);
+	}
+</pre>
+		temp_reg.htmlの最後付近にある&lt;div class="MabiSkill_form_text3"&gt;の前に以下のコードを追記します。
+<pre class="MabiSkillManual_code">
+&lt;div class="MabiSkill_form_text1"&gt;
+★ 登録パスワード
+&lt;/div&gt;
+&lt;div class="MabiSkill_form_text2"&gt;
+&lt;input type="password" class="MabiSkill_form_G" maxlength="!pwdmax!" name="regpwd" id="mabiskill_form_regpwd" /&gt;&lt;br/&gt;
+登録パスワードを入力してください。
+&lt;/div&gt;
+</pre>
+		これで変更は完了です。<br/>
+		config.cgiで設定や登録パスワードを変更しちゃんと動作するか試してみてください。
+		</div>
+	</div>
+
+	<div class="MabiSkillManual_text1">
+		<a name="error"></a>エラーについて
+		<div class="MabiSkillManual_textT"><a href="#top">▲TOP</a></div>
+	</div>
+	<div class="MabiSkillManual_text2">
+		このスキンを使用後発生したCGIのエラーなどを簡単に説明します。<br/><br/>
+		<div class="MabiSkillManual_text3">500 Internal Server Errorと表示される</div>
+		<div class="MabiSkillManual_text4">
+			このメッセージはサーバー内部エラーが発生している時にでます。<br/>
+			<br/>
+			主にCGIや設定項目の記入ミス、パーミッション設定忘れ等が該当します。<br/>
+			稀ですが、rgt.cgiの１行目に書かれているPerlへのパスが違っている場合にも表示されます。<br/>
+			<br/>
+			各種設定をよく見直してください。
+		</div>
+		<div class="MabiSkillManual_text3">cgi-lib.pl: Request to receive too much data: xxxxxと表示される</div>
+		<div class="MabiSkillManual_text4">
+			このメッセージは登録や編集時に送信したデータが、config.cgiで設定されている最大サイズを超えた場合に表示されます。<br/>
+			<br/>
+			config.cgiの$maxDataの値をより大きい値へ変更すれば解決されます。<br/>
+			標準値が102400なので、倍の204800ぐらいに設定してみると良いでしょう
+		</div>
+	</div>
+
+	<div class="MabiSkillManual_text1">
+		<a name="contact"></a>サポートや連絡方法
+		<div class="MabiSkillManual_textT"><a href="#top">▲TOP</a></div>
+	</div>
+	<div class="MabiSkillManual_text2">
+		<a href="http://blog.wolfs.jp/" target="_blank">配布サイト</a>内の<a href="http://blog.wolfs.jp/tag/mabiskillskin/" target="_blank">MabiSkillSkinの関連の記事</a>や<a href="http://blog.wolfs.jp/down/mabinogi/all-comments/" target="_blank">配布ページ</a>へコメントをしてください。<br/>
+		メールで連絡される方は、配布サイト内の<a href="http://blog.wolfs.jp/about/mailform/" target="_blank">メールフォーム</a>よりお問い合わせ下さい。<br/>
+		<br/>
+		・コメントで設置URL等を一般に公開されたくない場合は「非公開コメント」へチェックをつけて送信してください。<br/>
+		・メールフォームをご利用の場合は、必ずメールを受信可能なメールアドレスを記載していただき、<br/>
+		　<b>宛先を「MabiSkillSkin開発チーム」に設定して送信してください。</b><br/>
+		・ドメインによる受信設定をされている方は「wolfs.jp」「狼.jp(xn--n6x.jp)」ドメインの許可を設定してください。<br/>
+		<br/>
+		※ コメントによるお問い合わせ等の返事は「れいま」が、メールフォームは「開発チームのいずれか1人」が返事致します。<br/>
+		　 また時間帯などにより返事に時間がかかる場合があります。ご了承ください。<br/>
+		<br/>
+		<span style="color:#00aa00;">またMabiSkillSkinへの要望や意見なども伺っております。<br/>
+		上記同様、配布サイト内のコメント又はメールフォームよりお願い致します。</span>
+	</div>
+
+	<div class="MabiSkillManual_text1">
+		<a name="history"></a>更新履歴
+		<div class="MabiSkillManual_textT"><a href="#top">▲TOP</a></div>
+	</div>
+	<div class="MabiSkillManual_text2">
+		ファイル名先端 マークの説明<br/>
+		　[A]: 新規追加されたファイル<br/>
+		　[U]: 更新されたファイル<br/>
+		　[D]: 削除されたファイル<br/>
+		　<small>(前回のバージョンからの比較です)</small><br/><br/>
+		　<b>アップグレードする際は<a href="#introduce">導入方法</a>の「MabiSkillSkinをバージョンアップする方」をお読みください。<br/>
+		　<a href="./Upgrade.html">アップグレードサポートツール(差分チェッカー)</a>を用意致しましたのでご活用ください。</b><br/>
+		　<small>(ツールの動作にはJavaScriptが必須です)</small><br/>
+		<br/>
+		<div class="MabiSkillManual_History1">2012/07/29 Ver2.30.19</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] 2012/07/19のアップデートで追加されたスキル「羊毛刈り」、「採鉱」、「卵採集」、「キノコ採集」、「乳搾り」、「収穫」、「鍬さばき」、「ワイン製造」、「交易マスタリ」に対応</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]icon_skill.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2012/06/08 Ver2.30.18</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] スキル「メディテーション」のランクが開放されていなかった問題を修正。</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2012/05/26 Ver2.30.17</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] スキル「音楽知識」、「作曲」のランク開放に対応。</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2012/05/25 Ver2.30.16</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] Genesisのスキル「メロディショック」、「戦場の序曲」、「子守唄」、「ヴィヴァーチェ」、「忍耐の歌」、「豊作の歌」、「行進曲」に対応</li>
+				<li style="color:#0000ff;">[告知] 現在「音楽」スキルは「生活」スキルカテゴリーに分類されています。バグではありません。</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]icon_skill.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2012/03/24 Ver2.30.15</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] G16のスキル「ナックルマスタリ」、「チェーンマスタリ」、「ダッシュパンチ」、「チャージングフィスト」、「スクリューアッパー」、「サマーソルト」、「ドロップキック」、「パウンディング」、「リストア」、「バックステップ」に対応</li>
+				<li>[修正] 一部ブラウザのバージョンが正しく認識できていない問題を修正</li>
+				<li style="color:#0000ff;">[告知] 現在「格闘術」スキルは「戦闘」スキルカテゴリーに分類されています。バグではありません。</br>
+				　　　 <small>(これ以上はタブを追加できないので、大幅な仕様変更が必要に・・・)</small></li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]pet_input.html、[U]skill_input.html、[U]icon_skill.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2012/02/27 -</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] 「アップグレード サポートツール」が正常に動作していないバグを修正。</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2012/02/17 Ver2.30.14</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] 新規スキル「ゴールドストライク」に対応</li>
+				<li>[更新] 新規アクションスキル「傘開き」、「脅かす」に対応</li>
+				<li>[更新] 新規ペルソナスキル「シャイロックの足取り」に対応</li>
+				<li>[更新] 新規ペット「黄牛」、「黒炎のフレイムメア」、「アイスドラゴン」、「クリスタルルドルフ」に対応</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]icon_pet.png、[U]icon_skill.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2011/10/02 Ver2.30.13</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] アクションスキル「大陸移動」に対応</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]icon_skill.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2011/05/19 Ver2.30.12</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] 新発売のペット「紅炎のフレイムメア」、「蒼炎のフレイムメア」、「銀炎のフレイムメア」に対応</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]icon_pet.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2011/05/02 Ver2.30.11</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] ハムレットの苦悩、クローディアスの陰謀、オフィーリアの涙のスキル画像が間違っていたのを修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2011/04/20 Ver2.30.10</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] 新発売のペット「サル」に対応</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2011/03/17 Ver2.30.9</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] ジャーナル設定モードで「入力を反映」をすると主なスキルが消えたように見える問題を修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]skill_input.html</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2011/02/24 Ver2.30.8</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] G14S1のスキルに対応<br/>
+				　　　 追加スキル：ランスマスタリ、ランスカウンター、ランスチャージ<br/>
+				　　　 　　　　　　ロミオの告白、ティボルトの剣術、ジュリエットの感情<br/><br/>
+				　　　 ランク開放：突進<small>(マスター)</small>、作曲<small>(5)</small>、音楽知識<small>(4)</small>、応急手当<small>(6)</small>、ハンディクラフト<small>(マスター)</small><br/>
+				　　　 　　　　　　野生動物調教<small>(マスター)</small>、アイスマジックシールド<small>(マスター)</small>、ナチュラルマジックシールド<small>(マスター)</small><br/>
+				　　　 　　　　　　ファイアマジックシールド<small>(マスター)</small>、ライトニングマジックシールド<small>(マスター)</small>、サンドバースト<small>(マスター)</small><br/>
+				　　　 　　　　　　ウィンドブラスト<small>(マスター)</small>、合成<small>(マスター)</small>、分解<small>(マスター)</small></li>
+
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]icon_skill.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2011/02/21 Ver2.30.7</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] Chromeでペット登録ページのペットリストの並びがおかしい問題を修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]pet_input.html</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/12/20 Ver2.30.6</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] 新発売のペット「サンダードラゴン（色選択）」、「ファイアドラゴン（色選択）」に対応</li>
+				<li>[更新] 新規スキル「ボウマスタリ」、「クロスボウマスタリ」に対応</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]icon_skill.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/11/05 Ver2.30.5</div>
+		<div class="MabiSkillManual_History2">
+			<b style="color:#ff0000;">ver2.30.0でほぼ全ファイルが更新されています。<br/>
+			アップグレード忘れや設定の変更にご注意下さい。</b><br/>
+			<br/>
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] ヒーリングとマジックマスタリの英語スキル名が入れ違いになっていたのを修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/10/28 Ver2.30.4</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] 新発売のペット「スマイルパンプキン」、「アングリーパンプキン」に対応</li>
+				<li>[修正] 主なスキルで同じスキルを登録できる問題を修正</li>
+				<li>[修正] 英語のスキル名がはみ出る問題を修正</li>
+				<li>[修正] JavaScriptの最適化</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]skill_input.html</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/10/27 Ver2.30.3</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] ジャーナルの表示名が正しく表示されない問題を修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/10/23 Ver2.30.2</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] ペルソナスキルが専用タブで表示されるように変更。</li>
+				<li>[修正] 一部のスキル名がはみ出る問題を修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]skill_input.html、[U]ui_input.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/10/21 Ver2.30.1</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] C4のスキルに対応<br/>
+				　　　 追加スキル：幻惑の演奏、ダウンアタック、分身術、ソードマスタリ、アックスマスタリ、ブラントマスタリ<br/>
+				　　　 　　　　　　ヘイルストーム、ボルト魔法の合体、ファイアマスタリ、アイスマスタリ、ライトニングマスタリ<br/>
+				　　　 　　　　　　ファイアアルケミマスタリ、ウォーターアルケミマスタリ、アースアルケミマスタリ、<br/>
+				　　　 　　　　　　ウィンドアルケミマスタリ、錬成マスタリ、ハムレットの苦悩、クローディアスの陰謀、オフィーリアの涙</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]skill_input.html、[U]icon_skill.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/10/02 Ver2.30.0</div>
+		<div class="MabiSkillManual_History2">
+			<b style="color:#ff0000;">ほぼ全ファイルが更新されています。<br/>
+			アップグレード忘れや設定の変更にご注意下さい。</b><br/>
+			<br/>
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] ジャーナルが登録可能になりました！</li>
+				<li>[更新] データベースをオブジェクト指向に変更。<br/>
+				　　　 これによりPCへの負荷が少なくなりました。</li>
+				<li>[修正] IE8でIE7互換表示なしで表示出来るようになりました。</li>
+				<li>[修正] 著作権表示部分にバージョン番号も表示するようになりました。</li>
+				<li>[修正] スキン/ペットアイコン画像のファイル名を変更。</li>
+				<li>[修正] JavaScriptの最適化など...</li>
+				<li>[変更されたファイル]<br/>
+				　[U]css_common.css、[U]js_common.js、[U]js_config.js、[U]js_database.js、[U]pet_input.html<br/>
+				　[U]skill_input.html、[U]temp_reg.html、[U]temp_edit.html、[U]temp_main.html、[U]temp_main_old.html<br/>
+				　[U]skin.cgi、[U]ui_input.png、[U]icon_pet.png、[U]icon_skill.png、[A]icon_achievement.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/09/21 Ver2.20.0</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] G12S2のスキルに対応<br/>
+				　　　 追加スキル：クラッシュショット<br/>
+				　　　 ランク開放：サポートショット(マスター)、投擲(マスター)、タウント(マスター)、コントロールオブダークネス(1)</li>
+				<li>[更新] 新発売のペット「白虎（騎乗可能）」に対応</li>
+				<li>[修正] 一部環境で登録/編集ページのキャラ画像枠が表示されない問題を修正</li>
+				<li>[修正] iswebサービス終了に伴い付属ツール「crlf_to_lf.vbs」を削除、スキンオプション「広告を無効にする(1)」(AdvertisementDisabledFlg)を廃止</li>
+				<li>[変更されたファイル]<br/>
+				　[U]css_common.css、[U]js_common.js、[U]js_config.js、[U]js_database.js、[U]temp_reg.html<br/>
+				　[U]temp_edit.html、[U]skillicon.png、[U]peticon.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/09/11 Ver2.19.9 rev2</div>
+		<div class="MabiSkillManual_History2">
+			<b style="color:#ff0000;">v2.19.2で複数の重要ファイルが更新されています。<br/>
+			アップグレード忘れや設定の変更にご注意下さい。</b><br/>
+			<br/>
+			今回の更新はマニュアルのみの更新になります。<br/>
+			スキン本体の更新はありません。<br/>
+			<ul class="MabiSkillManual_History3">
+				<li></li>
+				<li>[追加] RGT本体の修正/変更に関する項目を作成。</li>
+				<li>[追加] RGTに登録パスワード機能を追加する方法を記載。</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/09/10 Ver2.19.9</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] js_scroll.jsでエラーが発生する可能性がある問題を修正</li>
+				<li>[修正] 稀にJavaScriptでスクロールの制御ができない問題を修正</li>
+				<li>[修正] js_database.jsに「文字エンコードがUTF8である」との記載を追加</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]js_scroll.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/08/12 Ver2.19.8</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] 新発売のペット「ミニユニコーン」に対応</li>
+				<li>[修正] バージョンチェックをより詳細に行うように変更</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/08/08 Ver2.19.7</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] TOK2.com等onloadイベントを必要とする広告が挿入されると、MabiSkillSkinのonloadイベントが発生しない問題に対応</li>
+				<li>[修正] v2.19.6でIE以外のブラウザの場合、標準モードでスキル/ペット登録ウィンドウが開けない問題を修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]pet_input.html、[U]skill_input.html、[U]temp_edit.html、[U]temp_reg.html</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/08/06 Ver2.19.6</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] 登録/編集ページでjs_jquery.jsのバージョンチェックが行えない問題を修正。</li>
+				<li>[修正] jsPageScrollの設定が1の場合、登録/編集ページ以外でエラーが発生する問題を修正。</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_jquery.js、[U]js_scroll.js、[U]temp_edit.html、[U]temp_reg.html</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/08/04 Ver2.19.5</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] ペット登録ページで「バージョンが一致しない」とメッセージが出る問題を修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/08/03 Ver2.19.4</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] スキル登録ページでスキル情報を保存出来ない問題を修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]skill_input.html</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/08/01 Ver2.19.3</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] カウンターの説明文が間違っていたのを修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/07/27 Ver2.19.2</div>
+		<div class="MabiSkillManual_History2">
+			<b style="color:#ff0000;">複数の重要ファイルが更新されています。<br/>
+			アップグレード忘れや設定の変更にご注意下さい。</b><br/>
+			<br/>
+			<ul class="MabiSkillManual_History3">
+				<li>[新規] 新デザインの場合、キャラ表示部分の透過設定を行えるようになりました。</li>
+				<li>[新規] アップロードされている各ファイル(html,js)のバージョンをチェックするようにした。（設定で変更可能）</li>
+				<li>[更新] IE環境でフレーム内にRGTを表示している場合で親フレームの文字コードがSJIS以外だった場合、<br/>
+				　	　　親フレームの文字コードが引き継がれ文字化けする問題に対応（ちょっと自信がない。。</li>
+				<li>[修正] SkillBlackListやPetModeの設定が反映されない問題を修正</li>
+				<li>[修正] 多数キャラが登録されている状態でスキルが表示されない場合がある問題を修正</li>
+				<li>[修正] スキルID変換機能がを完全に正式に廃止しました。</li>
+				<li>[修正] background.gifを最適化</li>
+				<li>[変更されたファイル]<br/>
+				　[U]css_common.css、[U]js_common.js、[U]js_config.js、[U]js_database.js、[U]js_jquery.js<br/>
+				　[U]js_scroll.js、[U]pet_input.html、[U]skill_input.html、[U]temp_main.html、[U]temp_main_old.html<br/>
+				　[U]temp_edit.html、[U]temp_reg.html、[U]background.gif、[U]skillicon.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/07/17 Ver2.19.1</div>
+		<div class="MabiSkillManual_History2">
+			<b>メインテンプレート(temp_main.html、temp_main_old.html)が変更されています。<br/>
+			アップグレード忘れにご注意下さい。</b><br/>
+			<br/>
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] JavaScriptの読み込みが延滞した場合、キャラ一覧が正常に表示されない等の問題を修正</li>
+				<li>[修正] css_common.cssにテスト用画像へのリンクが残っていたミスを修正</li>
+				<li>[修正] 登録スキル一覧表示時、パラディンとダークナイト両方のスキルを登録していた場合パラディンタブが優先表示されるように修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]css_common.css、[U]js_common.js、[U]js_database.js、[U]temp_main.html、[U]temp_main_old.html</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/06/25 Ver2.19.0</div>
+		<div class="MabiSkillManual_History2">
+			<b>新規ファイルの追加、js_config.jsの中身が変更されています。<br/>
+			アップグレード忘れや設定の変更にご注意下さい。</b><br/>
+			<br/>
+			<ul class="MabiSkillManual_History3">
+				<li>[新規] 登録／変更ページのスクロールをJavaScriptで制御できるようになりました。<br/>
+				　　　 Scriptの作成に協力して下さった CJ？ごろう さん有り難うございます。</li>
+				<li>[更新] 上記にあわせ、js_config.js内に設定を追加</li>
+				<li>[更新] 登録スキル一覧表示時、登録しているスキルのタブのみ表示するように変更</li>
+				<li>[更新] スキル登録ページで変身スキルのみ対応する種族しか登録できないように変更</li>
+				<li>[修正] マニュアルの誤字脱字、利用規約を修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]css_common.css、[U]js_common.js、[U]js_config.js、[U]js_database.js、[A]js_scroll.js<br/>
+				　[U]pet_input.html、[U]skill_input.html、[U]temp_main.html、[U]temp_main_old.html、[U]ui_input.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/06/17 Ver2.18.1</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] 新発売のペット「グリフォン」に対応</li>
+				<li>[修正] イクリプスオブウィングス、レイジオブウィングスのランクを１まで選択できるように修正</li>
+				<li>[修正] 一部のスキル名が間違っていたのを修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/04/22 Ver2.18.0</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] G12のスキルに対応<br/>
+				　　　 追加スキル：ヒートバスター、チェーンシリンダー、イクルリプスオブウイングス、レイジーオブウイングス、シリンダー設置/解除</li>
+				<li>[修正] JavaScript、HTMLの最適化</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]temp_main.html、[U]temp_main_old.html、[U]skillicon.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/03/04 Ver2.17.2</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] 新発売のペット「ジャングル探検家インプ（色選択）」「火山探検家インプ（色選択）」に対応</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/02/03 Ver2.17.1</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] 「パーティヒーリング」スキルのランクが間違っていたのを修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/01/28 Ver2.17.0</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] スキル「木工」に対応</li>
+				<li>[更新] スキルのランクを開放<br/>
+				　　　 料理(R6)、マジックマスタリー、光の覚醒、スピアオブライト、ヒューリーオブライト、シャドウオブスピリット</li>
+				<li>[更新] 新発売のペット「虎」「白虎」に対応</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]peticon.png、[U]skillicon.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2010/01/06 Ver2.16.1</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] FireFoxでスキル説明が画面外に表示される不具合を修正</li>
+				<li>[修正] FireFoxでInfoSeekの検索バーが非表示にできない不具合を修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/12/20 Ver2.16.0</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] 新発売のペット「北極スケルトン」「ユニコーン(色選択)」に対応</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/11/24 Ver2.15.1</div>
+		<div class="MabiSkillManual_History2">
+			<b>設定ファイル（js_config.js）の中身が変更されています、アップグレードの際には注意してください。</b><br/>
+			<br/>
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] InfoSeekで検索バーが表示されて×ボタンが押せない場合の対処を設定。</li>
+				<li>[修正] スパークのランク制限が間違っていたのを修正。</li>
+				<li>[更新] 簡易バージョンアップチェッカーを作成（別途Upgrade.htmlを参照、要JavaScript）</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_config.js、[U]js_database.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/10/29 Ver2.15.0</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] G11に対応<br/>
+				　　　 スキル：スパーク、回避<br/>
+				　　　 半神化：シャドウオブスピリット</li>
+				<li>[更新] スキルのランクを開放<br/>
+				　　　 アルケミマスタリ、ウォーターキャノン</li>
+				<li>[更新] 新発売のペット「プチゴースト」「サラブレッド (色選択)」「シャイア (色選択)」に対応</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]skillicon.png、[U]peticon.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/09/23 Ver2.14.5</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] ペットの登録、変更、削除時に期間限定ペットの場合は「期間限定」と表示するようにした。</li>
+				<li>[修正] 一部の英語スキル名が間違っていたのを修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]pet_input.html、[U]ui_input.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/09/17 Ver2.14.4</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] 新発売のペット「魔法の絨毯」「高級魔法の絨毯」に対応</li>
+				<li>[修正] バージョン情報のウィンドウが画面外に表示される不具合を修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/08/20 Ver2.14.3</div>
+		<div class="MabiSkillManual_History2">
+			<b>設定ファイル（js_config.js）の中身が変更されています、アップグレードの際には注意してください。</b><br/>
+			<br/>
+			<ul class="MabiSkillManual_History3">
+				<li>[Team] Axeさん、えんさんが開発チームから離れ、新たにドットさんがチームに加わりました！</li>
+				<li>[新規] F1キーでバージョン情報をみれるようにした。<br/>
+				　　　 （OperaやSleipnir等のファンクションキー無効ブラウザはNum.キーで表示されます。）</li>
+				<li>[新規] 一部サーバーのフラッシュ広告を無効にできる設定を追加</li>
+				<li>[修正] JavaScript、HTMLの最適化</li>
+				<li>[修正] ペット登録画面でショートカットが動作していない問題を修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_config.js、[U]js_database.js、[U]pet_input.html、[U]skill_input.html<br/>
+				　[U]temp_edit.html、[U]temp_main.html、[U]temp_main_old.html、[U]temp_reg.html、[U]ui_input.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/08/10 Ver2.14.2</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[新規] SafariとOepraに対応しました！</li>
+				<li>[修正] js_database.jsにUnicodeが混じっていたのを修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]js_jquery.js、[U]pet_input.html、[U]skill_input.html</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/07/30 Ver2.14.1</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] アクションスキル「水風船投げ」に対応</li>
+				<li>[修正] 一部の英語スキル名が間違っていたのを修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]skillicon.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/07/23 Ver2.14.0</div>
+		<div class="MabiSkillManual_History2">
+			<b>一部ファイル名が変更されていますので、アップグレードの時にはご注意ください。</b><br/>
+			<br/>
+			<ul class="MabiSkillManual_History3">
+				<li>[新規] Google Chromeに対応しました！</li>
+				<li>[更新] G10S2に対応<br/>
+				　　　 スキル：ブレイズ、金属変換<br/>
+				　　　 アクション：水やり、肥料まき、害虫駆除</li>
+				<li>[更新] 新発売のペット「黒オットセイ」「白オットセイ」に対応</li>
+				<li>[修正] RGTの不具合で、$date_figの値が1でも日付に0が入らない問題をスキン側で対応</li>
+				<li>[修正] ペットアイコンをPNG-8(256色)形式からPNG-24(16777216色)に変更</li>
+				<li>[修正] キャラのSSが設定されてない場合の画像を変更し、１ファイルだけで済むようにした</li>
+				<li>[修正] 旧デザインモードでペットリストを表示するボタンがずれていた問題を修正</li>
+				<li>[修正] JavaScript、CSSの最適化</li>
+				<li>[修正] マニュアルの「利用規約」を変更</li>
+				<li>[変更されたファイル]<br/>
+				　[U]css_common.css、[U]js_common.js、[U]js_database.js、[U]pet_input.html、[U]skill_input.html<br/>
+				　[U]skin.cgi、[U]temp_main.html、[U]temp_main_old.html、[U]temp_edit.html、[U]temp_reg.html<br/>
+				　[U]peticon.png、[U]skillicon.png<br/>
+				　[A]ss_noimage.jpg<br/>
+				　[D]ss_nowprinting.jpg、[D]ss_sample.jpg</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/06/24 Ver2.13.3</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] 一部環境でスキル名が文字化けしていた問題を修正</li>
+				<li>[修正] 一部のスキル名が間違っていたのを修正</li>
+				<li>[修正] 一部環境でペットリストを表示するボタンがずれていた問題を修正</li>
+				<li>[修正] スキルアイコンデータを最適化</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js、[U]skill_input.html、[U]temp_main.html、[U]temp_main_old.html<br/>
+				　[U]skillicon.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/06/18 Ver2.13.2</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] 新発売のペット「シロフクロウ」「ワシミミズク」に対応</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]js_database.js</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/06/04 Ver2.13.1</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] ペットの種族名が正常に表示されない不具合を修正</li>
+				<li>[修正] マニュアルを修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]pet_input.html</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/05/28 Ver2.13.0</div>
+		<div class="MabiSkillManual_History2">
+			<b>一部ファイル名が変更されていますので、アップグレードの時にはご注意ください。</b><br/>
+			<br/>
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] ペットが登録可能になりました！</li>
+				<li>[修正] IE8をIE7の互換モードでレンダリングされるように設定</li>
+				<li>[修正] js_skilldata.jsをjs_database.jsへ改名</li>
+				<li>[修正] JavaScriptのバグ修正、最適化</li>
+				<li>[変更されたファイル]<br/>
+				　[U]css_common.css、[U]js_common.js、[U]js_config.js、[U]skill_input.html、[U]skin.cgi<br/>
+				　[U]temp_edit.html、[U]temp_main.html、[U]temp_main_old.html、[U]temp_reg.html、[U]ui_input.png<br/>
+				　[A]js_database.js、[A]pet_input.html、[A]peticon.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/05/06 Ver2.12.3</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] キャラ表示モードが「新デザイン」の場合のみ、キャラの名前を非表示にできるようになりました！<br/>
+				　　　 （表示・非表示の設定はキャラの編集画面にあります）</li>
+				<li>[修正] マウスの吹き出しの背景が異常に広がっているのを修正</li>
+				<li>[修正] CSSの最適化</li>
+				<li>[変更されたファイル]<br/>
+				　[U]css_common.css、[U]js_common.js、[U]skin.cgi、[U]temp_edit.html、[U]temp_main.html<br/>
+				　[U]temp_main_old.html、[U]temp_reg.html</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/05/04 Ver2.12.2</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] 改行コード変換ツールを付属</li>
+				<li>[更新] マニュアルに改行コード変換方法を記載</li>
+				<li>[修正] キャラ表示ページのスキルリストのドラッグがよりスムーズになるように修正</li>
+				<li>[修正] skin.cgiのコメントアウト項目の説明が間違っていたのを修正（動作に問題はありません）</li>
+				<li>[変更されたファイル]<br/>
+				　[U]js_common.js、[U]skin.cgi</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/04/23 Ver2.12.1</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] 旧デザイン(Tetujin Original ver1.01a)と新デザインの両方が使えるようになりました！</li>
+				<li>[更新] 設定を簡単に行えるように、設定をjs_common.jsから切り離し新たにjs_config.jsを作成！</li>
+				<li>[修正] FF環境でスキルのランク設定時にエラーが発生した問題を修正</li>
+				<li>[修正] FF環境でキャラ登録・編集を行うページでエラーが発生した問題を修正</li>
+				<li>[修正] 他いくつかの不具合を修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]css_common.css、[U]js_common.js、[U]ui_input.png、[U]skin.cgi、[U]temp_edit.html<br/>
+				　[U]temp_main.html、[U]temp_reg.html、[A]js_config.js、[A]temp_main_old.html、[D]ui_form.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/04/19 Ver2.12.0</div>
+		<div class="MabiSkillManual_History2">
+			<b>2009/04/07 Ver2.12.0よりスキンのファイル構成や仕様が大きく変わっています。<br/>
+			上記<a href="#introduce">導入方法</a>のファイル構成をよく読んでください。</b><br/>
+			<br/>
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] スキル説明文の表示を復活</li>
+				<li>[更新] メンバーの全登録スキルを表示するウィンドウのデザインを変更</li>
+				<li>[更新] 一部の画像ファイルを1つにまとめました</li>
+				<li>[修正] JavaScriptの安定化</li>
+				<li>[変更されたファイル]<br/>
+				　[U]css_common.css、[U]js_common.js、[U]js_skilldata.js、[U]skill_input.html、[U]ui_input.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/04/17 Ver2.11.0</div>
+		<div class="MabiSkillManual_History2">
+			<b>2009/04/07 Ver2.10.0よりスキンのファイル構成や仕様が大きく変わっています。<br/>
+			上記<a href="#introduce">導入方法</a>のファイル構成をよく読んでください。</b><br/>
+			<br/>
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] G10に対応<br/>
+				　　　 半神化：光の覚醒、スピアオブライト、ヒューリーオブライト<br/>
+				　　　 錬金術：レインキャスティング、フローズンブラスト</li>
+				<li>[更新] 一部スキルランク開放<br/>
+				　　　 鉱物採取(1)、ストンプ(1)、ウィンドブレイカー(1)、ファイナルショット(1)、アルケミマスタリ(5)、フレイマー(1)</li>
+				<li>[修正] テスター様からの意見を反映、安定化</li>
+				<li>[変更されたファイル]<br/>
+				　[U]css_common.css、[U]js_common.js、[U]js_skilldata.js、[U]skill_input.html</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/04/10 Ver2.10.3 (一部テスター様向け非公開版)</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] テスター様からの意見を反映、安定化</li>
+				<li>[変更されたファイル]<br/>
+				　[U]css_common.css、[U]js_common.js、[U]js_skilldata.js、[U]skill_input.html</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/04/07 Ver2.10.0 (一部テスター様向け非公開版)</div>
+		<div class="MabiSkillManual_History2">
+			<b>このバージョンよりスキンのファイル構成や仕様が大きく変わっています。<br/>
+			上記<a href="#introduce">導入方法</a>のファイル構成をよく読んでください。</b><br/>
+			<br/>
+			<ul class="MabiSkillManual_History3">
+				<li>[新規] 新しい開発メンバー、エーベルさんを加え一気に更新＆最適化</li>
+				<li>[新規] Tetujin Originalからのバージョンアップ無しで導入することができるようになりました。</li>
+				<li>[変更] ReadMeをHTML化し見やすくしました。</li>
+				<li>[新規] スキルID変換機能がつきました。<br/>
+				　　　 他の方が差分として公開されているskilldata.jsのスキルIDとこちらのスキルIDを自動で変換します。</li>
+				<li>[更新] メインのキャラ表示ページを新しいデザインに変更しました。</li>
+				<li>[変更] ギルドマスター、サブギルドマスターでも「自称な役職」を設定できるようになりました。</li>
+				<li>[変更されたファイル]<br/>
+				　[A]css_common.css、[A]css_system.css、[A]js_common.js、[A]js_jquery.js、[A]js_skilldata.js、[A]skill_input.html<br/>
+				　[A]skin.cgi、[A]temp_edit.html、[A]temp_main.html、[A]temp_reg.html、[A]background.gif、[A]bar.gif<br/>
+				　[A]blank.gif、[A]emblem.gif、[A]loading.gif、[A]rankicon.gif、[A]skillicon.png、[A]ss_nowprinting.jpg<br/>
+				　[A]ss_sample.jpg、[A]ui_form.png、[A]ui_input.png、[A]ui_view.png</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/03/31 Ver2.00.5</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] FFでスキルのランク選択時にエラーが発生した問題を修正</li>
+				<li>[修正] IE6でスキル入力ウィンドウを表示するボタンが正しい位置に表示されない問題を修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]skilldata.js、[U]skill_input.html、[U]reg.html、[U]edit.html</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/03/25 Ver2.00.4</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] 旧バージョンと同じように、ポップアップウィンドウで表示できるように修正</li>
+				<li>[変更されたファイル]<br/>
+				　[U]skilldata.js、[U]skill_input.html、[U]reg.html、[U]edit.html</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">Ver2.00.3</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] JavaScript処理の安定化</li>
+				<li>[修正] ReadMe.txtへサポートへの連絡方法を記載</li>
+				<li>[変更されたファイル]<br/>
+				　[U]skilldata.js、[U]skill_input.html</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/03/15 Ver2.00.2</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] バージョン2を一般リリース！</li>
+				<li>[修正] JavaScript処理の安定化、CSSの無駄を削除</li>
+				<li>[変更されたファイル]<br/>
+				　[U]skilldata.js、[U]skill_input.html</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/03/11 Ver2.00.1 (一部テスター様向け非公開版)</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[修正] スキル入力がIEとFF両方に対応しました！</li>
+				<li>[新規] 登録、編集ページのデザインを新しくしました。</li>
+				<li>[新規] キャラ情報の項目「年齢」を廃止し、新しく「種族」を登録可能にしました。</li>
+				<li>[変更されたファイル]<br/>
+				　[U]skilldata.js、[U]skill_input.html、[U]main.html、[U]reg.html、[U]edit.html、[A]ui_form.png、[A]skin.cgi</li>
+			</ul>
+		</div>
+		<div class="MabiSkillManual_History1">2009/03/10 Ver2.00.0 (一部テスター様向け非公開版)</div>
+		<div class="MabiSkillManual_History2">
+			<ul class="MabiSkillManual_History3">
+				<li>[更新] 新バージョンとしてリリース。</li>
+				<li>[新規] スキル入力ページのデザインを新しくしました。</li>
+				<li>[修正] jquery.jsライブラリーを使用してスキル入力画面を同一画面に表示するように変更</li>
+				<li>[変更されたファイル]<br/>
+				　[U]skilldata.js、[U]main_java.js、[U]skill_input.html、[U]mabiskill_sprite.css、[U]loading.gif、[U]reg.html<br/>
+				　[U]edit.html、[A]ui_input.png、[A]blank.gif、[A]jquery.js</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="MabiSkillManual_text1">
+		<a name="thanks"></a>MabiSkillSkin開発チーム、開発協力者一覧
+		<div class="MabiSkillManual_textT"><a href="#top">▲TOP</a></div>
+	</div>
+	<div class="MabiSkillManual_text2">
+		<b>開発チーム</b><br/>
+		<ul style="list-style:disc;">
+			<li>れいま</li>
+			<li>たかと</li>
+		</ul>
+		<br/>
+		<b>作成協力者の方々</b><br/>
+		<ul style="list-style:disc;">
+			<li>o(*^▽^*)oあはーさん</li>
+			<li>恵雫さん</li>
+			<li>アレックスさん</li>
+			<li>L12さん</li>
+			<li>サブのサブのサブさん</li>
+			<li>光風霽月ギルドの皆さん</li>
+			<li>ワタナベ、タナカ（笑）さん</li>
+			<li>Axeさん</li>
+			<li>えんさん</li>
+			<li>CJ？ごろうさん</li>
+			<li>万象さん</li>
+			<li>ドットさん</li>
+			<li>エーベルさん</li>
+			<li>その他、記載を希望されなかった方々</li>
+		</ul>
+		<br/>
+		<br/>
+		テストやアドバイスを下さった方々、ご協力いただき有り難うございます<br/>
+		今後ともMabiSkillSkinを宜しくお願い致します<br/>
+	</div>
+
+	<div class="MabiSkillManual_textF">
+		Copyright(c) MabiSkillSkin and TetujinOriginal. All Rights Reserved.
+	</div>
+</div>
+</body>
+</html>

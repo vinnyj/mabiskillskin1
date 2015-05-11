@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Language" content="ja"/>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"/>
+<meta http-equiv="Content-Style-type" content="text/css"/>
+<meta http-equiv="Content-Script-Type" content="text/javascript"/>
+<meta name="robots" content="noindex,nofollow,noarchive" />
+<title>MabiSkillSkin -アップグレード サポートツール-</title>
+<style type="text/css" media="all">
+	body{
+		margin:15px;
+		color:#333333;
+		background-color:#f2f2f2;
+		line-height:18px;
+		font-size:12px;
+		font-family:"ＭＳ ゴシック",arial,sans-serif;
+	}
+	ul{
+		line-height:18px;
+		margin-top:0px;
+		margin-left:30px;
+		margin-bottom:0px;
+		list-style:none;
+		list-style-position:outside;
+	}
+	div{
+		line-height:18px;
+	}
+
+	a{
+		color:#0000ff;
+		text-decoration:none;
+	}
+	a:link{
+		color:#0000ff;
+		text-decoration:none;
+	}
+	a:visited{
+		color:#0000ff;
+		text-decoration:none;
+	}
+	a:hover{
+		color:#ff0000;
+		text-decoration:none;
+	}
+
+	.MabiSkillManual_Base{
+		width:760px;
+		background-color:#ffffff;
+		border:1px solid #d6d6d6;
+	}
+	.MabiSkillManual_textH{
+		position:relative;
+		width:100%;
+		font-size:16px;
+		font-weight:bold;
+		text-align:center;
+		margin-bottom:10px;
+		padding-top:10px;
+		padding-bottom:10px;
+		border-bottom:1px solid #d6d6d6;
+	}
+	.MabiSkillManual_textF{
+		position:relative;
+		width:100%;
+		font-size:12px;
+		font-weight:bold;
+		text-align:center;
+		margin-top:10px;
+		padding-top:10px;
+		padding-bottom:10px;
+		border-top:1px solid #d6d6d6;
+	}
+
+	.MabiSkillManual_text2{
+		position:relative;
+		line-height:15px;
+		margin-left:25px;
+		margin-bottom:40px;
+	}
+
+	.MabiSkillManual_textarea{
+		width:97%;
+		height:120px;
+		overflow-x:hidden;
+		resize:none;
+		font-size:12px;
+		background:#ffffff;
+		border:1px solid gray;
+		padding:5px;
+		/*cursor:default;*/
+	}
+
+	.MabiSkillManual_Systemtable{
+		background-color:#cccccc;
+		border:1px solid #999999;
+		margin-bottom:5px;
+	}
+	.MabiSkillManual_Systemtable td{
+		text-align:center;
+	}
+	.MabiSkillManual_Systemtable tr{
+		background-color:#ffffff;
+	}
+	.MabiSkillManual_Systemtable th{
+		text-align:left;
+		font-weight:bold;
+		color:#666666;
+	}
+
+	.MabiSkillManual_noscript{
+		color:#ff0000;
+		font-weight:bold;
+		font-size:15px;
+	}
+</style>
+<script type="text/javascript">
+<!--
+var IEorGK = (document.all)?1:0;
+
+var FileIDCatalog= new Array(
+	"css_common.css","css_system.css",
+	"js_common.js","js_config.js","js_database.js","js_jquery.js",
+	"pet_input.html","skill_input.html","temp_edit.html","temp_main.html","temp_main_old.html","temp_reg.html",
+	"skin.cgi",
+	"background.gif","bar.gif","blank.gif","emblem.gif","loading.gif","icon_skill.png","ss_noimage.jpg","ui_input.png","icon_pet.png",
+	"js_scroll.js","icon_achievement.png"
+);
+
+var FileCatalog= new Array(
+	"2.30.19:2012/07/29:2,4,18",
+	"2.30.18:2012/06/08:2,4",
+	"2.30.17:2012/05/26:2,4",
+	"2.30.16:2012/05/25:2,4,18",
+	"2.30.15:2012/03/24:2,4,6,7,18",
+	"2.30.14:2012/02/17:2,4,18,21",
+	"2.30.13:2011/10/02:2,4,18",
+	"2.30.12:2011/05/19:2,4,21",
+	"2.30.11:2011/05/02:2,4",
+	"2.30.10:2011/04/20:2,4",
+	"2.30.9:2011/03/17:2,7",
+	"2.30.8:2011/02/24:2,4,18",
+	"2.30.7:2011/02/21:2,4,6",
+	"2.30.6:2010/12/20:2,4,18",
+	"2.30.5:2010/11/05:2,4",
+	"2.30.4:2010/10/28:2,4,7",
+	"2.30.3:2010/10/27:2",
+	"2.30.2:2010/10/23:2,4,7,20",
+	"2.30.1:2010/10/21:2,4,7,18",
+	"2.30.0:2010/10/02:0,2,3,4,6,7,8,9,10,11,12,20,23",
+	"2.20.0:2010/09/21:0,2,3,4,8,11,18,21",
+	"2.19.9:2010/09/10:2,4,22",
+	"2.19.8:2010/08/12:2,4",
+	"2.19.7:2010/08/08:2,8,6,7,8,11",
+	"2.19.6:2010/08/06:2,5,8,11,22",
+	"2.19.5:2010/08/04:2",
+	"2.19.4:2010/08/03:2,7",
+	"2.19.3:2010/08/01:2,4",
+	"2.19.2:2010/07/27:0,2,3,4,5,6,7,8,9,10,11,13,18,22",
+	"2.19.1:2010/07/17:0,2,4,9,10",
+	"2.19.0:2010/06/25:0,2,3,4,6,7,9,10,20,22",
+	"2.18.1:2010/06/17:2,4",
+	"2.18.0:2010/04/22:2,4,9,10,18",
+	"2.17.2:2010/03/04:2,4",
+	"2.17.1:2010/02/03:2,4",
+	"2.17.0:2010/01/28:2,4,18,21",
+	"2.16.1:2010/01/06:2",
+	"2.16.0:2009/12/20:2,4",
+	"2.15.1:2009/11/24:2,3,4",
+	"2.15.0:2009/10/29:2,4,18,21",
+	"2.14.5:2009/09/23:2,4,6,20",
+	"2.14.4:2009/09/23:2,4",
+	"2.14.3:2009/08/20:2,3,4,6,7,8,9,10,11,20",
+	"2.14.2:2009/08/10:2,4,5,6,7",
+	"2.14.1:2009/07/30:2,4,18",
+	"2.14.0:2009/07/23:0,2,4,6,7,8,9,10,11,12,21,18,19",
+	"2.14.0以前:-:-"
+);
+
+function Objects(mode,target,element,str){
+	var mode,target,element,str;
+	if(mode==1){
+		if(IEorGK){
+			eval("document.all(\""+target+"\")."+element+"=\""+str+"\";");
+		}else{
+			eval("document.getElementById(\""+target+"\")."+element+"=\""+str+"\";");
+		}
+		return false;
+	}else{
+		if(IEorGK){
+			return eval("document.all(\""+target+"\")."+element+";");
+		}else{
+			tmp = eval("document.getElementById(\""+target+"\")."+element+";");
+			if(str){
+				return tmp.replace(str,"");
+			}else{
+				return tmp;
+			}
+		}
+	}
+}
+
+function GenerateVersionList(mode){
+	if(mode){
+		SelectID = "ver_new";
+	}else{
+		SelectID = "ver_old";
+	}
+
+	document.write("<select id=\""+SelectID+"\">");
+	for(i in FileCatalog){
+		CatalogData=FileCatalog[i].split(":");
+
+		if(!mode&&i==1){
+			SelectEd = " selected";
+		}else{
+			SelectEd = "";
+		}
+
+		if(!mode&&i==0){ continue; }
+		document.write("<option value=\""+i+","+CatalogData[0]+"\""+SelectEd+">ver."+CatalogData[0]+" ("+CatalogData[1]+")</option>");
+		if(mode&&i==0){ break; }
+	}
+	document.write("</select>");
+}
+
+function GenerateFileIDTable(mode){
+	/*return_str = new Array();
+	for(i in FileIDCatalog.length){
+		return_str[i] = "0";
+	}
+	return return_str;*/
+	if(mode){
+		return new Array(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+	}else{
+		return new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+	}
+}
+
+function UpgradeFileList(ver1,ver2){
+	ver1l = FileCatalog[ver1].split(":")[2].split(",");
+	ver2l = FileCatalog[ver2].split(":")[2].split(",");
+
+	FileID1	= GenerateFileIDTable(0);
+	FileID2	= GenerateFileIDTable(0);
+
+	for(a in ver1l){ FileID1[ver1l[a]]=1; }
+	for(b in ver2l){ FileID2[ver2l[b]]=1; }
+
+	for(c in FileID3){
+		if(FileID1[c]==1 || FileID2[c]==1){
+			FileID3[c] = 1;
+		}
+	}
+}
+
+function versionFix(str) {
+	len = str.split(".");
+	if(len[2].length<2) len[2] = "0"+len[2];
+	return len[0]+"."+len[1]+"."+len[2];
+}
+
+function ListUpgradeFiles(){
+	mes	= "";
+	flg	= 1;
+	ver1	= Objects(0,"ver_new","value").split(",");
+	ver2	= Objects(0,"ver_old","value").split(",");
+
+	if(versionFix(ver1[1])<versionFix(ver2[1]) || ver1[1]==ver2[1]){
+		mes +=ver2[1]+" から "+ver1[1]+" へはバージョンアップできません。";
+		flg = 0;
+	}
+	if(ver2[0]==(FileCatalog.length-1)){
+		mes +="比較：【"+ver2[1]+" ⇒ "+ver1[1]+"】\\n";
+		mes +="バージョンアップするには全ファイルを更新する必要があります。";
+		flg = 0;
+	}
+
+	if(flg){
+		FileID3	= GenerateFileIDTable(0);
+
+		if(ver1[0]==0 && ver2[0]==1){
+			ver1l = FileCatalog[0].split(":")[2].split(",");
+			for(a in ver1l){ FileID3[ver1l[a]]=1; }
+		}else{
+			for(i=ver1[0];i<(eval(ver2[0])+0);i++){ UpgradeFileList(i,eval(i+1)); }
+		}
+
+		mes +="比較：【"+ver2[1]+" ⇒ "+ver1[1]+"】\\n";
+		mes +="以下がバージョンアップに必要なファイルです。\\n\\n";
+		for(d in FileID3){
+			if(FileID3[d]==1){
+				//mes +=FileIDCatalog[d]+"　";
+				mes +=" "+FileIDCatalog[d]+"\\n";
+			}
+		}
+	}
+
+	Objects(1,"upd_list","value",mes);
+}
+
+// -->
+</script>
+</head>
+<body>
+
+<a name="top"></a>
+<div class="MabiSkillManual_Base">
+	<div class="MabiSkillManual_textH">MabiSkillSkin -アップグレード サポートツール-</div>
+
+	<div class="MabiSkillManual_text2">
+		<noscript class="MabiSkillManual_noscript">JavaScriptを有効にしないとこのツールは使用できません。<br/><br/></noscript>
+		このツールは最新のバージョンへバージョンアップする際に上書きの必要があるファイルを表示してくれます。<br/>
+		表示するのはファイル一覧のみなので、各バージョンの注意事項は<a href="./ReadMe.html#history">更新履歴</a>をご覧下さい。
+		<table cellpadding="3" cellspacing="1" border="0" class="MabiSkillManual_Systemtable" style="margin-top:5px;">
+			<tr>
+				<th>現在ご利用のバージョン</th>
+				<td><script>GenerateVersionList(0);</script></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th>対象のバージョン</th>
+				<td><script>GenerateVersionList(1);</script></td>
+				<td><input type="button" value="チェック" onclick="ListUpgradeFiles()" /></td>
+			</tr>
+			<tr>
+				<td colspan="3"><textarea id="upd_list" class="MabiSkillManual_textarea" readonly></textarea></td>
+			</tr>
+		</table>
+		ご利用のバージョンを選択し「チェック」ボタンをクリックしてください。
+	</div>
+
+	<div class="MabiSkillManual_textF">
+		Copyright(c) MabiSkillSkin. All Rights Reserved.
+	</div>
+</div>
+</body>
+</html>

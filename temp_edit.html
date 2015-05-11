@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Language" content="ja"/>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"/>
+<meta http-equiv="Content-Style-type" content="text/css"/>
+<meta http-equiv="Content-Script-Type" content="text/javascript"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Cache-Control" content="no-cache"/>
+<script type="text/javascript">
+<!--
+var RGTSkinDir = "!skindir!";
+var NowPegeID  = "edit";
+var file_version = 20150210.000;
+// -->
+</script>
+<script type="text/javascript" charset="shift_jis" src="!skindir!/js_common.js"></script>
+<script type="text/javascript" charset="shift_jis" src="!skindir!/js_jquery.js"></script>
+<title>!cgititle! -MemberList Edit-</title>
+<style type="text/css" media="all">
+	body{
+		margin:0px;
+		overflow:hidden;
+		overflow-x:hidden;
+		overflow-y:hidden;
+		color:#333333;
+		font-size:12px;
+		font-family:"MS Gothic","ＭＳ ゴシック",arial,sans-serif;
+	}
+	div{
+		text-align:left;
+	}
+	center{
+		margin-top:30px;
+	}
+</style>
+</head>
+<body background="!skindir!/imgs/background.gif">
+<form method="POST" action="!script!" enctype="multipart/form-data">
+!hidden!
+
+<center>
+<div id="MabiSkill_form_base" class="Sprite_UIInput MabiSkill_form_base" style="background-position:-490px -743px;">
+	<div id="MabiSkill_form_area" class="MabiSkill_form_area">
+		<div class="MabiSkill_form_text0">■ !cgititle! -MemberList Edit-</div>
+
+		<div class="MabiSkill_form_text1">Attention</div>
+		<div class="MabiSkill_form_text2">
+			・★ denotes required field<br/>
+			・Note: Fields will be truncated if it exceeds the maximum character limit.<br/>
+		</div>
+
+		<div class="MabiSkill_form_text1">
+			★ Edit Character Role
+		</div>
+		<div class="MabiSkill_form_text2">
+			<select name="rank" class="MabiSkill_form_B" id="mabiskill_form_rank" onchange="ChangeRankSelectBox()">!rank!</select><br/>
+			Character Position (If Leader and Officer are taken, only Member is available)
+		</div>
+
+		<div class="MabiSkill_form_text1">
+			★ Character Name
+			<div class="MabiSkill_form_text_size">Max-18</div>
+		</div>
+		<div class="MabiSkill_form_text2">
+			<input type="text" class="MabiSkill_form_B" name="name" id="mabiskill_form_name" onblur="MaxLen('name',18,'')" value="!name!" /><br/>
+			Edit your in-game character's name
+		</div>
+
+		<div class="MabiSkill_form_text1">
+			★ Character Description<br />
+			This field appears when you hover your cursor over your character's name
+			<div class="MabiSkill_form_text_size">Max-22</div>
+		</div>
+		<div class="MabiSkill_form_text2">
+			<input type="text" class="MabiSkill_form_C" name="read" id="mabiskill_form_read" onblur="MaxLen('read',44,'')" value="!read!" /><br/>
+				Describe your character<br/>
+			Example) Beast in a Panda Robe
+			<br/>
+		</div>
+
+		<div class="MabiSkill_form_text1" id="MabiSkill_form_nameview1">Display Name</div>
+		<div class="MabiSkill_form_text2" id="MabiSkill_form_nameview2">
+			<select name="name_view" class="MabiSkill_form_B">!name_view!</select><br/>
+			You can hide the names of the characters in the character list. <br/>
+			It withholds the name and image. 
+		</div>
+
+		<div class="MabiSkill_form_text1">
+			★ Sex
+		</div>
+		<div class="MabiSkill_form_text2">
+			<select	name="sex" class="MabiSkill_form_D" id="mabiskill_form_sex">!sex!</select><br/>
+			Character Gender
+		</div>
+
+		<div class="MabiSkill_form_text1">
+			★ Race
+		</div>
+		<div class="MabiSkill_form_text2">
+			<select	name="race" id="mabiskill_form_race" class="MabiSkill_form_B">!race!</select><br/>
+			Character's Race
+		</div>
+
+		<div class="MabiSkill_form_text1">
+			A self-proclaimed Title
+			<div class="MabiSkill_form_text_size">Max-18</div>
+		</div>
+		<div class="MabiSkill_form_text2">
+			<input type="text" class="MabiSkill_form_B" name="position" id="mabiskill_form_position" onblur="MaxLen('position',18,'GuildMember');" value="!position!" /><br/>
+			Title that appears above the name and image<br/>
+		</div>
+
+		<div class="MabiSkill_form_text1">
+			Nickname
+			<div class="MabiSkill_form_text_size">Max-44</div>
+		</div>
+		<div class="MabiSkill_form_text2">
+			<input type="text" class="MabiSkill_form_C" name="nickname" id="mabiskill_form_nickname" onblur="MaxLen('nickname',44,'---');" value="!nickname!" />
+		</div>
+
+		<div class="MabiSkill_form_text1">
+			Total Lv / Total Exploration Lv
+			<div class="MabiSkill_form_text_size">Max-8/8</div>
+		</div>
+		<div class="MabiSkill_form_text2">
+			<input type="text" class="MabiSkill_form_D" name="lv" id="mabiskill_form_lv" onblur="MaxLen('lv',8,'---');" value="!lv!" />／<input type="text" class="MabiSkill_form_D" name="exp_lv" id="mabiskill_form_exp_lv" onblur="MaxLen('exp_lv',8,'---')" value="!exp_lv!" /><br/>
+			Character's Cumulative Levels
+		</div>
+
+		<div class="MabiSkill_form_text1">
+			Favorite Title
+			<div class="MabiSkill_form_text_size">Max-44</div>
+		</div>
+		<div class="MabiSkill_form_text2">
+			<input type="text" class="MabiSkill_form_C" name="lovetitle" id="mabiskill_form_lovetitle" onblur="MaxLen('lovetitle',44,'---')" value="!lovetitle!" /><br/>
+			Example) Savior of Erinn
+		</div>
+
+		<div class="MabiSkill_form_text1">
+			Activity Time
+			<div class="MabiSkill_form_text_size">Max-44</div>
+		</div>
+		<div class="MabiSkill_form_text2">
+			<input type="text" class="MabiSkill_form_C" name="logintime" id="mabiskill_form_logintime" onblur="MaxLen('logintime',44,'---')" value="!logintime!" /><br/>
+			Examples) Days and Nights, Rarely, Noon to 4pm, etc...
+		</div>
+
+		<div class="MabiSkill_form_text1">
+			Locations where you tend to hang out
+			<div class="MabiSkill_form_text_size">Max-44</div>
+		</div>
+		<div class="MabiSkill_form_text2">
+			<input type="text" class="MabiSkill_form_C" name="appear" id="mabiskill_form_appear" onblur="MaxLen('appear',44,'---')" value="!appear!" /><br/>
+			Examples) I'm all over Erinn, Dunbarton, Alby Arena, Ch3 Ciar Lobby, etc...
+		</div>
+
+		<div class="MabiSkill_form_text1">
+			Specialty or Unique Appeal
+			<div class="MabiSkill_form_text_size">Max-44</div>
+		</div>
+		<div class="MabiSkill_form_text2">
+			<input type="text" class="MabiSkill_form_C" name="appeal" id="mabiskill_form_appeal" onblur="MaxLen('appeal',44,'---')" value="!appeal!" /><br/>
+			Talent or a quality that makes you appeal to others
+		</div>
+
+		<div class="MabiSkill_form_text1">Skills/Journal Related</div>
+		<div class="MabiSkill_form_text2" style="position:relative;">
+			<input type="hidden" name="allskill" id="allskill" value="!allskill!" />
+			<input type="hidden" name="skill" id="skill" value="!skill!" />
+			<input type="hidden" name="achievement" id="achievement" value="!achievement!" />
+			Registered Skills and Achievements
+			<div style="position:absolute;top:15px;left:10px;">
+			All Skills<br/>
+			Main Skills<br/>
+			Journal
+			</div>
+			<div style="position:absolute;top:15px;left:85px;">
+			<span id="count_allskill" style="color:#993300;"></span><br/>
+			<span id="count_skill" style="color:#993300;"></span><br/>
+			<span id="count_achievement" style="color:#993300;"></span>
+			</div>
+			<br/><br/><br/><br/><br/>
+			<u>Skill Screen Display Mode</u><br/>
+			　<input type="radio" name="skill_window_mode" id="skill_window_mode0" value="0" onclick="ChangeWindowMode(0,0)" />Standard <input type="radio" name="skill_window_mode" id="skill_window_mode1" value="1" onclick="ChangeWindowMode(0,1)" />New Window<br/><br/><br/><br/>
+			<input id="skill_window_button1" style="position:absolute;top:115px;left:15px;display:block;" alt="!skindir!/skill_input.html?placeValuesBeforeTB_=savedValues&TB_iframe=true&height=538&width=501&modal=true" title="input" class="thickbox MabiSkill_form_H shadow" type="button" value="Edit Skills" />
+			<input id="skill_window_button2" style="position:absolute;top:115px;left:15px;display:none;" class="MabiSkill_form_H shadow" onclick="OpenSkillWindow('!skindir!/skill_input.html?MabiSkill_win=1')" type="button" value="Edit Skills" />
+		</div>
+
+		<div class="MabiSkill_form_text1" id="MabiSkill_form_pet1">Pets</div>
+		<div class="MabiSkill_form_text2" id="MabiSkill_form_pet2" style="position:relative;">
+			<input type="hidden" name="pet" id="pet" value="!pet!" />
+			Currently&nbsp;<span id="count_pet" style="color:#993300;"></span>&nbsp;Pets are Registered<br/><br/>
+			<u>Pet screen Display Mode</u><br/>
+			<input type="radio" name="pet_window_mode" id="pet_window_mode0" value="0" onclick="ChangeWindowMode(1,0)" />Standard <input type="radio" name="pet_window_mode" id="pet_window_mode1" value="1" onclick="ChangeWindowMode(1,1)" />Window Mode<br/><br/><br/><br/>
+			<input id="pet_window_button1" style="position:absolute;top:70px;left:15px;display:block;" alt="!skindir!/pet_input.html?placeValuesBeforeTB_=savedValues&TB_iframe=true&height=434&width=400&modal=true" title="Pet" class="thickbox" type="button" value="Edit Pets" />
+			<input id="pet_window_button2" style="position:absolute;top:70px;left:15px;display:none;" onclick="OpenPetWindow('!skindir!/pet_input.html?MabiPet_win=1')" type="button" value="Edit Pets" />
+		</div>
+
+		<div class="MabiSkill_form_text1">
+			Comments
+			<div class="MabiSkill_form_text_size">Max-112</div>
+		</div>
+		<div class="MabiSkill_form_text2">
+			<textarea class="MabiSkill_form_F" name="cmt" id="mabiskill_form_cmt" rows="4" wrap="hard" cols="56" onblur="MaxBox('cmt',56,4)" style="font-size:12px;line-height:13px;text-align:left;overflow:hidden;">!cmt!</textarea><br/>
+			Comments are up to 56 characters and 4 lines
+		</div>
+
+		<div class="MabiSkill_form_text1">Image</div>
+		<div class="MabiSkill_form_text2">
+			<span class="MabiSkill_form_img">!img!</span><br/>
+			<input type="file" class="MabiSkill_form_E" name="upfile" id="mabiskill_form_upfile" /><br/>
+			Image Size: 128px x 256px<br/>
+			Capacity!maxd!KB<br/>
+			Format!imgtype!
+		</div>
+
+		<div class="MabiSkill_form_text1">
+			Password
+			<div class="MabiSkill_form_text_size">Max-!pwdmax!</div>
+		</div>
+		<div class="MabiSkill_form_text2">
+			<input type="checkbox" name="modifypwd">Check the box, if you want to change your password<br/>
+			Current Password<input type="password" class="MabiSkill_form_G" maxlength="!pwdmax!" name="nowpwd" id="mabiskill_form_nowpwd" /><br/>
+			New Password<input type="password" class="MabiSkill_form_G" maxlength="!pwdmax!" name="newpwd" id="mabiskill_form_newpwd" /><br/>
+			(Maximum !pwdmax! Characters)
+		</div>
+
+		<div class="MabiSkill_form_text3">
+			<input type="submit" value="Submit" /> <input type="reset" value="Reset" /><br/><br/>
+			<a href="!script!"><-Back page</a>
+		</div>
+
+	</div>
+</div>
+</center>
+</form>
+</body>
+</html>

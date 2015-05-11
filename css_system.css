@@ -1,0 +1,55 @@
+@charset "shift_jis";
+/**************************************************/
+/* MabiSkill SystemPageStyleSheet                 */
+/*  Update: 19:00 2015/02/10                      */
+/**************************************************/
+
+body {
+	margin:0px;
+	background-color:#ffffff;
+	scrollbar-base-color:#ffffff;
+	scrollbar-track-color:#ffffff;
+	scrollbar-face-color:#dddddd;
+	scrollbar-highlight-color:#ffffff;
+	scrollbar-shadow-color:#ffffff;
+	scrollbar-darkshadow-color:#ffffff;
+	scrollbar-3dlight-color:#ffffff;
+	scrollbar-arrow-color:#666666;
+}
+
+table {
+	height:100%;
+	width:100%;
+}
+
+td {
+	font-family:"MS PGothic","‚l‚r ‚oƒSƒVƒbƒN", Osaka;
+	font-size:80%;
+	color:#888888;
+	line-height:140%;
+}
+
+input {
+	color:#000000;
+	border:1px solid #777777;
+	background-color:#ffffff;
+}
+
+input.submit {
+	color:#000000;
+	border:1px solid #777777;
+	background-color:#ffffff;
+}
+
+select {
+	color:#000000;
+	border:#777777;
+	background-color:#ffffff;
+}
+
+.err {
+	font-size:100%;
+	font-weight:bold;
+	color:#bb1111;
+	letter-spacing:0.08em;
+}

@@ -1,0 +1,1 @@
+This is an English localized version of the RGT skin, Mabiskillskin

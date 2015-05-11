@@ -1,0 +1,1199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Language" content="ja"/>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"/>
+<meta http-equiv="Content-Style-type" content="text/css"/>
+<meta http-equiv="Content-Script-Type" content="text/javascript"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Cache-Control" content="no-cache"/>
+<meta name="robots" content="noindex,nofollow,noarchive" />
+<script type="text/javascript">
+<!--
+var RGTSkinDir = ".";
+var NowPegeID  = "skill";
+var file_version = 20150210.001;
+// -->
+</script>
+<script type="text/javascript" charset="shift_jis" src="./js_common.js"></script>
+<title>mabinogi -Skill Input-</title>
+<style type="text/css" media="all">
+	body{
+		margin:0px;
+		overflow:hidden;
+		overflow-x:hidden;
+		overflow-y:hidden;
+		color:#ffffff;
+		font-size:11px;
+		font-family:arial,sans-serif;
+	}
+	body,div,img,select,a{
+		-moz-user-select:none;
+		-khtml-user-select:none;
+		user-select:none;
+	}
+	select{
+		font-size:10px;
+		border:0px;
+	}
+
+	a{
+		text-decoration:none;
+		color:#ffffff;
+	}
+	a:link{
+		text-decoration:none;
+		color:#ffffff;
+	}
+	a:visited{
+		text-decoration:none;
+		color:#ffffff;
+	}
+	a:hover{
+		text-decoration:none;
+		color:#ffff00;
+	}
+
+	.mabiskill_list{
+		position:absolute;
+		top:289px;
+		left:13px;
+		width:502px;
+		height:182px;
+		overflow-x:hidden;
+		overflow-y:scroll;
+	}
+</style>
+<script type="text/javascript">
+<!--
+
+var UrlQueryData	= new Array();
+var UserSkillALL	= "";
+var UserSkill8		= "";
+var SkillIcon_PushFlag	= false;
+var SkillIcon_Name	= "";
+var IEorGK		= (document.all)?1:0;
+var FFMovCount		= 0;
+var WarningFlg		= 0;
+var WindowMode		= 0;
+var InputMode		= 0;
+var MessageTimer	= new Array();
+var PreloadImages	= new Array();
+var ActiveImages	= new Array("./imgs/blank.gif","./imgs/loading.gif");
+
+if(UserBrowser[0][0]=="ie" || UserBrowser[0][0]=="ff" || UserBrowser[0][1]=="wk" || UserBrowser[0][0]=="op"){
+	if(UserBrowser[0][0]=="ie" && UserBrowser[1]<=6){
+		run_mode = false;
+	}else if(UserBrowser[0][0]=="ff" && UserBrowser[1]<=2){
+		run_mode = false;
+	}else if(UserBrowser[0][0]=="op" && UserBrowser[1]<=9){
+		run_mode = false;
+	}else{
+		run_mode = true;
+	}
+}else{
+	run_mode = false;
+}
+
+UrlQuery = location.search;
+UrlQuery = UrlQuery.substr(1,UrlQuery.length-1);
+if(UrlQuery){
+	UQstr1 = UrlQuery.split("&");
+	for(q in UQstr1){
+		UQstr2 = UQstr1[q].split("=");
+		UrlQueryData[UQstr2[0]] = UQstr2[1];
+	}
+}
+if(UrlQueryData["MabiSkill_win"]==1) WindowMode = 1;
+
+for(p in ActiveImages){
+	PreloadImages[p] = new Image();
+	PreloadImages[p].src = ActiveImages[p];
+}
+
+function GetUserSkillData(){
+	if(!WindowMode){
+		UserSkillALL	= window.parent.document.getElementById("allskill").value;
+		UserSkill8	= window.parent.document.getElementById("skill").value;
+		UserAchievement	= window.parent.document.getElementById("achievement").value;
+		UserRace	= window.parent.document.getElementById("mabiskill_form_race").value;
+	}else{
+		UserSkillALL	= window.opener.document.getElementById("allskill").value;
+		UserSkill8	= window.opener.document.getElementById("skill").value;
+		UserAchievement	= window.opener.document.getElementById("achievement").value;
+		UserRace	= window.opener.document.getElementById("mabiskill_form_race").value;
+	}
+}
+function LoadUserSkill(){
+	var i,T01,T02,T03,T04;
+
+	if(UserSkillALL!=""){
+		T01=UserSkillALL.split("/");
+		for(i in T01){
+			if(typeof T01[i] == "undefined") continue;
+			T02=T01[i].split(":");
+			if(T02[1]=="x"){T03=0;};if(T02[1]=="y"){T03=1;}if(T02[1]=="z"){T03=2;};if(T02[1]=="f"){T03=3;};if(T02[1]=="e"){T03=4;};if(T02[1]=="d"){T03=5;};if(T02[1]=="c"){T03=6;};if(T02[1]=="b"){T03=7;};if(T02[1]=="a"){T03=8;};if(T02[1]=="9"){T03=9;};if(T02[1]=="8"){T03=10;};if(T02[1]=="7"){T03=11;};if(T02[1]=="6"){T03=12;};if(T02[1]=="5"){T03=13;};if(T02[1]=="4"){T03=14;};if(T02[1]=="3"){T03=15;};if(T02[1]=="2"){T03=16;};if(T02[1]=="1"){T03=17;};if(T02[1]=="0"){T03=18;};if(T02[1]=="-1"){T03=19;};if(T02[1]=="-2"){T03=20;};if(T02[1]=="-3"){T03=21;};
+			if(T02[1]=="y"){
+				Objects(1,"mabiskill_listsel_"+T02[0]+"","options["+T03+"].selected","true");
+			}else{
+				Objects(1,"mabiskill_listsel_"+T02[0]+"","options["+(T03-1)+"].selected","true");
+			}
+		}
+	}
+	if(UserSkill8 != ""){
+		T01=UserSkill8.split("/");
+		for(i in T01){
+			T02=T01[i].split(":");
+			if(typeof T01[i] == "undefined") continue;
+			IconPosition = mss_skill[T02[0]].pos.split(":");
+			Objects(1,"mabiskill_inputicon"+i+"","style.backgroundPosition","-"+IconPosition[0]+"px -"+IconPosition[1]+"px");
+			Objects(1,"mabiskill_inputicon"+i+"","name",T02[0]);
+		}
+	}
+	return false;
+}
+function LoadUserAchievement(){
+	var i,T01,T02,T03,T04;
+
+	if(UserAchievement!=""){
+		T01=UserAchievement.split("/");
+		for(i in T01){
+			if(typeof T01[i] == "undefined") continue;
+			Objects(1,"mabiskill_listsel_"+T01[i]+"","options[1].selected","true");
+		}
+	}
+	return false;
+}
+function SaveUserSkill(){
+	if(InputMode){
+		EncodeUserAchievementData();
+		if(!WindowMode){
+			window.parent.document.getElementById("achievement").value	= UserAchievement;
+		}else{
+			window.opener.document.getElementById("achievement").value	= UserAchievement;
+		}
+		WriteMessage("Journal Saved!",4000);
+	}else{
+		EncodeUserSkillData();
+		if(!WindowMode){
+			window.parent.document.getElementById("allskill").value	= UserSkillALL;
+			window.parent.document.getElementById("skill").value	= UserSkill8;
+		}else{
+			window.opener.document.getElementById("allskill").value	= UserSkillALL;
+			window.opener.document.getElementById("skill").value	= UserSkill8;
+		}
+		WriteMessage("Skills Saved!",4000);
+	}
+	UserSaveedSkillCount();
+	if(!InputMode) ResetUserSkill8();
+	LoadUserSkill();
+	return false;
+}
+function UndoUserSkill(){
+	if(InputMode){
+		GetUserSkillData();
+		GenerateAchievementIcons();
+		LoadUserAchievement();
+		WriteMessage("Journal Reloaded!",4000);
+	}else{
+		ResetUserSkill8();
+		GetUserSkillData();
+		GenerateSkillIcons();
+		LoadUserSkill();
+		WriteMessage("Skills Reloaded!",4000);
+	}
+}
+function ResetUserSkill(){
+	if(InputMode){
+		UserAchievement="";
+		GenerateAchievementIcons();
+		WriteMessage("Journal Reset!",4000);
+	}else{
+		UserSkillALL="";
+		UserSkill8="";
+		GenerateSkillIcons();
+		ResetUserSkill8();
+		WriteMessage("Skills Reset!",4000);
+	}
+	return false;
+}
+function ResetUserSkill8(){
+	var i;
+
+	for(i=0;i<8;i++){
+		Objects(1,"mabiskill_inputicon"+i+"","style.backgroundPosition","-2px -2px");
+		Objects(1,"mabiskill_inputicon"+i+"","name","sk00000");
+	}
+}
+function EncodeUserSkillData(){
+	var i,T01,T02,T03;
+
+	T01="";
+	for(i in mss_skill){
+		if(mss_skill[i].cat!=0){
+			T02=Objects(0,"mabiskill_listsel_"+i+"","value","");
+			mss_skill[i].temp = T02;
+			if(T02!="x"){
+				if(T01!=""){T01=T01+"/";};
+				T01=T01+i+":"+T02;
+			}
+		}
+	}
+	UserSkillALL=T01;
+
+	T01="";
+	for(i=0; i<8; i++){
+		T02=Objects(0,"mabiskill_inputicon"+i+"","name","");
+		if((mss_skill[T02].temp!="x")&&(T02!="sk00000")){
+			T03=T01.split("/");
+			double_flg=0;
+			for(c in T03) if(T03[c].split(":")[0] == T02) double_flg=1;
+			if(!double_flg){
+				if(T01!=""){T01=T01+"/";};
+				T01=T01+T02+":"+mss_skill[T02].temp;
+			}
+		}
+	}
+
+	UserSkill8=T01;
+	return false;
+}
+function EncodeUserAchievementData(){
+	var i,T01,T02;
+
+	T01="";
+	for(i in mss_achievement){
+		if(mss_achievement[i].cat!=0){
+			T02=Objects(0,"mabiskill_listsel_"+i+"","value","");
+			if(T02=="1"){
+				if(T01!=""){T01=T01+"/";};
+				T01=T01+i;
+			}
+		}
+	}
+	UserAchievement=T01;
+	return false;
+}
+function UserSaveedSkillCount(){
+	var T01,T02,T03;
+
+	if(!WindowMode){
+		UsrSkillData1 = window.parent.document.getElementById("allskill").value;
+		UsrSkillData2 = window.parent.document.getElementById("skill").value;
+		UsrAchievementData = window.parent.document.getElementById("achievement").value;
+	}else{
+		UsrSkillData1 = window.opener.document.getElementById("allskill").value;
+		UsrSkillData2 = window.opener.document.getElementById("skill").value;
+		UsrAchievementData = window.opener.document.getElementById("achievement").value;
+	}
+
+	if(UsrSkillData1==""){
+		SaveSkillCount1=0;
+	}else{
+		SaveSkillCount1=UsrSkillData1.split("/").length;
+	}
+	if(UsrSkillData2==""){
+		SaveSkillCount2=0;
+	}else{
+		SaveSkillCount2=UsrSkillData2.split("/").length;
+	}
+	if(UsrAchievementData==""){
+		SaveAchievementCount=0;
+	}else{
+		SaveAchievementCount=UsrAchievementData.split("/").length;
+	}
+
+	SaveSkillCount1 = SaveSkillCount1+"";
+	SaveSkillCount2 = SaveSkillCount2+"";
+	SaveAchievementCount = SaveAchievementCount+"";
+
+	if(!WindowMode){
+		window.parent.document.getElementById("count_allskill").innerHTML	= SaveSkillCount1;
+		window.parent.document.getElementById("count_skill").innerHTML		= SaveSkillCount2;
+		window.parent.document.getElementById("count_achievement").innerHTML		= SaveAchievementCount;
+	}else{
+		window.opener.document.getElementById("count_allskill").innerHTML	= SaveSkillCount1;
+		window.opener.document.getElementById("count_skill").innerHTML		= SaveSkillCount2;
+		window.opener.document.getElementById("count_achievement").innerHTML		= SaveAchievementCount;
+	}
+}
+
+function ButtonRollover(ch,mode){
+	if(ch=="0"){
+		if(mode=="1"){ ButtonPosition = input_sprite["close-1"]; }
+		if(mode=="2"){ ButtonPosition = input_sprite["close-2"]; }
+		ButtonTarget = "mabiskill_close";
+	}
+	if(ch=="1"){
+		if(mode=="1"){ ButtonPosition = input_sprite["btn01-1"]; }
+		if(mode=="2"){ ButtonPosition = input_sprite["btn01-2"]; }
+		if(mode=="3"){ ButtonPosition = input_sprite["btn01-3"]; }
+		ButtonTarget = "mabiskill_button01";
+	}
+	if(ch=="2"){
+		if(mode=="1"){ ButtonPosition = input_sprite["btn02-1"]; }
+		if(mode=="2"){ ButtonPosition = input_sprite["btn02-2"]; }
+		if(mode=="3"){ ButtonPosition = input_sprite["btn02-3"]; }
+		ButtonTarget = "mabiskill_button02";
+	}
+	if(ch=="3"){
+		if(mode=="1"){ ButtonPosition = input_sprite["btn03-1"]; }
+		if(mode=="2"){ ButtonPosition = input_sprite["btn03-2"]; }
+		if(mode=="3"){ ButtonPosition = input_sprite["btn03-3"]; }
+		ButtonTarget = "mabiskill_button03";
+	}
+	if(ch=="4"){
+		if(mode=="1"){ ButtonPosition = input_sprite["btn05-1"]; }
+		if(mode=="2"){ ButtonPosition = input_sprite["btn05-2"]; }
+		if(mode=="3"){ ButtonPosition = input_sprite["btn05-3"]; }
+		ButtonTarget = "mabiskill_button04";
+	}
+	if(ch=="5"){
+		if(mode=="1"){ ButtonPosition = input_sprite["btn06-1"]; }
+		if(mode=="2"){ ButtonPosition = input_sprite["btn06-2"]; }
+		if(mode=="3"){ ButtonPosition = input_sprite["btn06-3"]; }
+		ButtonTarget = "mabiskill_button05";
+	}
+
+	Objects(1,ButtonTarget,"style.backgroundPosition","-"+ButtonPosition[0]+"px -"+ButtonPosition[1]+"px");
+
+}
+
+function SkillTabChange(ch,Targetch,TabPosition){
+	SkillListTabIndex = new Array(0,11,10,9,8,7,6,5,4,3,2,1);
+	var RaceFlg = 0;
+
+	if(InputMode){
+		if(ch>7) return false;
+		TabSpriteName = "achievementlist";
+	}else{
+		TabSpriteName = "skilllist";
+	}
+
+	if(ch=="00"){
+		SkillListView	= new Array(1,0,0,0,0,0,0,0,0,0,0,0);
+	}
+	if(ch=="01"){
+		TabPosition	= new Array(input_sprite[TabSpriteName+"_tab1"],input_sprite[TabSpriteName+"_tabb1"]);
+		SkillListView	= new Array(0,1,0,0,0,0,0,0,0,0,0,0);
+	}
+	if(ch=="02"){
+		TabPosition	= new Array(input_sprite[TabSpriteName+"_tab2"],input_sprite[TabSpriteName+"_tabb2"]);
+		SkillListView	= new Array(0,0,1,0,0,0,0,0,0,0,0,0);
+	}
+	if(ch=="03"){
+		TabPosition	= new Array(input_sprite[TabSpriteName+"_tab3"],input_sprite[TabSpriteName+"_tabb3"]);
+		SkillListView	= new Array(0,0,0,1,0,0,0,0,0,0,0,0);
+	}
+	if(ch=="04"){
+		TabPosition	= new Array(input_sprite[TabSpriteName+"_tab4"],input_sprite[TabSpriteName+"_tabb4"]);
+		SkillListView	= new Array(0,0,0,0,1,0,0,0,0,0,0,0);
+	}
+	if(ch=="05"){
+		TabPosition	= new Array(input_sprite[TabSpriteName+"_tab5"],input_sprite[TabSpriteName+"_tabb5"]);
+		if(!InputMode && UserRace!="Human"){
+			RaceFlg = 1;
+			WriteInnerHTML("This skill is configurable only for Humans.<br />Close this window and refer to the (Race) setting of your character, if you want to use it.","mabiskill_skilllist00");
+			SkillTabChange("00",ch,TabPosition);
+		}else{
+			SkillListView	= new Array(0,0,0,0,0,1,0,0,0,0,0,0);
+		}
+	}
+	if(ch=="06"){
+		TabPosition	= new Array(input_sprite[TabSpriteName+"_tab6"],input_sprite[TabSpriteName+"_tabb6"]);
+		if(!InputMode && UserRace!="Human"){
+			RaceFlg = 1;
+			WriteInnerHTML("This skill is configurable only for Humans.<br/>Close this window and refer to the (Race) setting of your character, if you want to use it.","mabiskill_skilllist00");
+			SkillTabChange("00",ch,TabPosition);
+		}else{
+			SkillListView	= new Array(0,0,0,0,0,0,1,0,0,0,0,0);
+		}
+	}
+	if(ch=="07"){
+		TabPosition	= new Array(input_sprite[TabSpriteName+"_tab7"],input_sprite[TabSpriteName+"_tabb7"]);
+		if(!InputMode && UserRace!="Elf"){
+			RaceFlg = 1;
+			WriteInnerHTML("This skill is only for Elves.<br/>Close this window and refer to the (Race) setting, if you want to use it.","mabiskill_skilllist00");
+			SkillTabChange("00",ch,TabPosition);
+		}else{
+			SkillListView	= new Array(0,0,0,0,0,0,0,1,0,0,0,0);
+		}
+	}
+	if(ch=="08"){
+		TabPosition	= new Array(input_sprite[TabSpriteName+"_tab8"],input_sprite[TabSpriteName+"_tabb8"]);
+		if(!InputMode && UserRace!="Giant"){
+			RaceFlg = 1;
+			WriteInnerHTML("This skill is only for Giants.<br/>Close this window and refer to the (Race) setting, if you want to use it.","mabiskill_skilllist00");
+			SkillTabChange("00",ch,TabPosition);
+		}else{
+			SkillListView	= new Array(0,0,0,0,0,0,0,0,1,0,0,0);
+		}
+	}
+	if(ch=="09"){
+		TabPosition	= new Array(input_sprite[TabSpriteName+"_tab9"],input_sprite[TabSpriteName+"_tabb9"]);
+		SkillListView	= new Array(0,0,0,0,0,0,0,0,0,1,0,0);
+	}
+	if(ch=="10"){
+		TabPosition	= new Array(input_sprite[TabSpriteName+"_tab10"],input_sprite[TabSpriteName+"_tabb10"]);
+		SkillListView	= new Array(0,0,0,0,0,0,0,0,0,0,1,0);
+	}
+	if(ch=="11"){
+		TabPosition	= new Array(input_sprite[TabSpriteName+"_tab11"],input_sprite[TabSpriteName+"_tabb11"]);
+		SkillListView	= new Array(0,0,0,0,0,0,0,0,0,0,0,1);
+	}
+
+	if(RaceFlg==0){
+		for(i=0;i<SkillListView.length;i++){
+			if(i<=9){
+				ls = "0"+i;
+			}else{
+				ls = i;
+			}
+			if(SkillListView[i]==1){
+				SkillListDisplayMode = "block";
+				if(Targetch){
+					lsn = Targetch;
+				}else{
+					lsn = ls;
+				}
+				if(Objects(4,"mabiskill_tab"+lsn)){
+					Objects(1,"mabiskill_tab"+lsn,"style.zIndex",11);
+					Objects(1,"mabiskill_tab"+lsn,"style.backgroundPosition","-"+TabPosition[0][0]+"px -"+TabPosition[0][1]+"px");
+				}
+			}else{
+				SkillListDisplayMode = "none";
+				if(Objects(4,"mabiskill_tab"+ls)){
+					if(Targetch!=ls){
+						Objects(1,"mabiskill_tab"+ls,"style.zIndex",SkillListTabIndex[i]);
+						Objects(1,"mabiskill_tab"+ls,"style.backgroundPosition","-"+input_sprite[TabSpriteName+"_tabb"+i][0]+"px -"+input_sprite[TabSpriteName+"_tabb"+i][1]+"px");
+					}
+				}
+			}
+			Objects(1,"mabiskill_skilllist"+ls,"style.display",SkillListDisplayMode);
+		}
+	}
+}
+
+function SkillIconMove(str){
+	//if(!document.all) event.preventDefault();
+
+	SkillIcon_PushFlag	= true;
+	SkillIcon_Name		= str;
+
+	if(SkillIcon_Name == "sk00001"){
+		InputIconPosition = new Array("34","2");
+	}else{
+		InputIconPosition = mss_skill[SkillIcon_Name].pos.split(":");
+	}
+
+	Objects(1,"mabiskill_moving","style.backgroundPosition","-"+InputIconPosition[0]+"px -"+InputIconPosition[1]+"px");
+	if(IEorGK){
+		Objects(1,"mabiskill_moving","style.posLeft",(event.clientX + document.body.scrollLeft - 15));
+		Objects(1,"mabiskill_moving","style.posTop",(event.clientY + document.body.scrollTop - 15));
+		Objects(1,"mabiskill_moving","style.display","block");
+	}
+	return false;
+}
+function SkillIconMoving(e){
+	if(SkillIcon_PushFlag){
+		if(IEorGK){
+			Objects(1,"mabiskill_moving","style.posLeft",(event.clientX + document.body.scrollLeft - 15));
+			Objects(1,"mabiskill_moving","style.posTop",(event.clientY + document.body.scrollTop - 15));
+		}else{
+			FFMovCount=1;
+			window.getSelection().removeAllRanges();
+			if(FFMovCount==1){ Objects(1,"mabiskill_moving","style.display","block"); }
+			Objects(1,"mabiskill_moving","style.left",(e.pageX + document.body.scrollLeft -15)+"px");
+			Objects(1,"mabiskill_moving","style.top",(e.pageY + document.body.scrollTop -15)+"px");
+			FFMovCount++;
+		}
+	}
+	return false;
+}
+function SkillIconMouseUp(e){
+	var T01,T02,IconDropX,IconDropY;
+
+	if(IEorGK){
+		IconDropX = event.x;
+		IconDropY = event.y;
+	}else{
+		IconDropX = e.pageX;
+		IconDropY = e.pageY;
+	}
+
+	if(IconDropX<=0 || IconDropY<=0) return false;
+
+	if(SkillIcon_PushFlag){
+		Objects(1,"mabiskill_moving","style.display","none");
+		Objects(1,"mabiskill_moving","style.backgroundPosition","-2px -2px");
+
+		if(IEorGK){
+			if((IconDropX>19&&IconDropX<49)&&(IconDropY>489&&IconDropY<519)) T01 = "mabiskill_inputicon0";
+			if((IconDropX>58&&IconDropX<87)&&(IconDropY>489&&IconDropY<519)) T01 = "mabiskill_inputicon1";
+			if((IconDropX>97&&IconDropX<127)&&(IconDropY>489&&IconDropY<519)) T01 = "mabiskill_inputicon2";
+			if((IconDropX>136&&IconDropX<166)&&(IconDropY>489&&IconDropY<519)) T01 = "mabiskill_inputicon3";
+			if((IconDropX>175&&IconDropX<205)&&(IconDropY>489&&IconDropY<519)) T01 = "mabiskill_inputicon4";
+			if((IconDropX>214&&IconDropX<244)&&(IconDropY>489&&IconDropY<519)) T01 = "mabiskill_inputicon5";
+			if((IconDropX>253&&IconDropX<283)&&(IconDropY>489&&IconDropY<519)) T01 = "mabiskill_inputicon6";
+			if((IconDropX>292&&IconDropX<322)&&(IconDropY>489&&IconDropY<519)) T01 = "mabiskill_inputicon7";
+		}else{
+			T01=document.elementFromPoint(IconDropX,IconDropY).id;
+		}
+
+		T02=T01.substr(0,19);
+		if((T02=="mabiskill_inputicon")&&(SkillIcon_PushFlag)){
+			if(SkillIcon_Name == "sk00001"){
+				SkillIconPosition = new Array("2","2");
+				SkillIcon_Name = "sk00000";
+			}else{
+				SkillIconPosition = mss_skill[SkillIcon_Name].pos.split(":");
+			}
+			Objects(1,T01,"style.backgroundPosition","-"+SkillIconPosition[0]+"px -"+SkillIconPosition[1]+"px");
+			Objects(1,T01,"name",SkillIcon_Name);
+		}
+		SkillIcon_PushFlag = false;
+		if(!IEorGK){ FFMovCount = 0; }
+	}
+	return false;
+}
+function SkillIconDelete(str){
+	str.style.backgroundPosition = "-2px -2px"
+	str.name = "sk00000";
+	return false;
+}
+
+function GenerateSkillIconTable(skid,skselbox,skx,sky){
+	if(IEorGK){
+		SkillNameFontSize = "10px";
+		SkillNamePosition = "top:3px;left:42px;";
+	}else{
+		SkillNameFontSize = "10px";
+		SkillNamePosition = "top:3px;left:42px;";
+	}
+
+	//English pls -Aska-
+	//SkillNameView = mss_skill[skid].name.ja;
+	SkillNameView = mss_skill[skid].name.en;
+	if(Jstrlen(SkillNameView)>=24) SkillNameView = ConvertKana(SkillNameView,1);
+
+	SkillIconPosition = mss_skill[skid].pos.split(":");
+	sklist ="<div id=\"mabiskill_skilllen_"+skid+"\" class=\"Sprite_UIInput font2\" oncontextmenu=\"SkillInfo('"+skid+":0',0);\" style=\"position:absolute;top:"+skx+"px;left:"+sky+"px;width:160px;height:34px;background-position:-227px -623px;\">\n";
+	sklist+="<div id=\"mabiskill_listicon_"+skid+"\" class=\"Sprite_SkillIcon\" onmousedown=\"SkillIconMove('"+skid+"');return false\" style=\"position:absolute;top:2px;left:2px;width:30px;height:30px;background-position:-"+SkillIconPosition[0]+"px -"+SkillIconPosition[1]+"px;cursor:move;\"></div>\n";
+	sklist+="<div id=\"mabiskill_listmes1_"+skid+"\" style=\"cursor:default;position:absolute;"+SkillNamePosition+"font-size:"+SkillNameFontSize+";\" onmousedown=\"return false\">"+SkillNameView+"</div>\n";
+	sklist+="<div id=\"mabiskill_listmes2_"+skid+"\" style=\"position:absolute;top:16px;left:42px;\">\n";
+	sklist+="<select name=\"mabiskill_listsel_"+skid+"\" id=\"mabiskill_listsel_"+skid+"\" style=\"cursor:pointer;width:55px;height:16px;/*background-color:#1d7aa6;color:#ffffff;border:1px solid #0c3345;*/\">"+skselbox+"</select>\n";
+	sklist+="</div>\n</div>\n";
+	return sklist;
+}
+function GenerateSkillIcons(){
+	SRS=new Array();
+	SRS["x"]="<option value=\"x\">Unlearned</option>";
+	SRS["z"]="<option value=\"z\">Novice</option>";
+	SRS["y"]="<option value=\"y\">Learned</option>";
+	SRS["f"]="<option value=\"f\">F</option>";
+	SRS["e"]="<option value=\"e\">E</option>";
+	SRS["d"]="<option value=\"d\">D</option>";
+	SRS["c"]="<option value=\"c\">C</option>";
+	SRS["b"]="<option value=\"b\">B</option>";
+	SRS["a"]="<option value=\"a\">A</option>";
+	SRS["9"]="<option value=\"9\">9</option>";
+	SRS["8"]="<option value=\"8\">8</option>";
+	SRS["7"]="<option value=\"7\">7</option>";
+	SRS["6"]="<option value=\"6\">6</option>";
+	SRS["5"]="<option value=\"5\">5</option>";
+	SRS["4"]="<option value=\"4\">4</option>";
+	SRS["3"]="<option value=\"3\">3</option>";
+	SRS["2"]="<option value=\"2\">2</option>";
+	SRS["1"]="<option value=\"1\">1</option>";
+	SRS["0"]="<option value=\"0\">Master</option>";
+	SRS["-1"]="<option value=\"-1\">1st Dan</option>";
+	SRS["-2"]="<option value=\"-2\">2nd Dan</option>";
+	SRS["-3"]="<option value=\"-3\">3rd Dan</option>";
+
+	var sklist01=sklist02=sklist03=sklist04=sklist05=sklist06=sklist07=sklist08=sklist09=sklist10=sklist11=sklist12="";
+	var sktab="";
+	var sktab_info=new Array(0,0,0);
+	var v=new Array(1,162,323);
+	var sklx=new Array(0,-37,-37,-37,-37,-37,-37,-37,-37,-37,-37,-37,0);
+	var skly=new Array(0,1,1,1,1,1,1,1,1,1,1,1,0);
+	var sklc=new Array(0,0,0,0,0,0,0,0,0,0,0,0,0);
+	for(s in mss_skill){
+		if(mss_skill[s].cat!=0){
+			RankSelect="";
+			if(mss_skill[s].type == "Action" || (mss_skill[s].cat==10 && mss_skill[s].type == "Active")){
+				RankSelect+=SRS["x"]+SRS["y"];
+			}else{
+				skRank=mss_skill[s].rank;
+				if(skRank=="x"){ RankSelect+=SRS["x"]; }
+				if(skRank=="z"){ RankSelect+=SRS["x"]+SRS["z"]; }
+				if(skRank=="f"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]; }
+				if(skRank=="e"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]; }
+				if(skRank=="d"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]; }
+				if(skRank=="c"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]+SRS["c"]; }
+				if(skRank=="b"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]+SRS["c"]+SRS["b"]; }
+				if(skRank=="a"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]+SRS["c"]+SRS["b"]+SRS["a"]; }
+				if(skRank=="9"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]+SRS["c"]+SRS["b"]+SRS["a"]+SRS["9"]; }
+				if(skRank=="8"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]+SRS["c"]+SRS["b"]+SRS["a"]+SRS["9"]+SRS["8"]; }
+				if(skRank=="7"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]+SRS["c"]+SRS["b"]+SRS["a"]+SRS["9"]+SRS["8"]+SRS["7"]; }
+				if(skRank=="6"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]+SRS["c"]+SRS["b"]+SRS["a"]+SRS["9"]+SRS["8"]+SRS["7"]+SRS["6"]; }
+				if(skRank=="5"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]+SRS["c"]+SRS["b"]+SRS["a"]+SRS["9"]+SRS["8"]+SRS["7"]+SRS["6"]+SRS["5"]; }
+				if(skRank=="4"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]+SRS["c"]+SRS["b"]+SRS["a"]+SRS["9"]+SRS["8"]+SRS["7"]+SRS["6"]+SRS["5"]+SRS["4"]; }
+				if(skRank=="3"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]+SRS["c"]+SRS["b"]+SRS["a"]+SRS["9"]+SRS["8"]+SRS["7"]+SRS["6"]+SRS["5"]+SRS["4"]+SRS["3"]; }
+				if(skRank=="2"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]+SRS["c"]+SRS["b"]+SRS["a"]+SRS["9"]+SRS["8"]+SRS["7"]+SRS["6"]+SRS["5"]+SRS["4"]+SRS["3"]+SRS["2"]; }
+				if(skRank=="1"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]+SRS["c"]+SRS["b"]+SRS["a"]+SRS["9"]+SRS["8"]+SRS["7"]+SRS["6"]+SRS["5"]+SRS["4"]+SRS["3"]+SRS["2"]+SRS["1"]; }
+				if(skRank=="0"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]+SRS["c"]+SRS["b"]+SRS["a"]+SRS["9"]+SRS["8"]+SRS["7"]+SRS["6"]+SRS["5"]+SRS["4"]+SRS["3"]+SRS["2"]+SRS["1"]+SRS["0"]; }
+				if(skRank=="-1"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]+SRS["c"]+SRS["b"]+SRS["a"]+SRS["9"]+SRS["8"]+SRS["7"]+SRS["6"]+SRS["5"]+SRS["4"]+SRS["3"]+SRS["2"]+SRS["1"]+SRS["0"]+SRS["-1"]; }
+				if(skRank=="-2"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]+SRS["c"]+SRS["b"]+SRS["a"]+SRS["9"]+SRS["8"]+SRS["7"]+SRS["6"]+SRS["5"]+SRS["4"]+SRS["3"]+SRS["2"]+SRS["1"]+SRS["0"]+SRS["-1"]+SRS["-2"]; }
+				if(skRank=="-3"){ RankSelect+=SRS["x"]+SRS["z"]+SRS["f"]+SRS["e"]+SRS["d"]+SRS["c"]+SRS["b"]+SRS["a"]+SRS["9"]+SRS["8"]+SRS["7"]+SRS["6"]+SRS["5"]+SRS["4"]+SRS["3"]+SRS["2"]+SRS["1"]+SRS["0"]+SRS["-1"]+SRS["-2"]+SRS["-3"]; }
+			}
+
+			if(mss_skill[s].cat==1){
+				if((sklc[1]%3)==0){
+					sklx[1]=sklx[1]+37;
+					skly[1]=1;
+				}
+				if(!sklc[1]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["skilllist_tab1"][2];
+					sktab+="<div id=\"mabiskill_tab01\" onclick=\"SkillTabChange('01')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["skilllist_tab1"][2]+"px;height:"+input_sprite["skilllist_tab1"][3]+"px;background-position:-"+input_sprite["skilllist_tab1"][0]+"px -"+input_sprite["skilllist_tab1"][1]+"px;z-index:11;\"></div>";
+				}
+				sklist01+=GenerateSkillIconTable(s,RankSelect,sklx[1],skly[1]);
+				skly[1]=skly[1]+161;
+				sklc[1]++;
+			}
+			if(mss_skill[s].cat==2){
+				if((sklc[2]%3)==0){
+					sklx[2]=sklx[2]+37;
+					skly[2]=1;
+				}
+				if(!sklc[2]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["skilllist_tabb2"][2];
+					sktab+="<div id=\"mabiskill_tab02\" onclick=\"SkillTabChange('02')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["skilllist_tabb2"][2]+"px;height:"+input_sprite["skilllist_tabb2"][3]+"px;background-position:-"+input_sprite["skilllist_tabb2"][0]+"px -"+input_sprite["skilllist_tabb2"][1]+"px;z-index:10;\"></div>";
+				}
+				sklist02+=GenerateSkillIconTable(s,RankSelect,sklx[2],skly[2]);
+				skly[2]=skly[2]+161;
+				sklc[2]++;
+			}
+			if(mss_skill[s].cat==3){
+				if((sklc[3]%3)==0){
+					sklx[3]=sklx[3]+37;
+					skly[3]=1;
+				}
+				if(!sklc[3]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["skilllist_tabb3"][2];
+					sktab+="<div id=\"mabiskill_tab03\" onclick=\"SkillTabChange('03')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["skilllist_tabb3"][2]+"px;height:"+input_sprite["skilllist_tabb3"][3]+"px;background-position:-"+input_sprite["skilllist_tabb3"][0]+"px -"+input_sprite["skilllist_tabb3"][1]+"px;z-index:9;\"></div>";
+				}
+				sklist03+=GenerateSkillIconTable(s,RankSelect,sklx[3],skly[3]);
+				skly[3]=skly[3]+161;
+				sklc[3]++;
+			}
+			if(mss_skill[s].cat==4){
+				if((sklc[4]%3)==0){
+					sklx[4]=sklx[4]+37;
+					skly[4]=1;
+				}
+				if(!sklc[4]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["skilllist_tabb4"][2];
+					sktab+="<div id=\"mabiskill_tab04\" onclick=\"SkillTabChange('04')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["skilllist_tabb4"][2]+"px;height:"+input_sprite["skilllist_tabb4"][3]+"px;background-position:-"+input_sprite["skilllist_tabb4"][0]+"px -"+input_sprite["skilllist_tabb4"][1]+"px;z-index:8;\"></div>";
+				}
+				sklist04+=GenerateSkillIconTable(s,RankSelect,sklx[4],skly[4]);
+				skly[4]=skly[4]+161;
+				sklc[4]++;
+			}
+			if(mss_skill[s].cat==5){
+				if((sklc[5]%3)==0){
+					sklx[5]=sklx[5]+37;
+					skly[5]=1;
+				}
+				if(!sklc[5]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["skilllist_tabb5"][2];
+					sktab+="<div id=\"mabiskill_tab05\" onclick=\"SkillTabChange('05')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["skilllist_tabb5"][2]+"px;height:"+input_sprite["skilllist_tabb5"][3]+"px;background-position:-"+input_sprite["skilllist_tabb5"][0]+"px -"+input_sprite["skilllist_tabb5"][1]+"px;z-index:7;\"></div>";
+				}
+				sklist05+=GenerateSkillIconTable(s,RankSelect,sklx[5],skly[5]);
+				skly[5]=skly[5]+161;
+				sklc[5]++;
+			}
+			if(mss_skill[s].cat==6){
+				if((sklc[6]%3)==0){
+					sklx[6]=sklx[6]+37;
+					skly[6]=1;
+				}
+				if(!sklc[6]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["skilllist_tabb6"][2];
+					sktab+="<div id=\"mabiskill_tab06\" onclick=\"SkillTabChange('06')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["skilllist_tabb6"][2]+"px;height:"+input_sprite["skilllist_tabb6"][3]+"px;background-position:-"+input_sprite["skilllist_tabb6"][0]+"px -"+input_sprite["skilllist_tabb6"][1]+"px;z-index:6;\"></div>";
+				}
+				sklist06+=GenerateSkillIconTable(s,RankSelect,sklx[6],skly[6]);
+				skly[6]=skly[6]+161;
+				sklc[6]++;
+			}
+			if(mss_skill[s].cat==7){
+				if((sklc[7]%3)==0){
+					sklx[7]=sklx[7]+37;
+					skly[7]=1;
+				}
+				if(!sklc[7]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["skilllist_tabb7"][2];
+					sktab+="<div id=\"mabiskill_tab07\" onclick=\"SkillTabChange('07')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["skilllist_tabb7"][2]+"px;height:"+input_sprite["skilllist_tabb7"][3]+"px;background-position:-"+input_sprite["skilllist_tabb7"][0]+"px -"+input_sprite["skilllist_tabb7"][1]+"px;z-index:5;\"></div>";
+				}
+				sklist07+=GenerateSkillIconTable(s,RankSelect,sklx[7],skly[7]);
+				skly[7]=skly[7]+161;
+				sklc[7]++;
+			}
+			if(mss_skill[s].cat==8){
+				if((sklc[8]%3)==0){
+					sklx[8]=sklx[8]+37;
+					skly[8]=1;
+				}
+				if(!sklc[8]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["skilllist_tabb8"][2];
+					sktab+="<div id=\"mabiskill_tab08\" onclick=\"SkillTabChange('08')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["skilllist_tabb8"][2]+"px;height:"+input_sprite["skilllist_tabb8"][3]+"px;background-position:-"+input_sprite["skilllist_tabb8"][0]+"px -"+input_sprite["skilllist_tabb8"][1]+"px;z-index:4;\"></div>";
+				}
+				sklist08+=GenerateSkillIconTable(s,RankSelect,sklx[8],skly[8]);
+				skly[8]=skly[8]+161;
+				sklc[8]++;
+			}
+			if(mss_skill[s].cat==9){
+				if((sklc[9]%3)==0){
+					sklx[9]=sklx[9]+37;
+					skly[9]=1;
+				}
+				if(!sklc[9]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["skilllist_tabb9"][2];
+					sktab+="<div id=\"mabiskill_tab09\" onclick=\"SkillTabChange('09')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["skilllist_tabb9"][2]+"px;height:"+input_sprite["skilllist_tabb9"][3]+"px;background-position:-"+input_sprite["skilllist_tabb9"][0]+"px -"+input_sprite["skilllist_tabb9"][1]+"px;z-index:3;\"></div>";
+				}
+				sklist09+=GenerateSkillIconTable(s,RankSelect,sklx[9],skly[9]);
+				skly[9]=skly[9]+161;
+				sklc[9]++;
+			}
+			if(mss_skill[s].cat==10){
+				if((sklc[10]%3)==0){
+					sklx[10]=sklx[10]+37;
+					skly[10]=1;
+				}
+				if(!sklc[10]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["skilllist_tabb10"][2];
+					sktab+="<div id=\"mabiskill_tab10\" onclick=\"SkillTabChange('10')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["skilllist_tabb10"][2]+"px;height:"+input_sprite["skilllist_tabb10"][3]+"px;background-position:-"+input_sprite["skilllist_tabb10"][0]+"px -"+input_sprite["skilllist_tabb10"][1]+"px;z-index:2;\"></div>";
+				}
+				sklist10+=GenerateSkillIconTable(s,RankSelect,sklx[10],skly[10]);
+				skly[10]=skly[10]+161;
+				sklc[10]++;
+			}
+			if(mss_skill[s].cat==11){
+				if((sklc[11]%3)==0){
+					sklx[11]=sklx[11]+37;
+					skly[11]=1;
+				}
+				if(!sklc[11]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["skilllist_tabb11"][2];
+					sktab+="<div id=\"mabiskill_tab11\" onclick=\"SkillTabChange('11')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["skilllist_tabb11"][2]+"px;height:"+input_sprite["skilllist_tabb11"][3]+"px;background-position:-"+input_sprite["skilllist_tabb11"][0]+"px -"+input_sprite["skilllist_tabb11"][1]+"px;z-index:1;\"></div>";
+				}
+				sklist11+=GenerateSkillIconTable(s,RankSelect,sklx[11],skly[11]);
+				skly[11]=skly[11]+161;
+				sklc[11]++;
+			}
+		}
+	}
+
+	WriteInnerHTML(sktab,"mabiskill_tab");
+	WriteInnerHTML(sklist01,"mabiskill_skilllist01");
+	WriteInnerHTML(sklist02,"mabiskill_skilllist02");
+	WriteInnerHTML(sklist03,"mabiskill_skilllist03");
+	WriteInnerHTML(sklist04,"mabiskill_skilllist04");
+	WriteInnerHTML(sklist05,"mabiskill_skilllist05");
+	WriteInnerHTML(sklist06,"mabiskill_skilllist06");
+	WriteInnerHTML(sklist07,"mabiskill_skilllist07");
+	WriteInnerHTML(sklist08,"mabiskill_skilllist08");
+	WriteInnerHTML(sklist09,"mabiskill_skilllist09");
+	WriteInnerHTML(sklist10,"mabiskill_skilllist10");
+	WriteInnerHTML(sklist11,"mabiskill_skilllist11");
+}
+
+function GenerateAchievementIconTable(skid,skselbox,skx,sky){
+	if(IEorGK){
+		SkillNameFontSize = "10px";
+		SkillNamePosition = "top:3px;left:42px;";
+	}else{
+		SkillNameFontSize = "10px";
+		SkillNamePosition = "top:3px;left:42px;";
+	}
+
+	SkillNameView = mss_achievement[skid].name;
+	if(Jstrlen(SkillNameView)>=24) SkillNameView = ConvertKana(SkillNameView,1);
+
+	SkillIconPosition = mss_achievement[skid].pos.split(":");
+	sklist ="<div id=\"mabiskill_skilllen_"+skid+"\" class=\"Sprite_UIInput font2\" style=\"position:absolute;top:"+skx+"px;left:"+sky+"px;width:160px;height:34px;background-position:-227px -623px;\">\n";
+	sklist+="<div id=\"mabiskill_listicon_"+skid+"\" class=\"Sprite_AchievementIcon\" style=\"position:absolute;top:2px;left:2px;width:30px;height:30px;background-position:-"+SkillIconPosition[0]+"px -"+SkillIconPosition[1]+"px;\"></div>\n";
+	sklist+="<div id=\"mabiskill_listmes1_"+skid+"\" style=\"cursor:default;position:absolute;"+SkillNamePosition+"font-size:"+SkillNameFontSize+";\" onmousedown=\"return false\">"+SkillNameView+"</div>\n";
+	sklist+="<div id=\"mabiskill_listmes2_"+skid+"\" style=\"position:absolute;top:16px;left:42px;\">\n";
+	sklist+="<select name=\"mabiskill_listsel_"+skid+"\" id=\"mabiskill_listsel_"+skid+"\" style=\"position:absolute;top:-1px;left:60px;cursor:pointer;width:55px;height:16px;/*background-color:#218cbe;color:#ffffff;*/\">"+skselbox+"</select>\n";
+	sklist+="</div>\n</div>\n";
+	return sklist;
+}
+function GenerateAchievementIcons(){
+	SelectBoxOp="<option value=\"0\">N/A</option><option value=\"1\">Earned</option>";
+
+	var sklist01=sklist02=sklist03=sklist04=sklist05=sklist06=sklist07="";
+	var sktab="";
+	var sktab_info=new Array(0,0,0);
+	var v=new Array(1,162,323);
+	var sklx=new Array(0,-37,-37,-37,-37,-37,-37,-37,-37,-37,-37,-37,0);
+	var skly=new Array(0,1,1,1,1,1,1,1,1,1,1,1,0);
+	var sklc=new Array(0,0,0,0,0,0,0,0,0,0,0,0,0);
+	for(s in mss_achievement){
+		if(mss_achievement[s].cat!=0){
+			if(mss_achievement[s].cat==1){
+				if((sklc[1]%3)==0){
+					sklx[1]=sklx[1]+37;
+					skly[1]=1;
+				}
+				if(!sklc[1]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["achievementlist_tab1"][2];
+					sktab+="<div id=\"mabiskill_tab01\" onclick=\"SkillTabChange('01')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["achievementlist_tab1"][2]+"px;height:"+input_sprite["achievementlist_tab1"][3]+"px;background-position:-"+input_sprite["achievementlist_tab1"][0]+"px -"+input_sprite["achievementlist_tab1"][1]+"px;z-index:11;\"></div>";
+				}
+				sklist01+=GenerateAchievementIconTable(s,SelectBoxOp,sklx[1],skly[1]);
+				skly[1]=skly[1]+161;
+				sklc[1]++;
+			}
+			if(mss_achievement[s].cat==2){
+				if((sklc[2]%3)==0){
+					sklx[2]=sklx[2]+37;
+					skly[2]=1;
+				}
+				if(!sklc[2]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["achievementlist_tabb2"][2];
+					sktab+="<div id=\"mabiskill_tab02\" onclick=\"SkillTabChange('02')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["achievementlist_tabb2"][2]+"px;height:"+input_sprite["achievementlist_tabb2"][3]+"px;background-position:-"+input_sprite["achievementlist_tabb2"][0]+"px -"+input_sprite["achievementlist_tabb2"][1]+"px;z-index:10;\"></div>";
+				}
+				sklist02+=GenerateAchievementIconTable(s,SelectBoxOp,sklx[2],skly[2]);
+				skly[2]=skly[2]+161;
+				sklc[2]++;
+			}
+			if(mss_achievement[s].cat==3){
+				if((sklc[3]%3)==0){
+					sklx[3]=sklx[3]+37;
+					skly[3]=1;
+				}
+				if(!sklc[3]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["achievementlist_tabb3"][2];
+					sktab+="<div id=\"mabiskill_tab03\" onclick=\"SkillTabChange('03')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["achievementlist_tabb3"][2]+"px;height:"+input_sprite["achievementlist_tabb3"][3]+"px;background-position:-"+input_sprite["achievementlist_tabb3"][0]+"px -"+input_sprite["achievementlist_tabb3"][1]+"px;z-index:9;\"></div>";
+				}
+				sklist03+=GenerateAchievementIconTable(s,SelectBoxOp,sklx[3],skly[3]);
+				skly[3]=skly[3]+161;
+				sklc[3]++;
+			}
+			if(mss_achievement[s].cat==4){
+				if((sklc[4]%3)==0){
+					sklx[4]=sklx[4]+37;
+					skly[4]=1;
+				}
+				if(!sklc[4]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["achievementlist_tabb4"][2];
+					sktab+="<div id=\"mabiskill_tab04\" onclick=\"SkillTabChange('04')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["achievementlist_tabb4"][2]+"px;height:"+input_sprite["achievementlist_tabb4"][3]+"px;background-position:-"+input_sprite["achievementlist_tabb4"][0]+"px -"+input_sprite["achievementlist_tabb4"][1]+"px;z-index:8;\"></div>";
+				}
+				sklist04+=GenerateAchievementIconTable(s,SelectBoxOp,sklx[4],skly[4]);
+				skly[4]=skly[4]+161;
+				sklc[4]++;
+			}
+			if(mss_achievement[s].cat==5){
+				if((sklc[5]%3)==0){
+					sklx[5]=sklx[5]+37;
+					skly[5]=1;
+				}
+				if(!sklc[5]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["achievementlist_tabb5"][2];
+					sktab+="<div id=\"mabiskill_tab05\" onclick=\"SkillTabChange('05')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["achievementlist_tabb5"][2]+"px;height:"+input_sprite["achievementlist_tabb5"][3]+"px;background-position:-"+input_sprite["achievementlist_tabb5"][0]+"px -"+input_sprite["achievementlist_tabb5"][1]+"px;z-index:7;\"></div>";
+				}
+				sklist05+=GenerateAchievementIconTable(s,SelectBoxOp,sklx[5],skly[5]);
+				skly[5]=skly[5]+161;
+				sklc[5]++;
+			}
+			if(mss_achievement[s].cat==6){
+				if((sklc[6]%3)==0){
+					sklx[6]=sklx[6]+37;
+					skly[6]=1;
+				}
+				if(!sklc[6]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["achievementlist_tabb6"][2];
+					sktab+="<div id=\"mabiskill_tab06\" onclick=\"SkillTabChange('06')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["achievementlist_tabb6"][2]+"px;height:"+input_sprite["achievementlist_tabb6"][3]+"px;background-position:-"+input_sprite["achievementlist_tabb6"][0]+"px -"+input_sprite["achievementlist_tabb6"][1]+"px;z-index:6;\"></div>";
+				}
+				sklist06+=GenerateAchievementIconTable(s,SelectBoxOp,sklx[6],skly[6]);
+				skly[6]=skly[6]+161;
+				sklc[6]++;
+			}
+			if(mss_achievement[s].cat==7){
+				if((sklc[7]%3)==0){
+					sklx[7]=sklx[7]+37;
+					skly[7]=1;
+				}
+				if(!sklc[7]){
+					if(sktab) sktab_info[0]=(parseInt(sktab_info[0])+parseInt(sktab_info[1])-6);
+					sktab_info[1]=input_sprite["achievementlist_tabb7"][2];
+					sktab+="<div id=\"mabiskill_tab07\" onclick=\"SkillTabChange('07')\" class=\"Sprite_UIInput\" style=\"cursor:pointer;position:absolute;left:"+sktab_info[0]+"px;top:0px;width:"+input_sprite["achievementlist_tabb7"][2]+"px;height:"+input_sprite["achievementlist_tabb7"][3]+"px;background-position:-"+input_sprite["achievementlist_tabb7"][0]+"px -"+input_sprite["achievementlist_tabb7"][1]+"px;z-index:5;\"></div>";
+				}
+				sklist07+=GenerateAchievementIconTable(s,SelectBoxOp,sklx[7],skly[7]);
+				skly[7]=skly[7]+161;
+				sklc[7]++;
+			}
+		}
+	}
+
+	WriteInnerHTML(sktab,"mabiskill_tab");
+	WriteInnerHTML(sklist01,"mabiskill_skilllist01");
+	WriteInnerHTML(sklist02,"mabiskill_skilllist02");
+	WriteInnerHTML(sklist03,"mabiskill_skilllist03");
+	WriteInnerHTML(sklist04,"mabiskill_skilllist04");
+	WriteInnerHTML(sklist05,"mabiskill_skilllist05");
+	WriteInnerHTML(sklist06,"mabiskill_skilllist06");
+	WriteInnerHTML(sklist07,"mabiskill_skilllist07");
+}
+
+function WriteMessage(str,num){
+	var str,num;
+
+	if(str) clearInterval(MessageTimer[0]);
+
+	if(str==1||!str){
+		if(InputMode){
+			str = "A total of "+(mss_dbinfo.achievement.count)+" achievements can be registered.";
+		}else{
+			str = "A total of "+(mss_dbinfo.skill.count-mss_dbinfo.skill.msscount)+" skills can be registered.";
+		}
+	}
+
+	mes_count = 0;
+	write_mes = str;
+	WriteMessageType();
+
+	if(num) MessageTimer[0] = setTimeout("WriteMessage(1,0)",num);
+}
+
+function WriteMessageType(){
+	var str;
+
+	clearInterval(MessageTimer[1]);
+
+	mes_count++;
+	WriteInnerHTML(write_mes.substring(0,mes_count),"mabiskill_message");
+	if(mes_count<write_mes.length){
+		MessageTimer[1] = setTimeout("WriteMessageType()",15);
+	}
+}
+
+function SkillWindowClose(){
+	if(!WindowMode){
+		self.parent.tb_remove();
+	}else{
+		window.close();
+	}
+}
+
+function InfoKeyShortcut(){
+	InfoMes  = "You can use the shortcut key for skill list input.\n\n";
+	InfoMes += "　E = Close the Preferences window skills\n";
+	InfoMes += "　S = Save the skillset\n";
+	InfoMes += "　R = Reload skillset before returning\n";
+	InfoMes += "　C = Reset Skillset\n";
+	InfoMes += "　M = Skill Input/Journal Input Switch\n";
+	InfoMes += "　1 = View 'Life' Tab\n";
+	InfoMes += "　2 = View 'Combat' Tab\n";
+	InfoMes += "　3 = View 'Magic' Tab\n";
+	InfoMes += "　4 = View 'Alchemy' Tab\n";
+	InfoMes += "　5 = View 'Paladin' Tab\n";
+	InfoMes += "　6 = View 'Dark Knight' Tab\n";
+	InfoMes += "　7 = View 'Falcon' Tab\n";
+	InfoMes += "　8 = View 'Beast' Tab\n";
+	InfoMes += "　9 = View 'DemiGod' Tab\n";
+	InfoMes += "　0 = View 'Actions' Tab";
+	InfoMes += "　- = View Tab #11 ";
+	alert(InfoMes);
+}
+
+function ButtonClickEmulate(ch,mode){
+	if(mode){
+		ButtonRollover(ch,3);
+		clearInterval(MessageTimer[2]);
+		MessageTimer[2] = setTimeout("ButtonClickEmulate("+ch+",0)",350);
+	}else{
+		ButtonRollover(ch,1);
+	}
+}
+
+function ModeChange(mode){
+	if(mode){
+		InputMode = 1;
+		Objects(1,"mabiskill_windowicon","style.display","block");
+		Objects(1,"mabiskill_windowtext","style.display","block");
+		Objects(1,"mabiskill_inputicon_mask","style.display","block");
+		Objects(1,"mabiskill_button04","style.display","none");
+		Objects(1,"mabiskill_button05","style.display","block");
+		GenerateAchievementIcons();
+		LoadUserAchievement();
+		SkillTabChange("01");
+		WriteMessage("",0);
+	}else{
+		InputMode = 0;
+		Objects(1,"mabiskill_windowicon","style.display","none");
+		Objects(1,"mabiskill_windowtext","style.display","none");
+		Objects(1,"mabiskill_inputicon_mask","style.display","none");
+		Objects(1,"mabiskill_button04","style.display","block");
+		Objects(1,"mabiskill_button05","style.display","none");
+		GenerateSkillIcons();
+		LoadUserSkill();
+		SkillTabChange("01");
+		WriteMessage("",0);
+	}
+}
+
+function UsrKeyPress(e){
+	UsrKey = String.fromCharCode(GetKeyCode(e));
+
+	if(DebugMode){
+		if(UsrKey=="l"){ window.location.reload(); }
+		//if(UsrKey=="d"){ SkillTabChange("00"); }
+	}
+
+	if(UsrKey=="h") InfoKeyShortcut();
+	if(UsrKey=="e") SkillWindowClose();
+	if(UsrKey=="s") ButtonClickEmulate(1,1);SaveUserSkill();
+	if(UsrKey=="r") ButtonClickEmulate(2,1);UndoUserSkill();
+	if(UsrKey=="c") ButtonClickEmulate(3,1);ResetUserSkill();
+	if(AchievementMode && UsrKey=="m"){
+		if(InputMode){
+			ModeChange(0);
+		}else{
+			ModeChange(1);
+		}
+	}
+	if(UsrKey=="1") SkillTabChange("01");
+	if(UsrKey=="2") SkillTabChange("02");
+	if(UsrKey=="3") SkillTabChange("03");
+	if(UsrKey=="4") SkillTabChange("04");
+	if(UsrKey=="5") SkillTabChange("05");
+	if(UsrKey=="6") SkillTabChange("06");
+	if(UsrKey=="7") SkillTabChange("07");
+	if(UsrKey=="8") SkillTabChange("08");
+	if(UsrKey=="9") SkillTabChange("09");
+	if(UsrKey=="0") SkillTabChange("10");
+	if(UsrKey=="-") SkillTabChange("11");
+}
+
+function LoadingImage(mode){
+	if(mode){
+		Objects(1,"mabiskill_loading","style.display","block");
+	}else{
+		Objects(1,"mabiskill_loading","style.display","none");
+	}
+}
+
+function PageLoaded(){
+	if(!run_mode){
+		if(!confirm("There is a possibility that mabiskillskin will not work properly with your browser. \nContinue？")){ SkillWindowClose(); }
+	}else{
+		if(UserBrowser[0][0]=="op"){
+			alert("Depending on your 'Opera' settings, removing your 'Main Skills' with Right-Click may fail.\nIf you want to remove one, please double-click.");
+		}
+	}
+
+	if(MabiSkillCheck()){ SkillWindowClose(); }
+	MabiSkillCopy = "<a href=\""+MabiSkillUrl+"\" title=\""+MabiSkillUrl+"\" target=\"_blank\">RGT Skin “MabiSkillSkin” [Ver "+MabiSkillVer+"]</a>";
+	WriteInnerHTML(MabiSkillCopy,"mabiskill_copyright");
+
+	if(!IEorGK){
+		Objects(1,"mabiskill_message","style.fontSize","10px");
+		Objects(1,"mabiskill_message","style.top","239px");
+		Objects(1,"mabiskill_copyright","style.fontSize","10px");
+	}
+
+	if(!WindowMode){
+		OwnerWinHeight = window.parent.document.documentElement.clientHeight;
+	}else{
+		OwnerWinHeight = 600;
+	}
+	if(OwnerWinHeight<400){
+		alert("With your current resolution or brower size, you will not be able to make part of your skill set.\nPlease increase the size of the browser or use a high resolution display.\n\nPlease press the [E] key if you want to close this window after input.");
+		WarningFlg = 2;
+	}else if(OwnerWinHeight<=568){
+		alert("Due to your current resolution or browser size, you will be unable to use some features.\nPlease increase the size of the browser or use a high resolution display.\n\nPlease press the [E] key if you want to close this window after input.");
+		WarningFlg = 1;
+	}
+	//Objects(1,"mabiskill_loading","style.backgroundImage",ActiveImages[1]);
+
+	if(!AchievementMode) Objects(1,"mabiskill_button04","style.display","none");
+
+	ResetUserSkill8();
+	GetUserSkillData();
+	GenerateSkillIcons();
+	LoadUserSkill();
+	//LoadingImage(0);
+
+	WriteMessage("Page loading complete!",2500);
+
+	addEvent(document,"mouseup",SkillIconMouseUp);
+	addEvent(document,"mousemove",SkillIconMoving);
+	addEvent(document,"keypress",UsrKeyPress);
+}
+
+// -->
+</script>
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+<div id="mabiskill_base" class="Sprite_UIInput" style="position:absolute;top:0px;left:0px;width:530px;height:550px;background-position:-5px -5px;">
+	<!-- <div id="mabiskill_loading" style="position:absolute;top:11px;left:290px;width:208px;height:13px;cursor:wait;" title="Loading..."></div> -->
+	<div id="mabiskill_windowicon" class="Sprite_UIInput" style="display:none;position:absolute;top:5px;left:7px;width:20px;height:24px;background-position:-540px -531px;"></div>
+	<div id="mabiskill_windowtext" class="Sprite_UIInput" style="display:none;position:absolute;top:4px;left:30px;width:150px;height:28px;background-position:-565px -531px;"></div>
+	<div id="mabiskill_close" class="Sprite_UIInput" onmouseover="ButtonRollover(0,2)" onmouseout="ButtonRollover(0,1)" onclick="SkillWindowClose()" title="Close" style="cursor:pointer;position:absolute;top:7px;left:513px;width:8px;height:8px;background-position:-227px -717px;"></div>
+	<div id="mabiskill_message" style="cursor:default;position:absolute;top:239px;left:8px;width:279px;height:17px;font-size:10px;padding-top:3px;padding-left:4px;">Initializing....</div>
+	<div id="mabiskill_button01" class="Sprite_UIInput" onmouseover="ButtonRollover(1,2)" onmouseout="ButtonRollover(1,1)" onmousedown="ButtonRollover(1,3)" onmouseup="ButtonRollover(1,2)" onclick="SaveUserSkill()" style="cursor:pointer;position:absolute;top:236px;left:299px;width:70px;height:24px;background-position:-10px -623px;"></div>
+	<div id="mabiskill_button02" class="Sprite_UIInput" onmouseover="ButtonRollover(2,2)" onmouseout="ButtonRollover(2,1)" onmousedown="ButtonRollover(2,3)" onmouseup="ButtonRollover(2,2)" onclick="UndoUserSkill()" style="cursor:pointer;position:absolute;top:236px;left:374px;width:70px;height:24px;background-position:-10px -652px;"></div>
+	<div id="mabiskill_button03" class="Sprite_UIInput" onmouseover="ButtonRollover(3,2)" onmouseout="ButtonRollover(3,1)" onmousedown="ButtonRollover(3,3)" onmouseup="ButtonRollover(3,2)" onclick="ResetUserSkill()" style="cursor:pointer;position:absolute;top:236px;left:449px;width:70px;height:24px;background-position:-10px -681px;"></div>
+	<div id="mabiskill_button04" class="Sprite_UIInput" onmouseover="ButtonRollover(4,2)" onmouseout="ButtonRollover(4,1)" onmousedown="ButtonRollover(4,3)" onmouseup="ButtonRollover(4,2)" onclick="ModeChange(1)" style="display:block;cursor:pointer;position:absolute;top:5px;left:430px;width:70px;height:24px;background-position:-227px -734px;"></div>
+	<div id="mabiskill_button05" class="Sprite_UIInput" onmouseover="ButtonRollover(5,2)" onmouseout="ButtonRollover(5,1)" onmousedown="ButtonRollover(5,3)" onmouseup="ButtonRollover(5,2)" onclick="ModeChange(0)" style="display:none;cursor:pointer;position:absolute;top:5px;left:430px;width:70px;height:24px;background-position:-227px -763px;"></div>
+	<div id="mabiskill_tab" style="position:absolute;top:265px;left:12px;width:442px;height:16px;"></div>
+	<div id="mabiskill_skilllist00" class="mabiskill_list" style="display:none;"></div>
+	<div id="mabiskill_skilllist01" class="mabiskill_list" style="display:block;"></div>
+	<div id="mabiskill_skilllist02" class="mabiskill_list" style="display:none;"></div>
+	<div id="mabiskill_skilllist03" class="mabiskill_list" style="display:none;"></div>
+	<div id="mabiskill_skilllist04" class="mabiskill_list" style="display:none;"></div>
+	<div id="mabiskill_skilllist05" class="mabiskill_list" style="display:none;"></div>
+	<div id="mabiskill_skilllist06" class="mabiskill_list" style="display:none;"></div>
+	<div id="mabiskill_skilllist07" class="mabiskill_list" style="display:none;"></div>
+	<div id="mabiskill_skilllist08" class="mabiskill_list" style="display:none;"></div>
+	<div id="mabiskill_skilllist09" class="mabiskill_list" style="display:none;"></div>
+	<div id="mabiskill_skilllist10" class="mabiskill_list" style="display:none;"></div>
+	<div id="mabiskill_skilllist11" class="mabiskill_list" style="display:none;"></div>
+	<div id="mabiskill_inputicon0" name="sk00000" class="Sprite_SkillIcon" oncontextmenu="SkillIconDelete(this);return false" ondblclick="SkillIconDelete(this)" style="position:absolute;top:489px;left:19px;width:30px;height:30px;background-position:-2px -2px;"></div>
+	<div id="mabiskill_inputicon1" name="sk00000" class="Sprite_SkillIcon" oncontextmenu="SkillIconDelete(this);return false" ondblclick="SkillIconDelete(this)" style="position:absolute;top:489px;left:58px;width:30px;height:30px;background-position:-2px -2px;"></div>
+	<div id="mabiskill_inputicon2" name="sk00000" class="Sprite_SkillIcon" oncontextmenu="SkillIconDelete(this);return false" ondblclick="SkillIconDelete(this)" style="position:absolute;top:489px;left:97px;width:30px;height:30px;background-position:-2px -2px;"></div>
+	<div id="mabiskill_inputicon3" name="sk00000" class="Sprite_SkillIcon" oncontextmenu="SkillIconDelete(this);return false" ondblclick="SkillIconDelete(this)" style="position:absolute;top:489px;left:136px;width:30px;height:30px;background-position:-2px -2px;"></div>
+	<div id="mabiskill_inputicon4" name="sk00000" class="Sprite_SkillIcon" oncontextmenu="SkillIconDelete(this);return false" ondblclick="SkillIconDelete(this)" style="position:absolute;top:489px;left:175px;width:30px;height:30px;background-position:-2px -2px;"></div>
+	<div id="mabiskill_inputicon5" name="sk00000" class="Sprite_SkillIcon" oncontextmenu="SkillIconDelete(this);return false" ondblclick="SkillIconDelete(this)" style="position:absolute;top:489px;left:214px;width:30px;height:30px;background-position:-2px -2px;"></div>
+	<div id="mabiskill_inputicon6" name="sk00000" class="Sprite_SkillIcon" oncontextmenu="SkillIconDelete(this);return false" ondblclick="SkillIconDelete(this)" style="position:absolute;top:489px;left:253px;width:30px;height:30px;background-position:-2px -2px;"></div>
+	<div id="mabiskill_inputicon7" name="sk00000" class="Sprite_SkillIcon" oncontextmenu="SkillIconDelete(this);return false" ondblclick="SkillIconDelete(this)" style="position:absolute;top:489px;left:292px;width:30px;height:30px;background-position:-2px -2px;"></div>
+	<div id="mabiskill_inputicon_mask" class="opacity60" style="display:none;position:absolute;top:474px;left:13px;width:502px;height:53px;background-color:#000000;"></div>
+	<div id="mabiskill_copyright" style="position:absolute;top:530px;left:0px;width:100%;height:15px;text-align:center;font-size:10px;"></div>
+	<div id="mabiskill_skillinfo" class="Sprite_UIInput opacity font1" style="display:none;position:absolute;top:0px;left:0px;width:360px;height:300px;background-position:-540px -5px;color:#ffffff;z-index:254;">
+		<div id="mabiskill_skillinfo_close" class="Sprite_UIInput" onmouseover="SkillInfoCloseButton(2)" onmouseout="SkillInfoCloseButton(1)" onmousedown="SkillInfoCloseButton(3)" onmouseup="SkillInfoCloseButton(2)" onclick="Objects(1,'mabiskill_skillinfo','style.display','none');" style="cursor:pointer;position:absolute;top:268px;left:145px;width:70px;height:19px;background-position:-10px -710px;"></div>
+		<div id="mabiskill_skillinfo_icon" class="Sprite_SkillIcon" style="position:absolute;top:67px;left:167px;width:30px;height:30px;background-position:-2px -2px;"></div>
+		<div id="mabiskill_skillinfo_text1" style="cursor:default;position:absolute;top:32px;left:0px;width:360px;font-size:11px;font-weight:bold;text-align:center;"></div>
+		<div id="mabiskill_skillinfo_text2" style="cursor:default;position:absolute;top:45px;left:0px;width:360px;font-size:15px;font-weight:bold;text-align:center;"></div>
+		<div id="mabiskill_skillinfo_text3" style="cursor:default;position:absolute;top:108px;left:12px;width:339px;height:150px;overflow-x:hidden;overflow-y:scroll;line-height:15px;"></div>
+	</div>
+	<div id="mabiskill_moving" class="Sprite_SkillIcon" style="position:absolute;left:0;top:-50;width:30px;height:30px;background-position:-2px -2px;display:none;cursor:move;"></div>
+</div>
+</body>
+</html>

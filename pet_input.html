@@ -1,0 +1,568 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Language" content="ja"/>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"/>
+<meta http-equiv="Content-Style-type" content="text/css"/>
+<meta http-equiv="Content-Script-Type" content="text/javascript"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Cache-Control" content="no-cache"/>
+<meta name="robots" content="noindex,nofollow,noarchive" />
+<script type="text/javascript">
+<!--
+var RGTSkinDir = ".";
+var NowPegeID  = "pet";
+var file_version = 20150210.000;
+// -->
+</script>
+<script type="text/javascript" charset="shift_jis" src="./js_common.js"></script>
+<title>mabinogi -Pets-</title>
+<style type="text/css" media="all">
+	body{
+		margin:0px;
+		overflow:hidden;
+		overflow-x:hidden;
+		overflow-y:hidden;
+		color:#ffffff;
+		font-size:11px;
+		font-family:arial,sans-serif;
+	}
+	body,div,img,select,a{
+		-moz-user-select:none;
+		-khtml-user-select:none;
+		user-select:none;
+	}
+	input{
+		font-size:12px;
+		border:0px;
+	}
+	select{
+		font-size:10px;
+		border:0px;
+	}
+	option{
+		background-color:#128cbe;
+		color:#ffffff;
+	}
+
+	a{
+		text-decoration:none;
+		color:#ffffff;
+	}
+	a:link{
+		text-decoration:none;
+		color:#ffffff;
+	}
+	a:visited{
+		text-decoration:none;
+		color:#ffffff;
+	}
+	a:hover{
+		text-decoration:none;
+		color:#ffff00;
+	}
+</style>
+<script type="text/javascript">
+<!--
+
+var UrlQueryData	= new Array();
+var UserPets		= "";
+var UserPetsBackup	= "";
+var PetSelectData	= "";
+var PetTabPosition	= 1;
+var IEorGK		= (document.all)?1:0;
+var WarningFlg		= 0;
+var WindowMode		= 0;
+var KeyShortcutFlg	= 0;
+var EscapeText		= new Array("\<","\>","\"","'","\/","\,");
+var MessageTimer	= new Array();
+var PreloadImages	= new Array();
+var PetInfoMessage	= new Array();
+var ActiveImages	= new Array("./imgs/blank.gif","./imgs/loading.gif");
+var mabipet_form_data	= "";
+
+if(UserBrowser[0][0]=="ie" || UserBrowser[0][0]=="ff" || UserBrowser[0][1]=="wk" || UserBrowser[0][0]=="op"){
+	if(UserBrowser[0][0]=="ie" && UserBrowser[1]<=6){
+		run_mode = false;
+	}else if(UserBrowser[0][0]=="ff" && UserBrowser[1]<=2){
+		run_mode = false;
+	}else if(UserBrowser[0][0]=="op" && UserBrowser[1]<=9){
+		run_mode = false;
+	}else{
+		run_mode = true;
+	}
+}else{
+	run_mode = false;
+}
+
+PetInfoMessage[0] = "";
+PetInfoMessage[1] = "-Register a new pet-**Instructions*　1. Enter the name of the pet.*　2.Select pet species.*　３．Press the REGISTER Button to register pet.**Changes are applied immediately, Close the window when finished.";
+PetInfoMessage[2] = "-Edit a pet-**Instructions*　１．Select pet you want to edit from Registered Pet List*　２．Modify name or species.*　３．Press EDIT Button to apply changes.**Changes are applied immediately, Close the window when finished.";
+PetInfoMessage[3] = "-Remove a pet-**Instructions*　１．Select pet you want to remove from Registered Pet List*　２．Press the CLEAR Button to remove pet.**Changes are applied immediately, Close the window when finished.";
+
+UrlQuery = location.search;
+UrlQuery = UrlQuery.substr(1,UrlQuery.length-1);
+if(UrlQuery){
+	UQstr1 = UrlQuery.split("&");
+	for(q in UQstr1){
+		UQstr2 = UQstr1[q].split("=");
+		UrlQueryData[UQstr2[0]] = UQstr2[1];
+	}
+}
+if(UrlQueryData["MabiPet_win"]==1){
+	WindowMode = 1;
+}
+
+for(p in ActiveImages){
+	PreloadImages[p] = new Image();
+	PreloadImages[p].src = ActiveImages[p];
+}
+
+function GetUserPetData(){
+	if(!WindowMode){
+		UserPets	= window.parent.document.getElementById("pet").value;
+	}else{
+		UserPets	= window.opener.document.getElementById("pet").value;
+	}
+	UserPetsBackup		= UserPets;
+}
+function LoadUserPet(){
+	var i,T01,T02,T03,T04;
+
+	if(UserPets!=""){
+		WriteInnerHTML("","mabipet_list");
+		UserRegedPetData = "";
+		T01=UserPets.split("/");
+		petx=-50;
+		pety=3;
+		petc=0;
+		for(i in T01){
+			if(i>0){
+				T02=T01[i].split(":");
+				if((petc%2)==0){
+					petx=petx+53;
+					pety=3;
+				}
+				UserRegedPetData+=GeneratePetIconTable(T02[0],T02[1],T02[2],new Array(petx,pety));
+				pety=pety+193;
+				petc++;
+			}
+		}
+		WriteInnerHTML(UserRegedPetData,"mabipet_list");
+	}
+	return false;
+}
+function PetResist(){
+	get_petname = Objects(0,"mabipet_form_name_usr","value","");
+	get_petrace = Objects(0,"mabipet_form_race_usr","value","");
+
+	if(!get_petname){
+		alert("Pet's name has not been entered.");return false;
+	}
+	if(InputStrCheck(get_petname)){
+		alert("Contains one or more characters that are not allowed.");return false;
+	}
+
+	UserPetNum	= UserPets.split("/");
+	if(!UserPetNum[0]){
+		NewPetNo = 1;
+	}else{
+		NewPetNo = eval(UserPetNum[0])+1;
+	}
+	NewPetLen	= "/"+NewPetNo+":"+get_petrace+":"+EscapeStr(get_petname,1);
+	UserPets	= UserPets+NewPetLen;
+	UserPets	= PetDataReplace(UserPetNum[0]+"/",NewPetNo+"/");
+
+	LoadUserPet();
+	PetFinish(1);
+}
+function PetEdit(){
+	if(!PetSelectData){
+		alert("Please select the pet from the Registered Pet list.");return false;
+	}
+
+	get_petname = Objects(0,"mabipet_form_name_usr","value","");
+	get_petrace = Objects(0,"mabipet_form_race_usr","value","");
+
+	if(!get_petname){
+		alert("Pet's name has not been entered.");return false;
+	}
+	if(InputStrCheck(get_petname)){
+		alert("Contains one or more characters that are not allowed.");return false;
+	}
+
+	UserPetNum	= UserPets.split("/");
+	NewPetLen	= "/"+PetSelectData+":"+get_petrace+":"+EscapeStr(get_petname,1);
+	UserPets	= PetDataReplace("/"+mabipet_form_data,NewPetLen);
+
+	LoadUserPet();
+	PetSelect(PetSelectData);
+	PetFinish(0);
+}
+function PetDelete(){
+	if(!PetSelectData){
+		alert("Please select a pet that you want to remove from the Registered Pet List ");return false;
+	}
+
+	UserPetNum	= UserPets.split("/");
+	UserPets	= PetDataReplace("/"+mabipet_form_data,"");
+
+	if(UserPets.split("/").length==1){
+		UserPets = "";
+		WriteInnerHTML("","mabipet_list");
+	}
+
+	LoadUserPet();
+	PetFinish(2);
+}
+function SaveUserPet(){
+	if(!WindowMode){
+		window.parent.document.getElementById("pet").value = UserPets;
+	}else{
+		window.opener.document.getElementById("pet").value = UserPets;
+	}
+	UserSaveedPetCount();
+	return false;
+}
+function PetFinish(mode){
+	SaveUserPet();
+	if(mode){
+		Objects(1,"mabipet_form_name_usr","value","");
+		Objects(1,"mabipet_form_race_usr","options[0].selected","true");
+		PetListChange();
+		if(mode==1 && PetSelectData){
+			PetSelect("r");
+		}else{
+			PetSelectData = "";
+		}
+	}
+}
+
+function UserSaveedPetCount(){
+	if(!WindowMode){
+		UsrPetData = window.parent.document.getElementById("pet").value;
+	}else{
+		UsrPetData = window.opener.document.getElementById("pet").value;
+	}
+
+	if(UsrPetData==""){
+		SavePetCount=0;
+	}else{
+		SavePetCount=UsrPetData.split("/").length-1;
+	}
+	SavePetCount = SavePetCount+" Animals";
+
+	if(!WindowMode){
+		window.parent.document.getElementById("count_pet").innerHTML = SavePetCount;
+	}else{
+		window.opener.document.getElementById("count_pet").innerHTML = SavePetCount;
+	}
+}
+
+function PetDataReplace(str1,str2){
+	return UserPets.replace(str1, str2);
+}
+
+function InputStrCheck(str){
+	txtflg=0;
+	for(i in EscapeText){
+		if(str.search(new RegExp(EscapeText[i],"i"))!="-1"){
+			txtflg=1;
+			break;
+		}
+	}
+	return txtflg;
+}
+
+function PetDataView(){
+	if(PetSelectData){
+		T01=UserPets.split("/");
+		for(i in T01){
+			if(i>0){
+				T02=T01[i].split(":");
+				if(T02[0]==PetSelectData){
+					mabipet_form_data = T01[i];
+					Objects(1,"mabipet_form_name_usr","value",EscapeStr(T02[2],0));
+					pcount=0;
+					for(c in mss_pet){
+						if(c==T02[1]){
+							Objects(1,"mabipet_form_race_usr","options[pcount].selected","true");
+						}
+						pcount++;
+					}
+					PetListChange();
+				}
+			}
+		}
+	}
+}
+
+function PetSelect(pettb){
+	if(pettb=="r"){
+		Objects(1,"mabipet_pettb_mask_"+PetSelectData,"style.backgroundColor","transparent");
+		PetSelectData = "";
+	}else{
+		if(!PetSelectData){
+			Objects(1,"mabipet_pettb_mask_"+pettb,"style.backgroundColor","#000000");
+		}else{
+			Objects(1,"mabipet_pettb_mask_"+PetSelectData,"style.backgroundColor","transparent");
+			Objects(1,"mabipet_pettb_mask_"+pettb,"style.backgroundColor","#000000");
+		}
+		PetSelectData = pettb;
+
+		if(PetTabPosition!=1){
+			PetDataView();
+		}
+	}
+}
+
+function ButtonRollover(ch,mode){
+	if(ch=="0"){
+		if(mode=="1"){ ButtonPosition = input_sprite["close-1"]; }
+		if(mode=="2"){ ButtonPosition = input_sprite["close-2"]; }
+		ButtonTarget = "mabipet_close";
+	}
+	if(ch=="1"){
+		if(mode=="1"){ ButtonPosition = input_sprite["petinput_btn01-1"]; }
+		if(mode=="2"){ ButtonPosition = input_sprite["petinput_btn01-2"]; }
+		if(mode=="3"){ ButtonPosition = input_sprite["petinput_btn01-3"]; }
+		ButtonTarget = "mabipet_button01";
+	}
+	if(ch=="2"){
+		if(mode=="1"){ ButtonPosition = input_sprite["petinput_btn02-1"]; }
+		if(mode=="2"){ ButtonPosition = input_sprite["petinput_btn02-2"]; }
+		if(mode=="3"){ ButtonPosition = input_sprite["petinput_btn02-3"]; }
+		ButtonTarget = "mabipet_button02";
+	}
+	if(ch=="3"){
+		if(mode=="1"){ ButtonPosition = input_sprite["petinput_btn03-1"]; }
+		if(mode=="2"){ ButtonPosition = input_sprite["petinput_btn03-2"]; }
+		if(mode=="3"){ ButtonPosition = input_sprite["petinput_btn03-3"]; }
+		ButtonTarget = "mabipet_button03";
+	}
+	if(ch=="4"){
+		if(mode=="1"){ ButtonPosition = input_sprite["petinput_btn04-1"]; }
+		if(mode=="2"){ ButtonPosition = input_sprite["petinput_btn04-2"]; }
+		if(mode=="3"){ ButtonPosition = input_sprite["petinput_btn04-3"]; }
+		ButtonTarget = "mabipet_button04";
+	}
+
+	Objects(1,ButtonTarget,"style.backgroundPosition","-"+ButtonPosition[0]+"px -"+ButtonPosition[1]+"px");
+
+}
+
+function PetTabChange(ch){
+	if(ch=="0"){
+		TabPosition	= input_sprite["petinput_tab1"];
+		PetButtons	= new Array(0,0,0,0,0);
+	}
+	if(ch=="1"){
+		TabPosition	= input_sprite["petinput_tab1"];
+		PetButtons	= new Array(0,1,0,0,0);
+		Objects(1,"mabipet_form_mask","style.display","none");
+
+		Objects(1,"mabipet_form_name_usr","value","");
+		Objects(1,"mabipet_form_race_usr","options[0].selected","true");
+		PetListChange();
+	}
+	if(ch=="2"){
+		TabPosition	= input_sprite["petinput_tab2"];
+		PetButtons	= new Array(0,0,1,0,0);
+		Objects(1,"mabipet_form_mask","style.display","none");
+	}
+	if(ch=="3"){
+		TabPosition	= input_sprite["petinput_tab3"];
+		PetButtons	= new Array(0,0,0,1,0);
+		Objects(1,"mabipet_form_mask","style.display","block");
+
+	}
+	PetTabPosition = ch;
+
+	for(i=1;i<PetButtons.length;i++){
+		if(PetButtons[i]==1){
+			PetButtonDisplayMode = "block";
+		}else{
+			PetButtonDisplayMode = "none";
+		}
+
+		if(i<=9){
+			ls = "0"+i;
+		}else{
+			ls = i;
+		}
+
+		Objects(1,"mabipet_button"+ls+"","style.display",PetButtonDisplayMode);
+	}
+
+	Objects(1,"mabipet_tab","style.backgroundPosition","-"+TabPosition[0]+"px -"+TabPosition[1]+"px");
+	Objects(1,"mabipet_form_title","style.backgroundPosition","-"+input_sprite["petinput_form_title-"+ch][0]+"px -"+input_sprite["petinput_form_title-"+ch][1]+"px");
+	WriteInnerHTML(PetInfoMessage[ch].replace(/\*/g,"<br\/>"),"mabipet_form_text");
+	if(ch!=1){ PetDataView(); }
+}
+
+function PetListChange(){
+	SelectedPetData = mss_pet[Objects(0,"mabipet_form_race_usr","value","")];
+	PetIconPosition = SelectedPetData.pos.split(":");
+
+	Objects(1,"mabipet_form_icon","style.backgroundPosition","-"+PetIconPosition[0]+"px -"+PetIconPosition[1]+"px");
+	if(SelectedPetData.flg==1){
+		Objects(1,"mabipet_form_gentei","style.display","block");
+	}else{
+		Objects(1,"mabipet_form_gentei","style.display","none");
+	}
+	//WriteInnerHTML(SelectedPetData[3].replace(/\*/g,"<br\/>"),"mabipet_form_text");
+}
+
+function GeneratePetList(){
+	PetListData = "";
+	pcount=0;
+	for(p in mss_pet){
+		Objects(2,"mabipet_form_race_usr","options["+(pcount)+"]",mss_pet[p].name+"*"+p);
+		pcount++;
+	}
+}
+
+function GeneratePetIconTable(petno,petid,petname,tbstr){
+	if(IEorGK){
+		PetTextFontSize = new Array("9px", "9px");
+		PetTextPosition = new Array("top:10px;left:86px;", "top:29px;left:86px;");
+	}else{
+		PetTextFontSize = new Array("10px", "10px");
+		PetTextPosition = new Array("top:8px;left:86px;", "top:27px;left:86px;");
+	}
+
+	if(petid.length==6) petid = "p"+petid;
+
+	PetIconPosition = mss_pet[petid].pos.split(":");
+	petrace = mss_pet[petid].name;
+	if(Jstrlen(petrace)>=22){
+		petrace = ConvertKana(petrace,1);
+	}
+
+	petlist ="<div id=\"mabipet_pettb_"+petno+"\" onclick=\"PetSelect('"+petno+"')\" oncontextmenu=\"PetSelect('"+petno+"')\" class=\"Sprite_UIInput\" style=\"position:absolute;top:"+tbstr[0]+"px;left:"+tbstr[1]+"px;width:190px;height:50px;background-position:-227px -662px;\">\n";
+	petlist+="<div id=\"mabipet_pettb_icon_"+petno+"\" class=\"Sprite_PetIcon\" style=\"position:absolute;top:2px;left:2px;width:46px;height:46px;background-position:-"+PetIconPosition[0]+"px -"+PetIconPosition[1]+"px;\"></div>\n";
+	petlist+="<div id=\"mabipet_pettb_txt1_"+petno+"\" style=\"cursor:default;position:absolute;"+PetTextPosition[0]+"font-size:"+PetTextFontSize[0]+";\">"+EscapeStr(petname,0)+"</div>\n";
+	petlist+="<div id=\"mabipet_pettb_txt2_"+petno+"\" style=\"cursor:default;position:absolute;"+PetTextPosition[1]+"font-size:"+PetTextFontSize[1]+"\">"+petrace+"</div>\n";
+	petlist+="<div id=\"mabipet_pettb_mask_"+petno+"\" class=\"opacity40\" style=\"position:absolute;top:0px;left:0px;width:190px;height:50px;\"></div>\n";
+	petlist+="</div>\n";
+	return petlist;
+}
+
+function PetWindowClose(){
+	if(!WindowMode){
+		self.parent.tb_remove();
+	}else{
+		window.close();
+	}
+}
+
+function InfoKeyShortcut(){
+	InfoMes  = "This is a list of shortcuts available in Pet Window\n\n";
+	InfoMes += "　C = Close Pet Window\n";
+	InfoMes += "　R = Register a pet\n";
+	InfoMes += "　E = Edit a pet\n";
+	InfoMes += "　D = Delete a pet\n";
+	InfoMes += "　1 = Views the REGISTER tab\n";
+	InfoMes += "　2 = View the EDIT tab\n";
+	InfoMes += "　3 = View the CLEAR tab\n";
+	alert(InfoMes);
+}
+
+function ButtonClickEmulate(ch,mode){
+	if(mode){
+		ButtonRollover(ch,3);
+		clearInterval(MessageTimer[1]);
+		MessageTimer[2] = setTimeout("ButtonClickEmulate("+ch+",0)",350);
+	}else{
+		ButtonRollover(ch,1);
+	}
+}
+
+function UsrKeyPress(e){
+	if(!KeyShortcutFlg){
+		UsrKey = String.fromCharCode(GetKeyCode(e));
+
+		if(DebugMode){
+			if(UsrKey=="l"){ window.location.reload(); }
+		}
+
+		if(UsrKey=="h"){ InfoKeyShortcut(); }
+		if(UsrKey=="c"){ PetWindowClose(); }
+		if(UsrKey=="r"){ ButtonClickEmulate(1,1);PetResist(); }
+		if(UsrKey=="e"){ ButtonClickEmulate(2,1);PetEdit(); }
+		if(UsrKey=="d"){ ButtonClickEmulate(3,1);PetDelete(); }
+		if(UsrKey=="1"){ PetTabChange(1); }
+		if(UsrKey=="2"){ PetTabChange(2); }
+		if(UsrKey=="3"){ PetTabChange(3); }
+	}
+}
+
+function ChangeKeyShortcutMode(mode){
+	if(mode){
+		KeyShortcutFlg = 1;
+	}else{
+		KeyShortcutFlg = 0;
+	}
+}
+
+function PageLoaded(){
+	if(!run_mode){
+		if(!confirm("There is a possibility that mabiskillskin will not work properly with your browser. \nContinue？")){ PetWindowClose(); }
+	}
+
+	Objects(1,"mabipet_tabimg","src",ActiveImages[0]);
+	Objects(1,"mabipet_form_mask_img","src",ActiveImages[0]);
+
+	if(!IEorGK){
+		Objects(1,"mabipet_form_text","style.fontSize","10px");
+		Objects(1,"mabipet_form_name","style.top","89px");
+	}
+
+	GeneratePetList();
+	//PetListChange();
+	PetTabChange(1);
+
+	Objects(1,"mabipet_form_name_usr","value","");
+	Objects(1,"mabipet_form_race_usr","options[0].selected","true");
+
+	GetUserPetData();
+	LoadUserPet();
+
+	addEvent(document,"keypress",UsrKeyPress);
+}
+// -->
+</script>
+</head>
+<body oncontextmenu="return false" onselectstart="return false">
+<map name="pet_tab_map">
+	<area shape="poly" coords="0,0,0,16,36,15,36,9,28,0" onclick="PetTabChange('1');return false" style="cursor:pointer;" />
+	<area shape="poly" coords="37,0,37,15,73,15,73,9,65,0" onclick="PetTabChange('2');return false" style="cursor:pointer;" />
+	<area shape="poly" coords="74,0,74,15,110,16,110,9,102,0" onclick="PetTabChange('3');return false" style="cursor:pointer;" />
+</map>
+<div id="mabipet_base" class="Sprite_UIInput" style="position:absolute;top:0px;left:0px;width:429px;height:446px;background-position:-10px -848px;">
+	<div id="mabipet_close" class="Sprite_UIInput" onmouseover="ButtonRollover(0,2)" onmouseout="ButtonRollover(0,1)" onclick="PetWindowClose()" title="Close" style="cursor:pointer;position:absolute;top:7px;left:410px;width:8px;height:8px;background-position:-227px -717px;"></div>
+	<div id="mabipet_tab" class="Sprite_UIInput" style="position:absolute;top:30px;left:12px;width:117px;height:16px;background-position:-422px -654px;">
+		<img src="./imgs/blank.gif" width="117" height="16" border="0" id="mabipet_tabimg" onmousedown="return false" style="cursor:default;" usemap="#pet_tab_map" alt="" />
+	</div>
+	<div id="mabipet_form" class="Sprite_UIInput" style="position:absolute;top:55px;left:17px;width:393px;height:185px;background-position:-443px -1322px;"></div>
+	<div id="mabipet_form_title" class="Sprite_UIInput" style="position:absolute;top:55px;left:17px;width:75px;height:21px;background-position:-633px -1260px;"></div>
+	<div id="mabipet_form_gentei" class="Sprite_UIInput" style="display:none;position:absolute;top:80px;left:13px;width:16px;height:59px;background-position:-544px -662px;"></div>
+	<div id="mabipet_form_icon" class="Sprite_PetIcon" style="position:absolute;top:82px;left:33px;width:46px;height:46px;background-position:-2px -2px;"></div>
+	<div id="mabipet_form_name" style="position:absolute;top:87px;left:119px;width:130px;height:17px;">
+		<input id="mabipet_form_name_usr" onfocus="ChangeKeyShortcutMode(1)" onblur="ChangeKeyShortcutMode(0)" style="color:#ffffff;height:13px;width:126px;border:0px;background-color:transparent;" type="text" maxlength="12" value=""/>
+	</div>
+	<div id="mabipet_form_race" style="position:absolute;top:111px;left:119px;width:130px;height:17px;">
+		<select id="mabipet_form_race_usr" style="cursor:pointer;color:#ffffff;height:17px;width:130px;border:0px;background-color:transparent;" onchange="PetListChange()"></select>
+	</div>
+	<div id="mabipet_form_mask" style="position:absolute;top:85px;left:85px;width:165px;height:45px;display:none;">
+		<img src="about:blank" width="165" height="45" border="0" id="mabipet_form_mask_img" onmousedown="return false" style="cursor:default;" alt="" />
+	</div>
+	<div id="mabipet_form_text" style="cursor:default;font-size:9px;position:absolute;top:139px;left:35px;width:373px;height:99px;overflow-x:hidden;overflow-y:scroll;"></div>
+	<div id="mabipet_list" style="cursor:default;position:absolute;top:272px;left:10px;width:406px;height:162px;overflow-x:hidden;overflow-y:scroll;"></div>
+	<div id="mabipet_button01" class="Sprite_UIInput" onmouseover="ButtonRollover(1,2)" onmouseout="ButtonRollover(1,1)" onmousedown="ButtonRollover(1,3)" onmouseup="ButtonRollover(1,2)" onclick="PetResist()" style="cursor:pointer;position:absolute;top:110px;left:267px;width:70px;height:19px;background-position:-10px -734px;"></div>
+	<div id="mabipet_button02" class="Sprite_UIInput" onmouseover="ButtonRollover(2,2)" onmouseout="ButtonRollover(2,1)" onmousedown="ButtonRollover(2,3)" onmouseup="ButtonRollover(2,2)" onclick="PetEdit()" style="cursor:pointer;position:absolute;top:110px;left:267px;width:70px;height:19px;background-position:-10px -758px;display:none;"></div>
+	<div id="mabipet_button03" class="Sprite_UIInput" onmouseover="ButtonRollover(3,2)" onmouseout="ButtonRollover(3,1)" onmousedown="ButtonRollover(3,3)" onmouseup="ButtonRollover(3,2)" onclick="PetDelete()" style="cursor:pointer;position:absolute;top:110px;left:267px;width:70px;height:19px;background-position:-10px -782px;display:none;"></div>
+	<div id="mabipet_button04" class="Sprite_UIInput" onmouseover="ButtonRollover(4,2)" onmouseout="ButtonRollover(4,1)" onmousedown="ButtonRollover(4,3)" onmouseup="ButtonRollover(4,2)" onclick="" style="cursor:pointer;position:absolute;top:110px;left:340px;width:70px;height:19px;background-position:-10px -806px;display:none;"></div>
+</div>
+</body>
+</html>
