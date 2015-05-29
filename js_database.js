@@ -1,12 +1,12 @@
 //**************************************************//
 //* MabiSkillSkin DataBase JavaScript              *//
-//*  Update: 2015/03/08 01:05                      *//
+//*  Update: 2015/05/29 04:08                      *//
 //*  Translated by Aska (VinnyJ)                   *//
 //**************************************************//
 // TextEncode: UTF-8(non bom) CR+LF
 
 //****************************************************************************************************//
-files_version_a["js_database"] = 20150511.000;
+files_version_a["js_database"] = 20150529.000;
 var mss_dbinfo = new Object({skill:{count:0, msscount:0}, pet:{count:0}, achievement:{count:0}});
 var mss_skill = new Object({
 //****************************************************************************************************//
@@ -121,6 +121,7 @@ sk30019:{cat:"3",	rank:"0",	pos:"738:98",	type:"Passive",	name:{en:"Bolt Mastery
 sk30022:{cat:"3",	rank:"0",	pos:"770:98",	type:"Passive",	name:{en:"Magic Weapon Mastery",		ja:""},			text:"This skill improves the effectiveness of Magic Weapons. The more you train the skill, the more powerful your bolt magic will become with a Magic Weapon. This will also decrease the casting time for Fireball, Ice Spear, and Thunder magics."},
 sk30101:{cat:"3",	rank:"-3",	pos:"98:98",	type:"Active",	name:{en:"Lightning Bolt",		ja:"ライトニングボルト"},		text:"Using electricity as the medium, this magic creates a small lightning bolt that penetrates the target. While the lightning hits the target in the blink of an eye, the pain inflicted on the target is prolonged. Lightning Bolt can be even more powerful when combined with the spells by other casters around you. It can also spread out to other targets other than the main target. Repeatedly preparing Lightning Bolt can reinforce such a chain reaction."},
 sk30102:{cat:"3",	rank:"0",	pos:"290:98",	type:"Active",	name:{en:"Thunder",			ja:"サンダー"},				text:"This skill involves creating high-voltage clouds using mana, then firing thunder at unsuspecting enemies. The sheer power of the thunder affects every enemy in the vicinity. Summon the spell multiple times to accumulate more voltage, creating a more powerful thunder."},
+sk30106:{cat:"3",	rank:"0",	pos:"962:98",	type:"Active",	name:{en:"Lightning Rod",		ja:""},			text:"This skill uses mana to generate a massive blast of electricity. You must be equipped with a staff to use this skill. You can use this skill as soon as you charge it, but you will deal more damage after charging more by pressing the hotkey or mouse button. "},
 sk30201:{cat:"3",	rank:"-3",	pos:"66:98",	type:"Active",	name:{en:"Firebolt",			ja:"ファイアボルト"},			text:"All things are imbued with the heat gifted by the sun. Drawing a little bit of that heat from everywhere and focusing it on a single point turns it into a pure flame, burning around the caster. A fireball created this way can be fired at the will of the caster, and the heat instantly consumes the target upon impact. The more mana you concentrate, the more powerful the Firebolt becomes. That is, reciting the incantation multiple times makes your attack much more powerful."},
 sk30202:{cat:"3",	rank:"0",	pos:"194:98",	type:"Active",	name:{en:"Fireball",			ja:"ファイアボール"},			text:"If firebolt is considered the Bullet, then fireball is the cannonball of the fire-related skills. The fireball is created by spinning fire elemental at a rapid speed around an imaginary center point. Because this ball is created through spinning, creating inertial gravity, it gives off the impression that a very heavy cannonball is flying through the air."},
 sk30205:{cat:"3",	rank:"0",	pos:"802:98",	type:"Active",	name:{en:"Meteor Strike",		ja:""},			text:"A powerful magic spell that summons a huge meteor from the sky, turning a vast area into a blazing inferno. The point of impact becomes covered with lava temporarily, inflicting constant fire damage on enemies in it."},
@@ -137,7 +138,7 @@ sk30464:{cat:"3",	rank:"6",	pos:"514:98",	type:"Active",	name:{en:"Mana Shield",
 sk30470:{cat:"3",	rank:"0",	pos:"546:98",	type:"Active",	name:{en:"Blaze",			ja:"ブレイズ"},				text:"Focuses the power of magic in a wand before launching it on an enemy. Since the condensed magic is launched by physical force, the user of this skill must be physically strong. This skill can cause incredible damage on enemies who have lost their balance due to being hit or stunned. Accordingly, it's most effective against enemies who are about to fall or have already fallen. Hold down the hotkey and click an enemy within range to use it."},
 sk30480:{cat:"3",	rank:"0",	pos:"866:98",	type:"Active",	name:{en:"Spellwalk",		ja:""},			text:"A skill that allows you to cast all kinds of magic spells except Advanced Magic skills while moving. A great deal of Stamina will be consumed to stay focused, as well as additional MP."},
 sk30481:{cat:"3",	rank:"0",	pos:"834:98",	type:"Active",	name:{en:"Snap Cast",		ja:""},			text:"This skill allows you to use chargeable magic skills instantly without casting time or charging them. It will be activated only once during the skill's duration. When activated, you can immediately use a chargeable skill at the 5 charge level without consuming any MP. A magic skill's cooldown will decrease little by little whenever you use it to attack an enemy, so you can re-use this skill more quickly if you use it repeatedly."},
-
+sk30482:{cat:"3",	rank:"0",	pos:"930:98",	type:"Active",	name:{en:"Inspiration",		ja:""},			text:"This skill lets you concentrate to restore some of your MP in a flash. You must be equipped with a staff or a wand to use this skill. Recovery ends if you move or get attacked while using the skill. "},
 //****************************************************************************************************//
 // Alchemy
 

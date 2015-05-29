@@ -1,13 +1,13 @@
 //**************************************************//
 //* MabiSkillSkin Common JavaScript                *//
-//*  Update: 2015/05/11 04:48                      *//
+//*  Update: 2015/05/29 03:49                      *//
 //**************************************************//
 
 //**************************************************************************************************
 // 著作権、バージョン情報（変更、削除を禁止します）
 
-var MabiSkillVer	= "2.31.03";
-var MabiSkillDate	= "2015/05/11";
+var MabiSkillVer	= "2.31.04";
+var MabiSkillDate	= "2015/05/29";
 var MabiSkillUrl	= "http://blog.wolfs.jp/";
 
 var files_version_a	= new Array();
@@ -15,7 +15,7 @@ var files_version_b	= new Array();
 var files_version_c	= new Array();
 
 
-files_version_a["js_common"]		= 20150511.000;
+files_version_a["js_common"]		= 20150529.000;
 
 files_version_b["html_main"]		= 20150220.000;
 files_version_b["html_main_old"]	= 20150210.000;
@@ -23,9 +23,9 @@ files_version_b["html_reg"]		    = 20150210.000;
 files_version_b["html_edit"]		    = 20150210.000;
 files_version_b["html_skill"]		    = 20150210.001;
 files_version_b["html_pet"]		    = 20150210.000;
-files_version_b["js_common"]		= 20150511.000;
+files_version_b["js_common"]		= 20150529.000;
 files_version_b["js_config"]		    = 20150210.000;
-files_version_b["js_database"]		= 20150511.000;
+files_version_b["js_database"]		= 20150529.000;
 files_version_b["js_jquery"]		    = 20100806.003;
 files_version_b["js_scroll"]	    	= 20100910.004;
 
