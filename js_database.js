@@ -1,12 +1,12 @@
 //**************************************************//
-//* MabiSkillSkin DataBase JavaScript              *//
-//*  Update: 2015/05/29 04:08                      *//
-//*  Translated by Aska (VinnyJ)                   *//
+//* MabiSkillSkin DataBase JavaScript        *//
+//*  Update: 2015/06/22 01:25                    *//
+//*  Translated by Aska (VinnyJ)                 *//
 //**************************************************//
 // TextEncode: UTF-8(non bom) CR+LF
 
 //****************************************************************************************************//
-files_version_a["js_database"] = 20150529.000;
+files_version_a["js_database"] = 20150622.000;
 var mss_dbinfo = new Object({skill:{count:0, msscount:0}, pet:{count:0}, achievement:{count:0}});
 var mss_skill = new Object({
 //****************************************************************************************************//
@@ -78,6 +78,7 @@ sk21007:{cat:"2",	rank:"0",	pos:"386:66",	type:"Active",	name:{en:"Mirage Missil
 sk21009:{cat:"2",	rank:"1",	pos:"1218:66",	type:"Active",	name:{en:"Spirit Bow Awakening",		ja:""},			text:"This skill awakens the spirit inside of the Spirit Weapon to actually assist in combat. The spirit, once awakened, has the ability to attack multiple targets within a general vicinity. In order for spirits to make attacks however, they must first be awakened, but only spirits with a Social Level of at least 21 can do so. The energy required to awaken the spirit can only be collected a small amount at a time, through using the Spirit Weapon in combat. Only when enough energy has been gathered can this skill then be activated. As soon as the skill is activated, the energy begins to escape though, and since no further energy can be gathered, this skill should only be activated once an appropriate target has been spotted."},
 sk21010:{cat:"2",	rank:"0",	pos:"482:66",	type:"Active",	name:{en:"Throwing Attack",		ja:"投擲"},				text:"It's a skill that enables you to use throwing weapons against your opponents. If you have the throwing tool and the throwing weapon in your hands, you can use the Throwing attack. Unlike arrows, you can immediately attack an enemy without aiming first."},
 sk21011:{cat:"2",	rank:"0",	pos:"674:66",	type:"Active",	name:{en:"Crash Shot",			ja:"クラッシュショット"},		text:"A skill that fires an arrowhead, which senses enemies using the same principle as an Ice Mine. If the arrowhead detects nearby enemies when it pierces your target, it will detonate, splintering its fragments to hit other enemies. Remember to aim at enemies at the center of a crowd. If there are no other enemies around, the arrowhead will not detonate."},
+sk21014:{cat:"2",	rank:"0",	pos:"1346:66",	type:"Active",	name:{en:"Urgent Shot",			ja:""},			text:"Urgent Shot allows you to rapidly recover and fire again after a missed shot. Use it in the split second after a miss to knock back the enemy and increase the aiming speed of your next attack."},
 sk22001:{cat:"2",	rank:"-3",	pos:"226:66",	type:"Active",	name:{en:"Windmill",			ja:"ウインドミル"},			text:"No matter how skilled you are at close-ranged combat, it's never easy to handle multiple enemies at once. This skill helps you slip through dangerous situations. This skill is extremely useful, especially when you've been hit multiple times by the enemy and have fallen to the ground."},
 sk22004:{cat:"2",	rank:"0",	pos:"354:66",	type:"Active",	name:{en:"Final Hit",			ja:"ファイナルヒット"},			text:"The final hit is an attack skill that is most effective in melee combat which brings down the enemy with crazed force that pushes the body's strength to the limits. You can defeat the enemy by instantaneously moving in the speed of a sword in the air, which allows you to keep swinging your sword even when you are under attack by the enemy as long as you are holding the sword in both hands. If you are holding a weapon in just one hand, you will be able to blow away your enemy with a single swing in the air."},
 sk22005:{cat:"2",	rank:"1",	pos:"418:66",	type:"Active",	name:{en:"Spirit Sword Awakening",		ja:""},			text:"This skill awakens the spirit inside of the Spirit Weapon to actually assist in combat. The spirit, once awakened, has the ability to attack multiple targets within a general vicinity. In order for spirits to make attacks however, they must first be awakened, but only spirits with a Social Level of at least 21 can do so. The energy required to awaken the spirit can only be collected a small amount at a time, through using the Spirit Weapon in combat. Only when enough energy has been gathered can this skill then be activated. As soon as the skill is activated, the energy begins to escape though, and since no further energy can be gathered, this skill should only be activated once an appropriate target has been spotted."},
