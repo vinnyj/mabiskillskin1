@@ -1,4 +1,5 @@
-This is an English localized version of the RGT skin, Mabiskillskin
+This is an English localized version of the RGT skin, Mabiskillskin.
+
 You need the RGT cgi script to use this skin.
 
 More information:
